@@ -1,0 +1,44 @@
+{
+  "name": "journey-share-web",
+  "version": "1.0.0",
+  "description": "A mock community-driven trek-sharing web app ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alhammialiff/journey-share-web.git"
+  },
+  "author": "Alhammi Aliff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alhammialiff/journey-share-web/issues"
+  },
+  "homepage": "https://github.com/alhammialiff/journey-share-web#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "bootstrap-social": "^5.1.1",
+    "font-awesome": "^4.7.0",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "@lodder/time-grunt": "^4.0.0",
+    "browser-sync": "^2.27.10",
+    "grunt": "^1.5.3",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-clean": "^2.0.1",
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-htmlmin": "^3.1.0",
+    "grunt-contrib-imagemin": "^4.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-filerev": "^2.3.1",
+    "grunt-sass": "^3.1.0",
+    "grunt-usemin": "^3.1.1",
+    "jit-grunt": "^0.10.0",
+    "node-sass": "^7.0.1"
+  }
+}
