@@ -1,0 +1,54 @@
+.jumbotron {
+  background-color: white;
+  margin-top: 55px; }
+
+.jumbotron-image {
+  width: 100%;
+  padding: 0; }
+
+#carousel-caption-1 {
+  font-size: 3em;
+  text-align: start;
+  color: antiquewhite; }
+
+#carousel-caption-2 {
+  font-size: 3em;
+  text-align: end;
+  color: #d6fedc; }
+
+#main-left {
+  border-right: 1px ridge #d4d4d4; }
+
+@media only screen and (max-width: 575px) {
+  #carousel-caption-1 {
+    font-size: 2em; }
+  #carousel-caption-2 {
+    font-size: 2em; }
+  #main-left {
+    padding-bottom: 10px;
+    border-right: none;
+    border-bottom: 1px ridge #d4d4d4; }
+  #main-right {
+    padding: 40px 0;
+    margin-top: 10px; } }
+
+.navbar-dark {
+  background-color: #619168; }
+
+.form-row {
+  margin-top: 10px; }
+
+.social-sign-up-btn {
+  width: 180px;
+  margin-top: 10px; }
+
+main {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+footer {
+  padding: 10px;
+  background-color: #495c4c;
+  color: floralwhite;
+  text-align: center; }

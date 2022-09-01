@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+
+            <!-- Burger button on xs-screen -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Page logo -->
+            <a class="navbar-brand mr-auto" href="#"><img src="/img/JourneyShare_trans.png" height="30" width="160"></a>
+
+            <!-- Navbar link -->
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            How it works?
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Join
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Sign In
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="jumbotron jumbotron-fluid p-0">
+        <!-- Jumbotron -->
+        <div class="container">
+            <div class="row">
+
+                <div class="col p-0 p-sm-15">
+                    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="carousel-item active">
+
+                                <!-- Image -->
+                                <picture>
+                                    <source media="(max-width:575px)" srcset="./img/Welcome_1_mobile.jpg">
+                                    <img id="carousel-image-1" class="img-fluid jumbotron-image"
+                                        src="./img/Welcome_1.jpg" alt="Test">
+                                </picture>
+
+
+                                <!-- Caption -->
+                                <div id="carousel-caption-1" class="carousel-caption">
+                                    <p>Share a journey <br>
+                                        &amp; make new friends</p>
+                                </div>
+
+
+                            </div>
+
+                            <div class="carousel-item">
+
+                                <picture>
+                                    <source media="(max-width:575px)" srcset="./img/Welcome_2_mobile.jpg">
+                                    <img id="carousel-image-2" class="img-fluid jumbotron-image"
+                                        src="./img/Welcome_2.jpg" alt="Welcome">
+                                </picture>
+
+                                <div id="carousel-caption-2" class="carousel-caption">
+                                    <p>Retain the friendship <br>
+                                        &amp; share another <br>
+                                        journey again</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Main -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <div id="main-left" class="col-12 col-sm-6">
+                    <div class="row">
+                        <!-- justify-content-center requires d-flex -->
+                        <div class="col-12 d-flex justify-content-center">
+                            <h3>Join with Email</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-sm">
+                            <form>
+                                <div class="form-row justify-content-center">
+                                    <label class="form-group col-12 col-sm-3">
+                                        Username
+                                    </label>
+                                    <input type="text" class="form-control form-control-sm col-sm-6 mr-2"
+                                        placeholder="Email">
+                                </div>
+                                <div class="form-row justify-content-center">
+                                    <label class="form-group col-12 col-sm-3">
+                                        Email
+                                    </label>
+                                    <input type="email" class="form-control form-control-sm col-sm-6 mr-2"
+                                        placeholder="Email">
+                                </div>
+                                <div class="form-row justify-content-center">
+                                    <label class="form-group col-12 col-sm-3">
+                                        Password
+                                    </label>
+                                    <input type="password" class="form-control form-control-sm col-sm-6 mr-2"
+                                        placeholder="Create Password">
+                                </div>
+                                <div class="form-row justify-content-center">
+                                    <label class="form-group col-12 col-sm-3">
+                                        Confirm Password
+                                    </label>
+                                    <input type="password" class="form-control form-control-sm col-sm-6 mr-2"
+                                        placeholder="Confirm Password">
+                                </div>
+                                <div class="form-row justify-content-center">
+                                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="main-right" class="col-12 col-sm-6">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <h3>Join with Socials</h3>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-sm d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary social-sign-up-btn">
+                                <span class="fa fa-facebook"></span>
+                                Join with Facebook
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-12 col-sm d-flex justify-content-center">
+                            <button type="button" class="btn btn-danger social-sign-up-btn" width="180px">
+                                <span class="fa fa-google-plus"></span>
+                                Join with Google+
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JourneyShare Inc.
+Golf Street, 
+North Reubma, 
+Kingdom of Floototoo
++123 456 789
+support@journeyshare.com -->
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm d-flex justify-content-center">
+                    <address>
+                        JourneyShare Inc. <br>
+                        Golf Street, <br>
+                        North Reubma, <br>
+                        Kingdom of Floototoo <br>
+                        +123 456 789 <br>
+                        support@journeyshare.com <br>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary"><span class="fa fa-facebook"></span></button>
+                        <button type="button" class="btn btn-warning"><span class="fa fa-instagram"></span></button>
+                        <button type="button" class="btn btn-danger"><span class="fa fa-google-plus"></span></button>
+                        <button type="button" class="btn btn-info"><span class="fa fa-linkedin"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- build:js js/main.js -->
+    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

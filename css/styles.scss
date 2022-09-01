@@ -1,0 +1,93 @@
+$background-primary: #619168;
+$background-secondary: #6a806d;
+$main-padding: 10px;
+
+@mixin no-gutter {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@mixin image-stretch {
+    width: 100%;
+    padding: 0;
+}
+
+@mixin form-margin {
+    margin-top: 10px;
+}
+
+.jumbotron {
+    background-color: white;
+    margin-top: 55px;
+    // border: solid 1px black;
+}
+
+.jumbotron-image {
+    @include image-stretch;
+
+}
+
+#carousel-caption-1{
+    font-size: 3em;
+    text-align: start;
+    color:antiquewhite;
+}
+
+#carousel-caption-2{
+    font-size: 3em;
+    text-align: end;
+    color:#d6fedc;
+}
+
+#main-left {
+    border-right: 1px ridge rgb(212, 212, 212);
+}
+
+@media only screen and (max-width: 575px) {
+    #carousel-caption-1 {
+        font-size:2em;
+    }
+
+    #carousel-caption-2 {
+        font-size:2em;
+    }
+
+    #main-left{
+        padding-bottom: $main-padding;
+        border-right: none;
+        border-bottom: 1px ridge rgb(212, 212, 212); 
+    }
+
+    #main-right{
+        padding: 40px 0;
+        margin-top: 10px;
+    }
+}
+
+.navbar-dark {
+    background-color: $background-primary;
+}
+
+
+
+.form-row {
+    @include form-margin;
+}
+
+.social-sign-up-btn {
+    width: 180px;
+    margin-top: 10px;
+}
+
+main {
+    padding: $main-padding;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+footer {
+    padding: $main-padding;
+    background-color: #495c4c;
+    color: floralwhite;
+    text-align: center;
+}
