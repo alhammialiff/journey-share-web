@@ -15,6 +15,7 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+
         <div class="container">
 
             <!-- Burger button on xs-screen -->
@@ -23,28 +24,71 @@
             </button>
 
             <!-- Page logo -->
-            <a class="navbar-brand mr-auto" href="#"><img src="/img/JourneyShare_trans.png" height="30" width="160"></a>
+            <a class="navbar-brand mr-auto" href="./home.html"><img src="/img/JourneyShare_trans.png" height="30"
+                    width="160"></a>
+            
+            <!-- 'My Account' Nav Link -->
+            <!-- Note-to-self: To prevent 'My Account' Icon from collapsing
+                 with the navbar, put it after navbar-brand, AND after the collapsing navbar (below) -->
+            <div id="my-account-nav-link" class="dropdown mr-3 ml-3">
+
+                <!-- 'My Account' Icon -->
+                <a id="my-account-icon" class="dropdown" href="#" data-toggle="dropdown"
+                    data-target="#my-account-dropdown">
+                    <span class="fa fa-user"></span><small id="my-account-username"> John Doe</small>
+                </a>
+
+                <!-- 'My Account' Dropdown Menu -->
+                <!-- <div id="my-account-dropdown" class="dropdown-menu dropdown-menu-right"> -->
+                <div id="my-account-dropdown" class="collapse">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <a class="" href="" aria-labelledby="my-account-icon">My Account</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="" href="" aria-labelledby="my-account-icon">Settings</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="" href="./index.html">Log out</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
 
             <!-- Navbar link -->
             <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto mr-3">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
-                            How it works?
+                            Home
                         </a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
-                            Join
+                            Trek
                         </a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
-                            Sign In
+                            Itinerary
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Socials
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Forum
                         </a>
                     </li>
                 </ul>
             </div>
+
+            
+
 
         </div>
     </nav>
@@ -176,7 +220,7 @@
                                     <label for="search-country">
                                         Country
                                     </label>
-                                    
+
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                             id="search-country" data-toggle="dropdown" aria-haspopup="true"
@@ -232,7 +276,7 @@
                             </div>
 
                             <div class="form-row justify-content-center">
-                                <button class="btn btn-success">Find Trek</button>
+                                <button id="find-trek-btn" class="btn btn-success">Find Trek</button>
                             </div>
 
 
@@ -245,10 +289,57 @@
 
             <!-- Search Result -->
             <div class="row">
+                <div class="col-12 col-sm">
+                    <div class="row">
+                        <div class="col-12 col-sm d-flex justify-content-center">
+                            <h3>Search Result</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 table-responsive">
+                            <table id="search-result-table" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Location</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Type</th>
+                                        <th>Pax</th>
+                                        <th>Country</th>
+                                        <th>Region</th>
+                                    </tr>
 
-                <div id="search-result" class="col-12 col-sm-6">
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mount Kinabalu</td>
+                                        <td>10/08/2022</td>
+                                        <td>15/08/2022</td>
+                                        <td>Mountain</td>
+                                        <td>8</td>
+                                        <td>Kota Kinabalu, East Malaysia</td>
+                                        <td>Asia</td>
 
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Rinjani National Park, Lombok</td>
+                                        <td>08/08/2022</td>
+                                        <td>12/08/2022</td>
+                                        <td>Forest</td>
+                                        <td>10</td>
+                                        <td>Lombok, Indonesia</td>
+                                        <td>Asia</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
 
         </div>
@@ -288,7 +379,34 @@
     <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/js/scripts.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+
+            checkWidth();
+            $(window).resize(checkWidth);
+
+        });
+
+        // Breakpoint function
+        function checkWidth() {
+            var vw = $(document).width();
+            console.log('width ' + vw);
+
+            // Hide username from navbar
+            if (vw < 765) {
+                $('#my-account-username').hide();
+            } else {
+                $('#my-account-username').show();
+            }
+
+        }
+
+
+    </script>
     <!-- endbuild -->
+
 </body>
 
 </html>

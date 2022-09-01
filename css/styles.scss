@@ -1,6 +1,8 @@
 $background-primary: #619168;
 $background-secondary: #6a806d;
 $main-padding: 10px;
+$main-margin: 10px;
+$div-border-line: 1px ridge rgb(212, 212, 212);
 
 @mixin no-gutter {
     margin-left: 0;
@@ -27,16 +29,16 @@ $main-padding: 10px;
 
 }
 
-#carousel-caption-1{
+#carousel-caption-1 {
     font-size: 3em;
     text-align: start;
-    color:antiquewhite;
+    color: antiquewhite;
 }
 
-#carousel-caption-2{
+#carousel-caption-2 {
     font-size: 3em;
     text-align: end;
-    color:#d6fedc;
+    color: #d6fedc;
 }
 
 #main-left {
@@ -45,20 +47,20 @@ $main-padding: 10px;
 
 @media only screen and (max-width: 575px) {
     #carousel-caption-1 {
-        font-size:2em;
+        font-size: 2em;
     }
 
     #carousel-caption-2 {
-        font-size:2em;
+        font-size: 2em;
     }
 
-    #main-left{
+    #main-left {
         padding-bottom: $main-padding;
         border-right: none;
-        border-bottom: 1px ridge rgb(212, 212, 212); 
+        border-bottom: 1px ridge rgb(212, 212, 212);
     }
 
-    #main-right{
+    #main-right {
         padding: 40px 0;
         margin-top: 10px;
     }
@@ -68,42 +70,19 @@ $main-padding: 10px;
     background-color: $background-primary;
 }
 
-#search-bar{
-
-    .form-inline{
-        padding: 10px;
-    
-        .form-group{
-            margin: 5px;
-
-            label+div{
-                margin: 0 5px;
-            }
-
-            label+input{
-                margin-left: 5px;
-            }
-        }
-    
-    }
-
-
-    
-} 
-
 .form-row {
     @include form-margin;
 }
 
 .social-sign-up-btn {
     width: 180px;
-    margin-top: 10px;
+    margin-top: $main-margin;
 }
 
 main {
     padding: $main-padding;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: $main-margin;
+    margin-bottom: $main-margin;
 }
 
 footer {
@@ -111,4 +90,98 @@ footer {
     background-color: #495c4c;
     color: floralwhite;
     text-align: center;
+}
+
+#search-bar {
+    border-bottom: $div-border-line;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    .form-inline {
+        // padding: 10px;
+
+        .form-group {
+            margin: 5px;
+
+            label+div {
+                margin: 0 5px;
+            }
+
+            label+input {
+                margin-left: 5px;
+            }
+        }
+
+    }
+
+}
+
+#search-result-table {
+    margin: $main-margin 0;
+
+    thead {
+        background-color: rgb(187, 142, 84);
+        color: floralwhite;
+    }
+
+    tbody {
+        background-color: floralwhite;
+    }
+}
+
+#my-account-nav-link {
+    // (IMPORTANT - SEE THIS) 
+    // Steps to...
+    // 1) Align 'My Account' Nav Link to the right on huge screen
+    // 2) Prevent 'My Account' Nav Link from collapsing with nav-collapse items on small screen
+    // STEPS:
+    // 1) Put #my-account-nav-link div after navbar-brand AND before nav-collapse items
+    // 2) In CSS, set #my-account-nav-link 'ORDER: 1' (like below)
+    order: 1;
+    
+    #my-account-icon {
+        color: floralwhite;
+        font-size: 1.4rem;
+        padding: 0;
+
+        #my-account-username {
+            font-size: 1rem;
+        }
+
+    }
+
+    #my-account-icon:link {
+        color: floralwhite;
+        text-decoration: none;
+    }
+
+    #my-account-icon:hover {
+        color: floralwhite;
+        text-decoration: none;
+    }
+
+
+    .dropdown-menu {
+        background-color: floralwhite;
+        // This is to position the dropdown to avoid overflowing
+        right: -6vw;
+        left: auto;
+
+        .dropdown-item {
+
+            a {
+                color: $background-primary;
+            }
+
+            a:link {
+                color: $background-primary;
+            }
+
+            a:visited {
+                color: $background-primary;
+            }
+
+        }
+
+    }
 }

@@ -35,15 +35,6 @@
 .navbar-dark {
   background-color: #619168; }
 
-#search-bar .form-inline {
-  padding: 10px; }
-  #search-bar .form-inline .form-group {
-    margin: 5px; }
-    #search-bar .form-inline .form-group label + div {
-      margin: 0 5px; }
-    #search-bar .form-inline .form-group label + input {
-      margin-left: 5px; }
-
 .form-row {
   margin-top: 10px; }
 
@@ -61,3 +52,47 @@ footer {
   background-color: #495c4c;
   color: floralwhite;
   text-align: center; }
+
+#search-bar {
+  border-bottom: 1px ridge #d4d4d4;
+  margin-bottom: 10px;
+  padding: 10px; }
+  #search-bar .form-inline .form-group {
+    margin: 5px; }
+    #search-bar .form-inline .form-group label + div {
+      margin: 0 5px; }
+    #search-bar .form-inline .form-group label + input {
+      margin-left: 5px; }
+
+#search-result-table {
+  margin: 10px 0; }
+  #search-result-table thead {
+    background-color: #bb8e54;
+    color: floralwhite; }
+  #search-result-table tbody {
+    background-color: floralwhite; }
+
+#my-account-nav-link {
+  order: 1; }
+  #my-account-nav-link #my-account-icon {
+    color: floralwhite;
+    font-size: 1.4rem;
+    padding: 0; }
+    #my-account-nav-link #my-account-icon #my-account-username {
+      font-size: 1rem; }
+  #my-account-nav-link #my-account-icon:link {
+    color: floralwhite;
+    text-decoration: none; }
+  #my-account-nav-link #my-account-icon:hover {
+    color: floralwhite;
+    text-decoration: none; }
+  #my-account-nav-link .dropdown-menu {
+    background-color: floralwhite;
+    right: -6vw;
+    left: auto; }
+    #my-account-nav-link .dropdown-menu .dropdown-item a {
+      color: #619168; }
+    #my-account-nav-link .dropdown-menu .dropdown-item a:link {
+      color: #619168; }
+    #my-account-nav-link .dropdown-menu .dropdown-item a:visited {
+      color: #619168; }
