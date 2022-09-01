@@ -35,6 +35,15 @@
 .navbar-dark {
   background-color: #619168; }
 
+#search-bar .form-inline {
+  padding: 10px; }
+  #search-bar .form-inline .form-group {
+    margin: 5px; }
+    #search-bar .form-inline .form-group label + div {
+      margin: 0 5px; }
+    #search-bar .form-inline .form-group label + input {
+      margin-left: 5px; }
+
 .form-row {
   margin-top: 10px; }
 

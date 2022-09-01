@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,21 +14,273 @@
 </head>
 
 <body>
-    <nav>
-        test
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+
+            <!-- Burger button on xs-screen -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Page logo -->
+            <a class="navbar-brand mr-auto" href="#"><img src="/img/JourneyShare_trans.png" height="30" width="160"></a>
+
+            <!-- Navbar link -->
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            How it works?
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Join
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Sign In
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
     </nav>
-    
+
     <!-- Header -->
-    <header>
+    <header class="jumbotron jumbotron-fluid p-0">
+        <!-- Jumbotron -->
+        <div class="container">
+            <div class="row">
+
+                <div class="col p-0 p-sm-15">
+                    <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="carousel-item active">
+
+                                <!-- Image -->
+                                <picture>
+                                    <source media="(max-width:575px)" srcset="./img/Welcome_1_mobile.jpg">
+                                    <img id="carousel-image-1" class="img-fluid jumbotron-image"
+                                        src="./img/Welcome_1.jpg" alt="Test">
+                                </picture>
+
+
+                                <!-- Caption -->
+                                <div id="carousel-caption-1" class="carousel-caption">
+                                    <p>Share a journey <br>
+                                        &amp; make new friends</p>
+                                </div>
+
+
+                            </div>
+
+                            <div class="carousel-item">
+
+                                <picture>
+                                    <source media="(max-width:575px)" srcset="./img/Welcome_2_mobile.jpg">
+                                    <img id="carousel-image-2" class="img-fluid jumbotron-image"
+                                        src="./img/Welcome_2.jpg" alt="Welcome">
+                                </picture>
+
+                                <div id="carousel-caption-2" class="carousel-caption">
+                                    <p>Retain the friendship <br>
+                                        &amp; share another <br>
+                                        journey again</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </header>
+
     <!-- Main -->
     <main>
+        <div class="container">
+
+            <!-- Search Bar -->
+            <div class="row">
+                <div id="search-section" class="col-12 col-sm">
+
+                    <!-- Search Bar - 1st Row - Header -->
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <h2>Find a trek</h2>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar - 2nd Row - Search Form -->
+                    <div class="row">
+                        <!-- Form -->
+                        <form id="search-bar" class="col-12 col-sm">
+
+                            <!-- Form - 1st Row - Inline -->
+                            <div class="form-inline justify-content-center">
+                                <!-- Search Location -->
+                                <div class="form-group">
+                                    <label for="search-location">
+                                        Search Location
+                                    </label>
+                                    <input id="search-location" class="form-control form-control-sm">
+                                </div>
+                                <!-- Search Trek Type -->
+                                <div class="form-group">
+                                    <label for="search-trek-type">
+                                        Trek Type
+                                    </label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="search-trek-type" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Trek Type
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="search-trek-type">
+                                            <a class="dropdown-item" href="#">Forest Trek</a>
+                                            <a class="dropdown-item" href="#">Mountain Trek</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Search Pax -->
+                                <div class="form-group">
+                                    <label for="search-pax">
+                                        Pax
+                                    </label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="search-pax"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Pax
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="search-pax">
+                                            <a class="dropdown-item" href="#">0-5</a>
+                                            <a class="dropdown-item" href="#">5-10</a>
+                                            <a class="dropdown-item" href="#">10-15</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Form - 2nd Row -->
+                            <div class="form-inline justify-content-center">
+
+                                <!-- Search Country -->
+                                <div class="form-group">
+
+                                    <label for="search-country">
+                                        Country
+                                    </label>
+                                    
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="search-country" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Country
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="search-country">
+                                            <a class="dropdown-item" href="#">Singapore</a>
+                                            <a class="dropdown-item" href="#">Germany</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Search Region -->
+                                <div class="form-group">
+                                    <label for="search-region">
+                                        Region
+                                    </label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="search-region" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Region
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="search-region">
+                                            <a class="dropdown-item" href="#">Asia</a>
+                                            <a class="dropdown-item" href="#">Europe</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Form - 3rd Row -->
+                            <div class="form-inline justify-content-center">
+                                <!-- Search Country -->
+                                <div class="form-group">
+                                    <label for="search-date-from">
+                                        From
+                                    </label>
+                                    <input id="search-date-from" class="form form-control" type="date">
+                                </div>
+                                <!-- Search Region -->
+                                <div class="form-group">
+                                    <label for="search-date-to" class="input-">
+                                        To
+                                    </label>
+                                    <input id="search-date-to" class="form form-control" type="date">
+                                </div>
+
+                            </div>
+
+                            <div class="form-row justify-content-center">
+                                <button class="btn btn-success">Find Trek</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Search Result -->
+            <div class="row">
+
+                <div id="search-result" class="col-12 col-sm-6">
+
+                </div>
+            </div>
+
+        </div>
 
     </main>
+
     <!-- Footer -->
     <footer>
-
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm d-flex justify-content-center">
+                    <address>
+                        JourneyShare Inc. <br>
+                        Golf Street, <br>
+                        North Reubma, <br>
+                        Kingdom of Floototoo <br>
+                        +123 456 789 <br>
+                        support@journeyshare.com <br>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary"><span class="fa fa-facebook"></span></button>
+                        <button type="button" class="btn btn-warning"><span class="fa fa-instagram"></span></button>
+                        <button type="button" class="btn btn-danger"><span class="fa fa-google-plus"></span></button>
+                        <button type="button" class="btn btn-info"><span class="fa fa-linkedin"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- build:js js/main.js -->
@@ -37,4 +290,5 @@
     <script src="/js/scripts.js"></script>
     <!-- endbuild -->
 </body>
+
 </html>

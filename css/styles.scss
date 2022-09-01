@@ -68,7 +68,28 @@ $main-padding: 10px;
     background-color: $background-primary;
 }
 
+#search-bar{
 
+    .form-inline{
+        padding: 10px;
+    
+        .form-group{
+            margin: 5px;
+
+            label+div{
+                margin: 0 5px;
+            }
+
+            label+input{
+                margin-left: 5px;
+            }
+        }
+    
+    }
+
+
+    
+} 
 
 .form-row {
     @include form-margin;
