@@ -60,7 +60,7 @@
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav ml-auto mr-3">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="./home.html">
                             Home
                         </a>
                     </li>
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="./socials.html">
                             Socials
                         </a>
                     </li>
@@ -107,16 +107,17 @@
 
                                 <!-- Image -->
                                 <picture>
-                                    <source media="(max-width:575px)" srcset="./img/Welcome_1_mobile.jpg">
+                                    <source media="(max-width:575px)" srcset="./img/mount-kinabalu-mobile.jpeg">
                                     <img id="carousel-image-1" class="img-fluid jumbotron-image"
-                                        src="./img/Welcome_1.jpg" alt="Test">
+                                        src="./img/mount-kinabalu.jpeg" alt="Mount Kinabalu">
                                 </picture>
 
 
                                 <!-- Caption -->
                                 <div id="carousel-caption-1" class="carousel-caption">
-                                    <p>Share a journey <br>
-                                        &amp; make new friends</p>
+                                    <p><strong>Mount Kinabalu</strong> <br>
+                                        Malaysia | 8 pax <br>
+                                        08.10.2022 - 13.10.2022 </p>
                                 </div>
 
 
@@ -125,15 +126,15 @@
                             <div class="carousel-item">
 
                                 <picture>
-                                    <source media="(max-width:575px)" srcset="./img/Welcome_2_mobile.jpg">
+                                    <source media="(max-width:575px)" srcset="./img/rinjani-national-park-mobile.jpg">
                                     <img id="carousel-image-2" class="img-fluid jumbotron-image"
-                                        src="./img/Welcome_2.jpg" alt="Welcome">
+                                        src="./img/rinjani-national-park.jpg" alt="Welcome">
                                 </picture>
 
                                 <div id="carousel-caption-2" class="carousel-caption">
-                                    <p>Retain the friendship <br>
-                                        &amp; share another <br>
-                                        journey again</p>
+                                    <p><strong>Rinjani National Park</strong> <br>
+                                        Indonesia | 6 pax <br>
+                                        08.12.2022 - 13.12.2022 </p>
                                 </div>
                             </div>
 
@@ -154,7 +155,7 @@
                 <div id="search-section" class="col-12 col-sm">
 
                     <!-- Search Bar - 1st Row - Header -->
-                    <div class="row">
+                    <div class="row border-bottom">
                         <div class="col-12 d-flex justify-content-center">
                             <h2>Find a trek</h2>
                         </div>
@@ -288,10 +289,10 @@
             </div>
 
             <!-- Search Result -->
-            <div class="row">
+            <div id="search-result" class="row">
                 <div class="col-12 col-sm">
                     <div class="row">
-                        <div class="col-12 col-sm d-flex justify-content-center">
+                        <div class="col-12 col-sm d-flex justify-content-center mt-4">
                             <h3>Search Result</h3>
                         </div>
                     </div>
@@ -379,32 +380,7 @@
     <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/js/scripts.js"></script>
-    <script>
-
-
-        $(document).ready(function () {
-
-            checkWidth();
-            $(window).resize(checkWidth);
-
-        });
-
-        // Breakpoint function
-        function checkWidth() {
-            var vw = $(document).width();
-            console.log('width ' + vw);
-
-            // Hide username from navbar
-            if (vw < 765) {
-                $('#my-account-username').hide();
-            } else {
-                $('#my-account-username').show();
-            }
-
-        }
-
-
-    </script>
+    
     <!-- endbuild -->
 
 </body>

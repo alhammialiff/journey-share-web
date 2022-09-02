@@ -1,8 +1,10 @@
 $background-primary: #619168;
 $background-secondary: #6a806d;
+$social-background-primary: rgb(241, 239, 239);
 $main-padding: 10px;
 $main-margin: 10px;
 $div-border-line: 1px ridge rgb(212, 212, 212);
+$border-color: rgb(220, 220, 220);
 
 @mixin no-gutter {
     margin-left: 0;
@@ -20,7 +22,7 @@ $div-border-line: 1px ridge rgb(212, 212, 212);
 
 .jumbotron {
     background-color: white;
-    margin-top: 55px;
+    margin-top: 80px;
     // border: solid 1px black;
 }
 
@@ -43,27 +45,6 @@ $div-border-line: 1px ridge rgb(212, 212, 212);
 
 #main-left {
     border-right: 1px ridge rgb(212, 212, 212);
-}
-
-@media only screen and (max-width: 575px) {
-    #carousel-caption-1 {
-        font-size: 2em;
-    }
-
-    #carousel-caption-2 {
-        font-size: 2em;
-    }
-
-    #main-left {
-        padding-bottom: $main-padding;
-        border-right: none;
-        border-bottom: 1px ridge rgb(212, 212, 212);
-    }
-
-    #main-right {
-        padding: 40px 0;
-        margin-top: 10px;
-    }
 }
 
 .navbar-dark {
@@ -92,42 +73,62 @@ footer {
     text-align: center;
 }
 
-#search-bar {
-    border-bottom: $div-border-line;
-    margin-bottom: 10px;
-    padding: 10px;
+#search-section {
 
-    .form-inline {
-        // padding: 10px;
+    background-color: $background-secondary;
+    border: 1px $border-color solid;
+    border-radius: 5px;
 
-        .form-group {
-            margin: 5px;
+    h2 {
+        color: rgb(232, 231, 231);
+    }
 
-            label+div {
-                margin: 0 5px;
+    #search-bar {
+
+        margin-bottom: 10px;
+        padding: 10px;
+
+        .form-inline {
+            // padding: 10px;
+
+            .form-group {
+                margin: 5px;
+
+                label+div {
+                    margin: 0 5px;
+                }
+
+                label+input {
+                    margin-left: 5px;
+                }
             }
 
-            label+input {
-                margin-left: 5px;
-            }
         }
 
     }
-
 }
 
-#search-result-table {
-    margin: $main-margin 0;
+#search-result{
+    
+    border-top: $div-border-line;
+    margin-top: 5px;
 
-    thead {
-        background-color: rgb(187, 142, 84);
-        color: floralwhite;
-    }
-
-    tbody {
-        background-color: floralwhite;
+    #search-result-table {
+        margin: $main-margin 0;
+    
+        
+    
+        thead {
+            background-color: rgb(187, 142, 84);
+            color: floralwhite;
+        }
+    
+        tbody {
+            background-color: floralwhite;
+        }
     }
 }
+
 
 #my-account-nav-link {
     // (IMPORTANT - SEE THIS) 
@@ -138,7 +139,7 @@ footer {
     // 1) Put #my-account-nav-link div after navbar-brand AND before nav-collapse items
     // 2) In CSS, set #my-account-nav-link 'ORDER: 1' (like below)
     order: 1;
-    
+
     #my-account-icon {
         color: floralwhite;
         font-size: 1.4rem;
@@ -183,5 +184,116 @@ footer {
 
         }
 
+    }
+}
+
+// Add media last to avoid overwriting its values
+@media only screen and (max-width: 575px) {
+    #carousel-caption-1 {
+        font-size: 2em;
+    }
+
+    #carousel-caption-2 {
+        font-size: 2em;
+    }
+
+    #main-left {
+        padding-bottom: $main-padding;
+        border-right: none;
+        border-bottom: 1px ridge rgb(212, 212, 212);
+    }
+
+    #main-right {
+        padding: 40px 0;
+        margin-top: 10px;
+    }
+
+    #my-account-nav-link {
+        order: 0;
+    }
+
+    #friends-section {
+        margin-top: 10px;
+    }
+
+    #social-post {
+        padding: $main-padding;
+    }
+
+    #social-post-header {
+        text-align: center;
+    }
+
+}
+
+#main-box {
+    margin-top: 0;
+}
+
+#profile-section-box {
+    margin-bottom: 0;
+
+    #profile-section {
+        background-color: $background-secondary;
+        // background-color: rgb(241, 239, 239);
+        border: 1px $border-color ridge;
+        border-radius: 5px;
+
+        #profile-pic {
+            border: solid 1px $border-color;
+            border-radius: 5px;
+        }
+
+
+        #user-info {
+            background-color: rgb(249, 251, 235);
+            border: 1px $border-color solid;
+            border-radius: 5px;
+        }
+
+        #friends-section {
+            background-color: rgb(241, 239, 239);
+            border: 1px $border-color solid;
+            border-radius: 5px;
+        }
+
+        h3 {
+            color: white;
+        }
+
+        h4 {
+            color: black;
+        }
+
+        .card {
+            background-color: $background-secondary;
+            color: white;
+        }
+
+
+
+    }
+
+}
+
+
+
+#social-post {
+    background-color: rgb(241, 239, 239);
+    border: 1px $border-color solid;
+    border-radius: 5px;
+
+    #social-post-header {
+        background-color: white;
+        border: 1px $border-color ridge;
+        border-radius: 5px;
+
+        #datetime {
+            font-size: 0.9rem;
+        }
+    }
+
+    #social-post-caption {
+        font-size: 1.1rem;
     }
 }

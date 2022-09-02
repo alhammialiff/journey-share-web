@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+
+        <div class="container">
+
+            <!-- Burger button on xs-screen -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Page logo -->
+            <a class="navbar-brand mr-auto" href="./home.html"><img src="/img/JourneyShare_trans.png" height="30"
+                    width="160"></a>
+
+            <!-- 'My Account' Nav Link -->
+            <!-- Note-to-self: To prevent 'My Account' Icon from collapsing
+                 with the navbar, put it after navbar-brand, AND after the collapsing navbar (below) -->
+            <div id="my-account-nav-link" class="dropdown mr-3 ml-3">
+
+                <!-- 'My Account' Icon -->
+                <a id="my-account-icon" class="dropdown" href="#" data-toggle="dropdown"
+                    data-target="#my-account-dropdown">
+                    <span class="fa fa-user"></span><small id="my-account-username"> John Doe</small>
+                </a>
+
+                <!-- 'My Account' Dropdown Menu -->
+                <!-- <div id="my-account-dropdown" class="dropdown-menu dropdown-menu-right"> -->
+                <div id="my-account-dropdown" class="collapse">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">
+                            <a class="" href="" aria-labelledby="my-account-icon">My Account</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="" href="" aria-labelledby="my-account-icon">Settings</a>
+                        </li>
+                        <li class="dropdown-item">
+                            <a class="" href="./index.html">Log out</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Navbar link -->
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav ml-auto mr-3">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./home.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Trek
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Itinerary
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Socials
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Forum
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="profile-section-box" class="jumbotron jumbotron-fluid p-3">
+        <!-- Jumbotron - Profile -->
+        <div id="profile-section" class="container p-2">
+            <!-- Profile -->
+            <div class="row">
+                <!-- My Profile Section -->
+                <div class="col-12 col-sm">
+                    <!-- Profile Picture -->
+                    <div class="row">
+                        <div class="col-12 col-sm">
+                            <!-- Profile Image -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 d-flex justify-content-center">
+                                    <img id="profile-pic" class="img-fluid" width="300" src="./img/jesse-pinkman.png" alt="">
+                                </div>
+                            </div>
+                            <!-- Profile Name -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 d-flex justify-content-center">
+                                    <h3>John Doe</h3>
+                                </div>
+                            </div>
+                            <!-- Profile Info -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 d-flex justify-content-center">
+                                    <ul id="user-info" class="list-group list-group-flush text-center">
+                                        <li class="list-group-item"><strong>Japan</strong></li>
+                                        <li class="list-group-item">Journey Shared: <strong>4</strong></li>
+                                        <li class="list-group-item">Most Recent Journey:<strong> K2, Nepal</strong></li>
+                                    </ul>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Friends List -->
+                <!-- d-flex align-items-center work on this div below -->
+                <div id="friends-section-box" class="col-12 col-sm d-flex align-items-center justify-content-center">
+                    <div class="row d-flex justify-content-center">
+                        <div id="friends-section" class="col-11 col-sm">
+                        
+                            <!-- Friends List Header -->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 d-flex justify-content-center">
+                                    <h4>Friends</h4>
+                                </div>
+                            </div>
+
+                            <!-- Friends-->
+                            <div class="row">
+                                <div class="col-12 col-sm-12 d-flex justify-content-center mb-3">
+                                    <div class="card mr-1">
+                                        <img class="img-fluid" src="./img/john-doe.png" width="100" alt="">
+                                        <div class="card-body">
+                                            <h6 class="card-text">Saul G.</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-1">
+                                        <img class="img-fluid" src="./img/john-doe.png" width="100" alt="">
+                                        <div class="card-body">
+                                            <h6 class="card-text">Lalo S.</h6>
+                                        </div>
+                                    </div>
+                                    <div class="card mr-1">
+                                        <img class="img-fluid" src="./img/john-doe.png" width="100" alt="">
+                                        <div class="card-body">
+                                            <h6 class="card-text">Mike E.</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </header>
+
+    <!-- Main -->
+    <main id="main-box">
+        <!-- Social Post -->
+        <div id="social-post" class="container">
+
+            <div class="row">
+                <div class="col-12 col-sm">
+
+                    <!-- Social Post Header -->
+                    <div id="social-post-header" class="row m-2 p-2">
+
+                        <!-- Post Profile Picture -->
+                        <div class="col-12 col-sm-2 d-flex justify-content-center">
+                            <img src="./img/john-doe.png" width="100">
+                        </div>
+
+                        <!-- Post Header -->
+                        <!-- align-items-center will make both elements center and overlapping of each other
+                             Use align-self-center -->
+                        <div class="col-12 col-sm align-self-center">
+                            <div class="row">
+                                <div class="col-12 col-sm"><strong>John Doe</strong> with Lalo S. and 5 others</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm">at Annapurna Base Camp, Nepal</div>
+                            </div>
+                            <div class="row">
+                                <div id="datetime"class="col-12 col-sm">07:21am, 22/06/2022</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Social Post Body -->
+                    <div id="social-post-body" class="row mt-2 pb-2">
+                        <div class="col-12 col-sm">
+                            <!-- Post caption -->
+                            <div class="row">
+                                <div id="social-post-caption" class="col-12 col-sm offset-sm-2">
+                                    <p>Conquered! Honoured to join this expedition with these lovely bunch of people.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm d-flex justify-content-center">
+                                    <img src="./img/annapurna-base-camp.jfif" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm d-flex justify-content-center">
+                    <address>
+                        JourneyShare Inc. <br>
+                        Golf Street, <br>
+                        North Reubma, <br>
+                        Kingdom of Floototoo <br>
+                        +123 456 789 <br>
+                        support@journeyshare.com <br>
+                    </address>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary"><span class="fa fa-facebook"></span></button>
+                        <button type="button" class="btn btn-warning"><span class="fa fa-instagram"></span></button>
+                        <button type="button" class="btn btn-danger"><span class="fa fa-google-plus"></span></button>
+                        <button type="button" class="btn btn-info"><span class="fa fa-linkedin"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- build:js js/main.js -->
+    <script src="/node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
