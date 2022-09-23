@@ -4,24 +4,29 @@ import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Footer from './FooterComponent';
+import Header from './HeaderComponent';
 
-class MainComponent extends Component{
-    constructor(props){
+class MainComponent extends Component {
+    constructor(props) {
         super(props);
     }
 
-    render(){
-        return(
-            //Header Component
-            //Jumbotron Component
-            //Switch
-                //Route: Home
-                //Route: Socials
-                //Route: Trekking (TBD)
-                //Route: Itinerary (TBD)
-            //Footer
-            <Footer/>
-            
+    render() {
+        //Header Component
+        //Jumbotron Component
+        //Switch
+        //Route: Home
+        //Route: Socials
+        //Route: Trekking (TBD)
+        //Route: Itinerary (TBD)
+        //Footer
+        return (
+            <div>
+                <Header />
+                <Footer />
+            </div>
+
+
         );
     }
 }

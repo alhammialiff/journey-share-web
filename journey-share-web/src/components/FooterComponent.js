@@ -6,9 +6,9 @@ export const Footer = (props) => {
 
     return(
         <div className="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-sm d-flex justify-content-center">
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-sm d-flex justify-content-center">
                         <address>
                             JourneyShare Inc. <br/>
                             Golf Street, <br/>
@@ -21,11 +21,11 @@ export const Footer = (props) => {
                 </div>
                 <div class="row">
                     <div class="col-12 col-sm d-flex justify-content-center">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" className="btn btn-primary"><span class="fa fa-facebook"></span></button>
-                            <button type="button" className="btn btn-warning"><span class="fa fa-instagram"></span></button>
-                            <button type="button" className="btn btn-danger"><span class="fa fa-google-plus"></span></button>
-                            <button type="button" className="btn btn-info"><span class="fa fa-linkedin"></span></button>
+                        <div className="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" className="btn btn-primary"><span className="fa fa-facebook"></span></button>
+                            <button type="button" className="btn btn-warning"><span className="fa fa-instagram"></span></button>
+                            <button type="button" className="btn btn-danger"><span className="fa fa-google-plus"></span></button>
+                            <button type="button" className="btn btn-info"><span className="fa fa-linkedin"></span></button>
                         </div>
                     </div>
                 </div>
