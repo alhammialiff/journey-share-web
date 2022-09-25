@@ -19,8 +19,8 @@ export const Footer = (props) => {
                         </address>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12 col-sm d-flex justify-content-center">
+                <div className="row">
+                    <div className="col-12 col-sm d-flex justify-content-center">
                         <div className="btn-group" role="group" aria-label="Basic example">
                             <button type="button" className="btn btn-primary"><span className="fa fa-facebook"></span></button>
                             <button type="button" className="btn btn-warning"><span className="fa fa-instagram"></span></button>

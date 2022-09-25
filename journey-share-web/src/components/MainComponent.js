@@ -5,6 +5,8 @@ import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Footer from './FooterComponent';
 import Header from './HeaderComponent';
+import JumbotronComponent from './JumbotronComponent';
+import { HomePage } from './HomeComponent';
 
 class MainComponent extends Component {
     constructor(props) {
@@ -20,9 +22,15 @@ class MainComponent extends Component {
         //Route: Trekking (TBD)
         //Route: Itinerary (TBD)
         //Footer
+
+
+
         return (
             <div>
                 <Header />
+                <HomePage/>
+                {/* <Route path="/home" component={}></Route> */}
+                {/* <Route path="/socials" component={}></Route> */}
                 <Footer />
             </div>
 
