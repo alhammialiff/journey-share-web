@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Jumbotron } from 'reactstrap';
 import { Carousel, CarouselCaption, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 
-export const JumbotronComponent = () => {
+export const JumbotronComponent = ({ promos }) => {
 
     var [activeIndex, setActiveIndex] = useState(0);
     var [animating, isAnimating] = useState(false);
@@ -49,31 +49,32 @@ export const JumbotronComponent = () => {
         setActiveIndex( activeIndex = newIndex );
     };
 
+    const items = promos.PROMOTIONS;
+    console.log("In JumbotronComponent - this.props.promos", items);
 
 
-
-    const items = [
-        {
-            id: 0,
-            caption: 'Mount Kinabalu',
-            description: 'Malaysia | 8 pax',
-            trekkingDate: '08.10.2022 - 13.10.2022',
-            primarySrc: '/assets/images/mount-kinabalu.jpeg',
-            secondarySrc: '/assets/images/mount-kinabalu-mobile.jpeg',
-            cssId: 'carousel-caption-1',
-            altText: 'Mount Kinabalu Promo'
-        },
-        {
-            id: 1,
-            caption: 'Rinjani National Park',
-            description: 'Indonesia | 6 pax',
-            trekkingDate: '08.12.2022 - 13.12.2022',
-            primarySrc: '/assets/images/rinjani-national-park.jpg',
-            secondarySrc: '/assets/images/rinjani-national-park-mobile.jpg',
-            cssId: 'carousel-caption-2',
-            altText: 'Mount Kinabalu Promo'
-        }
-    ]
+    // const items = [
+    //     {
+    //         id: 0,
+    //         caption: 'Mount Kinabalu',
+    //         description: 'Malaysia | 8 pax',
+    //         trekkingDate: '08.10.2022 - 13.10.2022',
+    //         primarySrc: '/assets/images/mount-kinabalu-2.jpeg',
+    //         secondarySrc: '/assets/images/mount-kinabalu-mobile.jpeg',
+    //         cssId: 'carousel-caption-1',
+    //         altText: 'Mount Kinabalu Promo'
+    //     },
+    //     {
+    //         id: 1,
+    //         caption: 'Rinjani National Park',
+    //         description: 'Indonesia | 6 pax',
+    //         trekkingDate: '08.12.2022 - 13.12.2022',
+    //         primarySrc: '/assets/images/rinjani-national-park-2.jfif',
+    //         secondarySrc: '/assets/images/rinjani-national-park-mobile.jpg',
+    //         cssId: 'carousel-caption-2',
+    //         altText: 'Rinjani National Park Promo'
+    //     }
+    // ]
 
     const carouselItems = items.map((item) => {
         console.log(item)

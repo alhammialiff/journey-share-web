@@ -8,6 +8,18 @@ import Header from './HeaderComponent';
 import JumbotronComponent from './JumbotronComponent';
 import { HomePage } from './HomeComponent';
 
+const mapStateToProps = state => {
+    return {
+        promotions: state.promotions
+    }
+
+}
+
+const mapDispatchToProps = dispatch => ({
+    // To add dispatchers along the way
+    placeholder: "In mapDispatchToProps - "
+})
+
 class MainComponent extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +40,7 @@ class MainComponent extends Component {
         return (
             <div>
                 <Header />
-                <HomePage/>
+                <HomePage promos = {this.props.promotions} />
                 {/* <Route path="/home" component={}></Route> */}
                 {/* <Route path="/socials" component={}></Route> */}
                 <Footer />
@@ -39,4 +51,4 @@ class MainComponent extends Component {
     }
 }
 
-export default MainComponent;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainComponent));
