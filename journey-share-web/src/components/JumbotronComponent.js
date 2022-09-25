@@ -101,7 +101,7 @@ export const JumbotronComponent = () => {
         // Carousel Component
         // If statement to display diff carousel between index and home page
         <Carousel activeIndex={Number(activeIndex)} previous={() => previous()} next={() => next()}>
-            <CarouselIndicators items={carouselItems} activeIndex={Number(activeIndex)} onClickHandler={() => goToIndex()} />
+            <CarouselIndicators items={carouselItems} activeIndex={Number(activeIndex)} onClickHandler={(e) => goToIndex(e)} />
             {carouselItems}
             <CarouselControl direction="prev" directionText="Previous" onClickHandler={() => previous()} />
             <CarouselControl direction="next" directionText="Next" onClickHandler={() => next()} />
