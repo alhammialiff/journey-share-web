@@ -3,7 +3,7 @@
 ## Introduction
 A mock community-driven trek-sharing web app.
 
-Trekking is a niche hobby, you may find yourself in a close-knit group of friends where none likes trekking at all. JourneyShareaims to provide a platform where anyone can organize trekking trips, and hitch onto existing trekking trips organized by someone else. While trekking trips are organized by the community, JourneyShare aims to be a part of it by streamlining the process.
+Trekking is a niche hobby, you may find yourself in a close-knit group of friends where none likes trekking at all. JourneyShare aims to provide a platform where anyone can organize trekking trips, and hitch onto existing trekking trips organized by someone else. While trekking trips are organized by the community, JourneyShare aims to be a part of it by streamlining the process.
 
 
 ## Development Status
