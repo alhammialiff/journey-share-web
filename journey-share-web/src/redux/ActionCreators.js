@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { PROMOTIONS } from '../shared/promotions';
+import { searchQueries } from '../shared/searchQueries';
 // [Uncomment when fetch is implemented later]
 // import { baseUrl } from '../shared/baseUrl';
 
@@ -30,6 +31,8 @@ export const postSearchQuery = (location, trekType, pax, country, region, dateFr
         dateTo: dateTo
     }
 
-    return dispatch(addSearchQuery(newSearch));
+    dispatch(addSearchQuery(newSearch));
+    console.log(searchQueries);
+    searchQueries.push(newSearch);
 
 }
