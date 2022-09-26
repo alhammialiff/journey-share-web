@@ -8,15 +8,15 @@ export const JumbotronComponent = ({ promos }) => {
     var [animating, isAnimating] = useState(false);
 
     const onExiting = () => {
-        console.log("onExiting - before isAnimating", animating)
+        // console.log("onExiting - before isAnimating", animating)
         isAnimating({animating: true});
-        console.log("onExiting - after isAnimating", animating)
+        // console.log("onExiting - after isAnimating", animating)
     };
 
     const onExited = () => {
-        console.log("onExit - before isAnimating", animating)
+        // console.log("onExit - before isAnimating", animating)
         isAnimating({animating: false});
-        console.log("onExit - after isAnimating", animating)
+        // console.log("onExit - after isAnimating", animating)
     };
 
     const next = () => {
@@ -26,7 +26,7 @@ export const JumbotronComponent = ({ promos }) => {
         const nextIndex = activeIndex == items.length - 1 ? 0 : activeIndex + 1;
         // setActiveIndex({ activeIndex: nextIndex });
         setActiveIndex( activeIndex = nextIndex );
-        console.log("In Next - " + activeIndex);
+        // console.log("In Next - " + activeIndex);
     };
 
     const previous = () => {
@@ -36,7 +36,7 @@ export const JumbotronComponent = ({ promos }) => {
         const nextIndex = activeIndex == 0 ? items.length - 1 : activeIndex - 1;
         // setActiveIndex({ activeIndex: nextIndex });
         setActiveIndex( activeIndex = nextIndex );
-        console.log("in previous - nextIndex", nextIndex)
+        // console.log("in previous - nextIndex", nextIndex)
         
     };
 
@@ -50,7 +50,7 @@ export const JumbotronComponent = ({ promos }) => {
     };
 
     const items = promos.PROMOTIONS;
-    console.log("In JumbotronComponent - this.props.promos", items);
+    // console.log("In JumbotronComponent - this.props.promos", items);
 
 
     // const items = [
@@ -77,7 +77,7 @@ export const JumbotronComponent = ({ promos }) => {
     // ]
 
     const carouselItems = items.map((item) => {
-        console.log(item)
+        // console.log(item)
         return (
             <CarouselItem key={item.id}
                 onExiting={() => onExiting()}
