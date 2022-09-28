@@ -4,6 +4,7 @@ import { InitialSearch } from './forms';
 // To revisit again tomorrow, dk if i need this...
 export const Search = (state = { InitialSearch }, action ) => {
     switch(action.type){
+        // Add state of user's search query into store
         case ActionTypes.ADD_SEARCH_QUERY:
             console.log("ADD_SEARCH_QUERY TRIGGERED - ", action.payload);
             return { ...state, search:{ 

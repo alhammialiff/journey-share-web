@@ -6,8 +6,10 @@ import { ConfigureStore } from '../redux/configureStore';
 
 import { SearchResult } from './SearchResultComponent';
 
+// Declare store state var 
 var store = ConfigureStore();
 
+// Render search result based on processSearch
 export const RenderSearchResult = ({ search, treks }) => {
     console.log("RSR - search", search);
 
@@ -20,16 +22,20 @@ export const RenderSearchResult = ({ search, treks }) => {
 
     } else {
 
-        var searchResult = searchQuery(search);
+        var searchResult = processSearch(search);
         console.log("In RenderSearchResult - searchResult", searchResult);
+
+        var searchIndex = 0;
+
         var resultRow = searchResult.map((location) => {
+            
             return (
-                <SearchResult location={location} />        
+                <SearchResult location={location} index={++searchIndex} />
             );
         });
 
         return (
-            <Table>
+            <Table hover>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -53,18 +59,18 @@ export const RenderSearchResult = ({ search, treks }) => {
 
 }
 
-const searchQuery = ({ search }) => {
+const processSearch = ({ search }) => {
     // Filter by location
     const treks = store.getState().treks.TREKS;
 
     console.log("store.getStore.treks -- ", treks)
 
     if (search == undefined) {
-        console.log("If searchQuery - search.search", search);
+        console.log("If processSearch - search.search", search);
         return;
     } else {
-        console.log("Else searchQuery - search", search);
-        // console.log("Else searchQuery - treks", treks);
+        console.log("Else processSearch - search", search);
+        // console.log("Else processSearch - treks", treks);
         var filteredLocations = treks.filter(function (trek) {
             // console.log(trek.location);
             // console.log(search.location);
@@ -72,7 +78,7 @@ const searchQuery = ({ search }) => {
             return trek.location == search.location ? trek : "";
         })
 
-        console.log('In searchQuery - filteredLocations', filteredLocations);
+        console.log('In processSearch - filteredLocations', filteredLocations);
 
         // [Debug]
         // RenderSearchResult(filteredLocations);
@@ -100,15 +106,15 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
         console.log("In handleSubmit - search.location", search.location);
 
         postSearchQuery(inputVal.location, inputVal.trekType, inputVal.pax, inputVal.country, inputVal.region, inputVal.dateFrom, inputVal.dateTo);
-        // var filteredLocations = searchQuery(search, treks);
+        // var filteredLocations = processSearch(search, treks);
         console.log("In handleSubmit - store.getState().search", store.getState().forms)
         // console.log("In handleSubmit - search result", filteredLocations)
 
     };
 
     return (
-        <div className="container" id="search-section">
-            <div className="row">
+        <div className="container">
+            <div className="row" id="search-section">
                 <div className="col-12 col-sm">
                     <div className="row border-bottom p-3">
                         <div className="col-12 d-flex justify-content-center">
