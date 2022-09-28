@@ -8,11 +8,20 @@ export const SearchResult = ({ location }) => {
     console.log("In SearchResult - ", location);
 
 
-    const renderResult = (location) => {
+    return (
 
-        return (
-            <tr>
-                <th>{setIndex(index++)}</th>
+        <RenderRow location={location} />
+
+    );
+}
+
+const RenderRow = ({location}) => {
+
+    return (
+        <>
+
+            <tr key={location.id}>
+                <th>0</th>
                 <td>{location.location}</td>
                 <td>{location.dateFrom}</td>
                 <td>{location.dateTo}</td>
@@ -22,29 +31,7 @@ export const SearchResult = ({ location }) => {
                 <td>{location.region}</td>
             </tr>
 
-        );
-    }
-
-    return (
-
-        <Table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Location</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Type</th>
-                    <th>Pax</th>
-                    <th>Country</th>
-                    <th>Region</th>
-                </tr>
-            </thead>
-            <tbody>
-                {renderResult}
-            </tbody>
-        </Table>
+        </>
 
     );
-
 }

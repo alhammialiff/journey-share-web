@@ -1,4 +1,4 @@
-export const searchQueries =
+export var searchQueries =
     [{
         location: 'Mount Biang',
         trekType: 'mountain',
@@ -8,3 +8,7 @@ export const searchQueries =
         dateFrom: '2022-05-22',
         dateTo: '2022-05-28'
     }]
+
+export const appendSearchQuery = (searchQuery) => {
+    searchQueries.push(searchQuery);
+}

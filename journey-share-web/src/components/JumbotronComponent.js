@@ -8,76 +8,50 @@ export const JumbotronComponent = ({ promos }) => {
     var [animating, isAnimating] = useState(false);
 
     const onExiting = () => {
+        // [Debug]
         // console.log("onExiting - before isAnimating", animating)
         isAnimating({animating: true});
+        // [Debug]
         // console.log("onExiting - after isAnimating", animating)
     };
 
     const onExited = () => {
+        // [Debug]
         // console.log("onExit - before isAnimating", animating)
         isAnimating({animating: false});
+        // [Debug]
         // console.log("onExit - after isAnimating", animating)
     };
 
     const next = () => {
-        // if (animating) {
-        //     return;
-        // }
+        
         const nextIndex = activeIndex == items.length - 1 ? 0 : activeIndex + 1;
-        // setActiveIndex({ activeIndex: nextIndex });
+        
         setActiveIndex( activeIndex = nextIndex );
-        // console.log("In Next - " + activeIndex);
+        
     };
 
     const previous = () => {
-        // if (animating) {
-        //     return;
-        // }
+        
         const nextIndex = activeIndex == 0 ? items.length - 1 : activeIndex - 1;
-        // setActiveIndex({ activeIndex: nextIndex });
+        
         setActiveIndex( activeIndex = nextIndex );
-        // console.log("in previous - nextIndex", nextIndex)
+        
         
     };
 
     const goToIndex = (newIndex) => {
-        // if (animating) {
-        //     return;
-        // }
-
-        // setActiveIndex({ activeIndex: newIndex });
+        
         setActiveIndex( activeIndex = newIndex );
+
     };
 
     const items = promos.PROMOTIONS;
+    
+    // [Debug]
     // console.log("In JumbotronComponent - this.props.promos", items);
 
-
-    // const items = [
-    //     {
-    //         id: 0,
-    //         caption: 'Mount Kinabalu',
-    //         description: 'Malaysia | 8 pax',
-    //         trekkingDate: '08.10.2022 - 13.10.2022',
-    //         primarySrc: '/assets/images/mount-kinabalu-2.jpeg',
-    //         secondarySrc: '/assets/images/mount-kinabalu-mobile.jpeg',
-    //         cssId: 'carousel-caption-1',
-    //         altText: 'Mount Kinabalu Promo'
-    //     },
-    //     {
-    //         id: 1,
-    //         caption: 'Rinjani National Park',
-    //         description: 'Indonesia | 6 pax',
-    //         trekkingDate: '08.12.2022 - 13.12.2022',
-    //         primarySrc: '/assets/images/rinjani-national-park-2.jfif',
-    //         secondarySrc: '/assets/images/rinjani-national-park-mobile.jpg',
-    //         cssId: 'carousel-caption-2',
-    //         altText: 'Rinjani National Park Promo'
-    //     }
-    // ]
-
     const carouselItems = items.map((item) => {
-        // console.log(item)
         return (
             <CarouselItem key={item.id}
                 onExiting={() => onExiting()}

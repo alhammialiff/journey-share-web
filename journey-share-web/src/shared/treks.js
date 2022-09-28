@@ -198,6 +198,16 @@ export const TREKS = [
         pax:'10',
         country:'Vietnam',
         region:'South East Asia'
+    },
+    {
+        id: 20,
+        location:'Mount Kinabalu',
+        dateFrom: '2022-10-14',
+        dateTo: '2022-10-19',
+        trekType:'mountain',
+        pax:'10',
+        country:'Malaysia',
+        region:'South East Asia'
     }
 
 

@@ -1,20 +1,86 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Label, Col, Row } from 'reactstrap';
+import { Button, Label, Col, Row, Table } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
+import { ConfigureStore } from '../redux/configureStore';
 
 import { SearchResult } from './SearchResultComponent';
 
-export const RenderSearchResult = (filteredLocations) => {
+var store = ConfigureStore();
 
-    console.log("In RenderSearchResult - filteredLocation", filteredLocations);
-    var resultRow = filteredLocations.map((location) => {
+export const RenderSearchResult = ({ search, treks }) => {
+    console.log("RSR - search", search);
+
+    if (search.search == undefined) {
         return (
-            <SearchResult location={location} />
-        );
-    })
+            <div>
+                <p>null</p>
+            </div>
+        )
 
-    return resultRow;
+    } else {
+
+        var searchResult = searchQuery(search);
+        console.log("In RenderSearchResult - searchResult", searchResult);
+        var resultRow = searchResult.map((location) => {
+            return (
+                <SearchResult location={location} />        
+            );
+        });
+
+        return (
+            <Table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Location</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Type</th>
+                        <th>Pax</th>
+                        <th>Country</th>
+                        <th>Region</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {resultRow}
+                </tbody>
+            </Table>
+        );
+    }
+
+
+
+}
+
+const searchQuery = ({ search }) => {
+    // Filter by location
+    const treks = store.getState().treks.TREKS;
+
+    console.log("store.getStore.treks -- ", treks)
+
+    if (search == undefined) {
+        console.log("If searchQuery - search.search", search);
+        return;
+    } else {
+        console.log("Else searchQuery - search", search);
+        // console.log("Else searchQuery - treks", treks);
+        var filteredLocations = treks.filter(function (trek) {
+            // console.log(trek.location);
+            // console.log(search.location);
+
+            return trek.location == search.location ? trek : "";
+        })
+
+        console.log('In searchQuery - filteredLocations', filteredLocations);
+
+        // [Debug]
+        // RenderSearchResult(filteredLocations);
+
+        return filteredLocations;
+    }
+
+
 }
 
 export const QuickSearch = ({ treks, search, postSearchQuery }) => {
@@ -24,30 +90,19 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
     // Props to be passed into QuickSearch (can be done later)
     // Search Form
 
-    const searchQuery = (values, treks) => {
-        // Filter by location
-        var filteredLocations = treks.filter(function (trek) {
-            console.log(trek.location);
-            console.log(values.location);
 
-            return trek.location == values.location ? trek : "";
-        })
 
-        console.log('In searchQuery - filteredLocations', filteredLocations);
-
-        // RenderSearchResult(filteredLocations);
-
-        return filteredLocations;
-
-    }
-
-    const handleSubmit = (values) => {
-        console.log("In handleSubmit - values", values);
+    const handleSubmit = (inputVal) => {
+        // [Debugs]
+        console.log("In handleSubmit - inputVal", inputVal);
         console.log("In handleSubmit - treks", treks);
         console.log("In handleSubmit - search", search);
-        // console.log("In handleSubmit - search.location", search.location);
-        postSearchQuery(values.location, values.trekType, values.pax, values.country, values.region, values.dateFrom, values.dateTo);
-        searchQuery(values, treks);
+        console.log("In handleSubmit - search.location", search.location);
+
+        postSearchQuery(inputVal.location, inputVal.trekType, inputVal.pax, inputVal.country, inputVal.region, inputVal.dateFrom, inputVal.dateTo);
+        // var filteredLocations = searchQuery(search, treks);
+        console.log("In handleSubmit - store.getState().search", store.getState().forms)
+        // console.log("In handleSubmit - search result", filteredLocations)
 
     };
 
@@ -63,7 +118,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                     <div className="row row-content">
                         <div className="col-12 col-md p-3">
                             {/* Form */}
-                            <Form model="search" onSubmit={(values) => handleSubmit(values)}>
+                            <Form model="search" onSubmit={(user) => handleSubmit(user)}>
                                 {/* Form - 1st Row */}
                                 <div className="form-inline justify-content-center p2">
                                     {/* Form Input - Location */}
@@ -79,15 +134,15 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
 
                                     <Label htmlFor="trekType" md={2}>Trek Type</Label>
                                     <Row className="form-group">
-                                        <Control.select model=".trekType" id="trekType" className="dropdown btn dropdown-toggle">
-                                            <option value="forest">Forest Trek</option>
-                                            <option value="mountain">Mountain Trek</option>
+                                        <Control.select model=".trekType" name="trekType" id="trekType" className="dropdown btn dropdown-toggle">
+                                            <option>Forest Trek</option>
+                                            <option>Mountain Trek</option>
                                         </Control.select>
                                     </Row>
 
                                     <Label htmlFor="pax" md={2}>Pax</Label>
                                     <Row className="form-group">
-                                        <Control.select model=".pax" id="pax" className="dropdown btn dropdown-toggle">
+                                        <Control.select model=".pax" name="pax" id="pax" className="dropdown btn dropdown-toggle">
                                             <option value="0-5">0-5</option>
                                             <option value="5-10">5-10</option>
                                             <option value="10+">10-15</option>
@@ -98,14 +153,14 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                                 <div className="form-inline justify-content-center p-2">
                                     <Label htmlFor="country" md={2}>Country</Label>
                                     <Row className="form-group">
-                                        <Control.select model=".country" id="country" className="dropdown btn dropdown-toggle">
+                                        <Control.select model=".country" name="country" id="country" className="dropdown btn dropdown-toggle">
                                             <option value="singapore">Singapore</option>
                                             <option value="japan">Japan</option>
                                         </Control.select>
                                     </Row>
                                     <Label htmlFor="region" md={2}>Region</Label>
                                     <Row className="form-group">
-                                        <Control.select model=".region" id="region" className="dropdown btn dropdown-toggle">
+                                        <Control.select model=".region" name="region" id="region" className="dropdown btn dropdown-toggle">
                                             <option value="Asia">Asia</option>
                                             <option value="Oceania">Oceania</option>
                                         </Control.select>
@@ -137,7 +192,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
             </div>
             <div className="row">
                 <div className="col-12 col-sm">
-                    {/* <RenderSearchResult result= { filteredLocations }/> */}
+                    <RenderSearchResult search={search} trek={treks} />
                 </div>
             </div>
         </div>

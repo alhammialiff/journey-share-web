@@ -5,6 +5,7 @@ import { Treks } from './treks';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { InitialSearch } from './forms';
+import { Search } from './search';
 // To import more reducers along the way
 
 
@@ -15,11 +16,14 @@ export const ConfigureStore = () => {
         combineReducers({
             promotions: Promotions,
             treks: Treks,
+            // search: Search,
             ...createForms({
-                search: InitialSearch
+                // search: InitialSearch,
+                search: Search
+                // searchResult: InitialSearch [Stop here]
             })
         }),
-        // Thunk enhancers
+        // Redux enhancers
         applyMiddleware(thunk, logger)
         
 
