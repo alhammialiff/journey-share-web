@@ -9,7 +9,7 @@ Trekking is a niche hobby, you may find yourself in a close-knit group of friend
 ## Development Status
 <ol>
 <li>Design web app using HTML/BS4 [Completed]</li>
-<li>Migrate web app to ReactJS and continue dev <strong>[Ongoing]</strong>
+<li>Migrate web app to ReactJS and continue dev (ReactJS work directory at journey-share-web/journey-share-web) <strong>[Ongoing]</strong>
   <ul>
     <li>2.1 Set-up environment for React dev [Completed]</li>
     <li>2.2 Set-up Redux environment and resources for ongoing devs of component states [Completed]</li>
