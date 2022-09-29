@@ -23,6 +23,7 @@ export const RenderSearchResult = ({ search, treks }) => {
     } else {
 
         var searchResult = processSearch(search);
+        var searchQuery = search.location;
         console.log("In RenderSearchResult - searchResult", searchResult);
 
         var searchIndex = 0;
@@ -35,23 +36,28 @@ export const RenderSearchResult = ({ search, treks }) => {
         });
 
         return (
-            <Table hover>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Location</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Type</th>
-                        <th>Pax</th>
-                        <th>Country</th>
-                        <th>Region</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {resultRow}
-                </tbody>
-            </Table>
+            <div className="row">
+                <div className="col-12 col-sm">
+
+                    <Table hover>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Location</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Type</th>
+                                <th>Pax</th>
+                                <th>Country</th>
+                                <th>Region</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {resultRow}
+                        </tbody>
+                    </Table>
+                </div>
+            </div>
         );
     }
 
@@ -96,7 +102,7 @@ const checkMatch = (inputVal) => {
     // console.log("trek-",treks);
     const treks = store.getState().treks.TREKS;
     var regStr = inputVal.location + '.*';
-    const regExp = new RegExp(regStr, 'g');
+    const regExp = new RegExp(regStr, 'gi');
     var regMatch = treks.filter(trek => trek.location.match(regExp));
 
     console.log("regExp - ", regExp);
@@ -125,13 +131,13 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
         console.log("In handleSubmit - store.getState().search", store.getState().forms)
         // console.log("In handleSubmit - search result", filteredLocations)
 
-        
+
 
     };
 
     return (
         <div className="container">
-            <div className="row" id="search-section">
+            <div className="row mt-3" id="search-section">
                 <div className="col-12 col-sm">
                     <div className="row border-bottom p-3">
                         <div className="col-12 d-flex justify-content-center">
@@ -213,7 +219,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                     </div>
                 </div>
             </div>
-            <div className="row">
+            <div className="row mt-3">
                 <div className="col-12 col-sm">
                     <RenderSearchResult search={search} trek={treks} />
                 </div>
