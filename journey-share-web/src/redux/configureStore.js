@@ -16,7 +16,6 @@ export const ConfigureStore = () => {
         combineReducers({
             promotions: Promotions,
             treks: Treks,
-            
             // Quick search state (search) is linked to react-redux-form createForms()
             // 'search' state is linked to 'Search' reducer (search.js) 
             ...createForms({

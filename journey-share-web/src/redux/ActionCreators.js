@@ -22,6 +22,11 @@ export const addSearchQuery = (search) => ({
     payload: search
 })
 
+// export const matchSearchInput = (location, trekType, pax, country, region, dateFrom, dateTo) => (dispatch) => {
+
+// }
+
+// Sends a dispatcher to retrieve user search query and store in redux store
 export const postSearchQuery = (location, trekType, pax, country, region, dateFrom, dateTo) => (dispatch) => {
 
     const newSearch = {

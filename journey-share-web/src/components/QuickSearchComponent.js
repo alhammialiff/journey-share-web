@@ -28,7 +28,7 @@ export const RenderSearchResult = ({ search, treks }) => {
         var searchIndex = 0;
 
         var resultRow = searchResult.map((location) => {
-            
+
             return (
                 <SearchResult location={location} index={++searchIndex} />
             );
@@ -71,12 +71,13 @@ const processSearch = ({ search }) => {
     } else {
         console.log("Else processSearch - search", search);
         // console.log("Else processSearch - treks", treks);
-        var filteredLocations = treks.filter(function (trek) {
-            // console.log(trek.location);
-            // console.log(search.location);
+        // var filteredLocations = treks.filter(function (trek) {
+        //     // console.log(trek.location);
+        //     // console.log(search.location);
 
-            return trek.location == search.location ? trek : "";
-        })
+        //     return trek.location == search.location ? trek : "";
+        // })
+        var filteredLocations = checkMatch(search);
 
         console.log('In processSearch - filteredLocations', filteredLocations);
 
@@ -89,14 +90,28 @@ const processSearch = ({ search }) => {
 
 }
 
+// [TO-DO] RegMatch on input change for auto-completion feature
+const checkMatch = (inputVal) => {
+    // console.log("Changed: ", inputVal);
+    // console.log("trek-",treks);
+    const treks = store.getState().treks.TREKS;
+    var regStr = inputVal.location + '.*';
+    const regExp = new RegExp(regStr, 'g');
+    var regMatch = treks.filter(trek => trek.location.match(regExp));
+
+    console.log("regExp - ", regExp);
+    console.log("regMatch - ", regMatch);
+
+    return regMatch;
+
+}
+
 export const QuickSearch = ({ treks, search, postSearchQuery }) => {
 
     // What I need
     // States
     // Props to be passed into QuickSearch (can be done later)
     // Search Form
-
-
 
     const handleSubmit = (inputVal) => {
         // [Debugs]
@@ -109,6 +124,8 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
         // var filteredLocations = processSearch(search, treks);
         console.log("In handleSubmit - store.getState().search", store.getState().forms)
         // console.log("In handleSubmit - search result", filteredLocations)
+
+        
 
     };
 
@@ -124,7 +141,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                     <div className="row row-content">
                         <div className="col-12 col-md p-3">
                             {/* Form */}
-                            <Form model="search" onSubmit={(user) => handleSubmit(user)}>
+                            <Form model="search" onSubmit={(user) => handleSubmit(user)} onChange={(inputVal) => checkMatch(inputVal)}>
                                 {/* Form - 1st Row */}
                                 <div className="form-inline justify-content-center p2">
                                     {/* Form Input - Location */}

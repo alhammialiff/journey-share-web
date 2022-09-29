@@ -1,7 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 import { InitialSearch } from './forms';
 
-// To revisit again tomorrow, dk if i need this...
+// Search reducer
 export const Search = (state = { InitialSearch }, action ) => {
     switch(action.type){
         // Add state of user's search query into store
