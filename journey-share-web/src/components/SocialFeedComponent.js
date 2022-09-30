@@ -17,7 +17,7 @@ export const SocialFeed = ({ activeSocialTab, toggleSocialTab }) => {
 
     const toggleTab = (tabNum) => {
         // Set dispatcher to set toggleTab
-        console.log('In Social Feed - activeSocialTab', activeSocialTab);
+        console.log('In Social Feed - activeSocialTab', activeSocialTab.activeTab);
         console.log('In Social Feed - tabPane', tabNum);
         toggleSocialTab(tabNum);
     }
@@ -28,47 +28,47 @@ export const SocialFeed = ({ activeSocialTab, toggleSocialTab }) => {
             <div className='row'>
                 <div className='col-12 col-sm'>
                     {/* <Navbar navbar className="justify-content-center"> */}
-                    <Nav tab className="justify-content-center">
+                    <Nav tabs className="justify-content-center">
                         <NavItem>
-                            <NavLink className="nav-link" onClick={() => toggleTab('0')}>
+                            <NavLink className={activeSocialTab.activeTab == '0'? 'active':''} onClick={() => toggleTab('0')}>
                                 <span className='fa fa-lg fa-user'></span> Friends
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="nav-link" onClick={() => toggleTab('1')}>
+                            <NavLink className={activeSocialTab.activeTab == '1'? 'active':''} onClick={() => toggleTab('1')}>
                                 <span className='fa fa-lg fa-solid fa-bell'></span> Notifications
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="nav-link" onClick={() => toggleTab('2')}>
+                            <NavLink className={activeSocialTab.activeTab == '2'? 'active':''} onClick={() => toggleTab('2')}>
                                 <span className='fa fa-lg fa-search'></span> Search Friends
                             </NavLink>
                         </NavItem>
-                        <TabContent activeTab={activeSocialTab}>
-                            <TabPane tabId="0">
-                                <Row>
-                                    <Col>
-                                        <p>Tab 0</p>
-                                    </Col>
-                                </Row>
-                            </TabPane>
-                            <TabPane tabId="1">
-                                <Row>
-                                    <Col>
-                                        <p>Tab 1</p>
-                                    </Col>
-                                </Row>
-                            </TabPane>
-                            <TabPane tabId="2">
-                                <Row>
-                                    <Col>
-                                        <p>Tab 2</p>
-                                    </Col>
-                                </Row>
-                            </TabPane>
-                        </TabContent>
-
                     </Nav>
+                    <TabContent activeTab={activeSocialTab.activeTab}>
+                        <TabPane tabId="0">
+                            <Row>
+                                <Col>
+                                    <p>Tab 0</p>
+                                </Col>
+                            </Row>
+                        </TabPane>
+                        <TabPane tabId="1">
+                            <Row>
+                                <Col>
+                                    <p>Tab 1</p>
+                                </Col>
+                            </Row>
+                        </TabPane>
+                        <TabPane tabId="2">
+                            <Row>
+                                <Col>
+                                    <p>Tab 2</p>
+                                </Col>
+                            </Row>
+                        </TabPane>
+                    </TabContent>
+
                     {/* </Navbar> */}
                 </div>
             </div>

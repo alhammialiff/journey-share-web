@@ -9,10 +9,8 @@ export const SocialTabs = (state = {InitialTab}, action) => {
         case ActionTypes.TOGGLE_SOCIAL_TAB:
             console.log("In SocialTabs Reducer - TOGGLE_SOCIAL_TAB - ", action.payload);
             return {
-                ...state, activeTab: {
-                    tabPane: action.payload
-                }
-            };
+                ...state, activeTab: action.payload
+                };
         default:
             return state
     }
