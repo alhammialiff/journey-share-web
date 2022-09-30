@@ -8,20 +8,22 @@ import Header from './HeaderComponent';
 import JumbotronComponent from './JumbotronComponent';
 import { HomePage } from './HomeComponent';
 import { SocialFeed } from './SocialFeedComponent';
-import { postSearchQuery } from '../redux/ActionCreators';
+import { postSearchQuery, toggleSocialTab } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
         promotions: state.promotions,
         treks: state.treks.TREKS,
-        search: state.search
+        search: state.search,
+        activeSocialTab: state.activeSocialTab
     }
 
 }
 
 const mapDispatchToProps = dispatch => ({
     // To add dispatchers along the way
-    postSearchQuery: (location, trekType, pax, country, region, dateFrom, dateTo) => dispatch(postSearchQuery(location, trekType, pax, country, region, dateFrom, dateTo))
+    postSearchQuery: (location, trekType, pax, country, region, dateFrom, dateTo) => dispatch(postSearchQuery(location, trekType, pax, country, region, dateFrom, dateTo)),
+    toggleSocialTab: (tabNum) => dispatch(toggleSocialTab(tabNum))
 })
 
 class MainComponent extends Component {
@@ -42,13 +44,14 @@ class MainComponent extends Component {
         //Footer
 
         console.log("Checking state.search - ", this.props.search);
+        console.log("Checking state.activeSocialTab - ", this.props.activeSocialTab);
 
         return (
             <div>
                 <Header />
                 <Switch>
                     <Route path="/home" component={() => <HomePage promos={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} />} />
-                    <Route path="/socials" component={() => <SocialFeed />} />
+                    <Route path="/socials" component={() => <SocialFeed activeSocialTab = { this.props.activeSocialTab } toggleSocialTab = {this.props.toggleSocialTab} />} />
                 </Switch>
 
                 <Footer />

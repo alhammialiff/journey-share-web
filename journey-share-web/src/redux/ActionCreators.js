@@ -1,6 +1,5 @@
 import * as ActionTypes from './ActionTypes';
 import { PROMOTIONS } from '../shared/promotions';
-// import {searchQueries, appendSearchQuery} from '../shared/searchQueries';
 
 // [Uncomment when fetch is implemented later]
 // import { baseUrl } from '../shared/baseUrl';
@@ -15,16 +14,10 @@ export const addTreks = (treks) => ({
     payload: treks
 });
 
-// Add filterTrek action
-
 export const addSearchQuery = (search) => ({
     type: ActionTypes.ADD_SEARCH_QUERY,
     payload: search
 })
-
-// export const matchSearchInput = (location, trekType, pax, country, region, dateFrom, dateTo) => (dispatch) => {
-
-// }
 
 // Sends a dispatcher to retrieve user search query and store in redux store
 export const postSearchQuery = (location, trekType, pax, country, region, dateFrom, dateTo) => (dispatch) => {
@@ -40,17 +33,11 @@ export const postSearchQuery = (location, trekType, pax, country, region, dateFr
     }
 
     return dispatch(addSearchQuery(newSearch));
-    // var searchResult = treks.filter((trek) => trek.location == search.location? trek:"");
-    
-    //  processSearchQuery ()
-
-    // [TBD] - To create a separate action to store search queries
-    // console.log(searchQueries);
-    // appendSearchQuery(newSearch);
 
 }
 
-// export const addSearchResult = (search, treks) => ({
-//     type: ActionTypes.ADD_SEARCH_RESULT,
-//     payload: treks.filter((trek)=>)
-// })
+// Action to toggle Social Tab in Social Feed
+export const toggleSocialTab = (tabNum) => ({
+    type: ActionTypes.TOGGLE_SOCIAL_TAB,
+    payload: tabNum
+});
