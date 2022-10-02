@@ -21,9 +21,13 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // To add dispatchers along the way
+
+    // Thunk function to update search state in redux store
     postSearchQuery: (location, trekType, pax, country, region, dateFrom, dateTo) => dispatch(postSearchQuery(location, trekType, pax, country, region, dateFrom, dateTo)),
+    
+    // Stores currently-active Social Tab in Socials page
     toggleSocialTab: (tabNum) => dispatch(toggleSocialTab(tabNum))
+
 })
 
 class MainComponent extends Component {
@@ -31,7 +35,18 @@ class MainComponent extends Component {
         super(props);
     }
 
+    // Controls re-rendering of Main Component on child component changes
+    shouldComponentUpdate(nextProps){
 
+        // [Debug]
+        // console.log("shouldComponentUpdate- this.props.search.location",this.props.search.location);
+        // console.log("shouldComponentUpdate- nextProps.search.location",nextProps.search.location);
+        
+        // If previous search state is not equal to current search state, do not render
+        return this.props.search.location != nextProps.search.location? false: true;
+        
+
+    }
 
     render() {
         //Header Component
@@ -43,8 +58,9 @@ class MainComponent extends Component {
         //Route: Itinerary (TBD)
         //Footer
 
-        console.log("Checking state.search - ", this.props.search);
-        console.log("Checking state.activeSocialTab - ", this.props.activeSocialTab);
+        // [Debug]
+        // console.log("Checking state.search - ", this.props.search);
+        // console.log("Checking state.activeSocialTab - ", this.props.activeSocialTab);
 
         return (
             <div>

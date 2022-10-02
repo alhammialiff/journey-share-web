@@ -11,7 +11,7 @@ var store = ConfigureStore();
 
 // Render search result based on processSearch
 export const RenderSearchResult = ({ search, treks }) => {
-    console.log("RSR - search", search);
+    console.log("RenderSearchResult - search", search);
 
     if (search.search == undefined) {
         return (
@@ -108,6 +108,8 @@ const checkMatch = (inputVal) => {
     console.log("regExp - ", regExp);
     console.log("regMatch - ", regMatch);
 
+    
+
     return regMatch;
 
 }
@@ -131,7 +133,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
         console.log("In handleSubmit - store.getState().search", store.getState().forms)
         // console.log("In handleSubmit - search result", filteredLocations)
 
-
+        // inputVal.preventDefault();
 
     };
 
