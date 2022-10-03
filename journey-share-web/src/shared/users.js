@@ -31,7 +31,7 @@ export const USERS = [{
             },
             postBody: {
                 caption: "Conquered! Honoured to join this expedition with these lovely people!",
-                image: "/public/assets/images/annapurna-base-camp.jfif"
+                image: "/assets/images/annapurna-base-camp.jfif"
             }
         }]
     }

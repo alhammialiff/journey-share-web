@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 export const Footer = (props) => {
 
     return(
-        <div className="footer">
+        <footer>
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-sm d-flex justify-content-center">
@@ -30,7 +30,7 @@ export const Footer = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
 
     );
     
