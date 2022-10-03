@@ -1,9 +1,11 @@
 import * as ActionTypes from './ActionTypes';
 
+// Set default active Social Tab to Notification (or '1')
 const InitialTab = {
     tabPane: '1'
 };
 
+// Social Tabs Reducer
 export const SocialTabs = (state = {InitialTab}, action) => {
     switch (action.type) {
         case ActionTypes.TOGGLE_SOCIAL_TAB:
@@ -12,6 +14,6 @@ export const SocialTabs = (state = {InitialTab}, action) => {
                 ...state, activeTab: action.payload
                 };
         default:
-            return state
+            return state;
     }
 }

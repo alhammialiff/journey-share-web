@@ -15,7 +15,8 @@ const mapStateToProps = state => {
         promotions: state.promotions,
         treks: state.treks.TREKS,
         search: state.search,
-        activeSocialTab: state.activeSocialTab
+        activeSocialTab: state.activeSocialTab,
+        users: state.users
     }
 
 }
@@ -61,13 +62,14 @@ class MainComponent extends Component {
         // [Debug]
         // console.log("Checking state.search - ", this.props.search);
         // console.log("Checking state.activeSocialTab - ", this.props.activeSocialTab);
+        console.log("Checking state.users - ", this.props.users);
 
         return (
             <div>
                 <Header />
                 <Switch>
                     <Route path="/home" component={() => <HomePage promos={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} />} />
-                    <Route path="/socials" component={() => <SocialFeed activeSocialTab = { this.props.activeSocialTab } toggleSocialTab = {this.props.toggleSocialTab} />} />
+                    <Route path="/socials" component={() => <SocialFeed activeSocialTab = { this.props.activeSocialTab } toggleSocialTab = {this.props.toggleSocialTab} users = {this.props.users} />} />
                 </Switch>
 
                 <Footer />

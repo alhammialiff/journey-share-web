@@ -41,3 +41,8 @@ export const toggleSocialTab = (tabNum) => ({
     type: ActionTypes.TOGGLE_SOCIAL_TAB,
     payload: tabNum
 });
+
+export const addUsers = (users) => ({
+    type: ActionTypes.ADD_USERS,
+    payload: users
+})

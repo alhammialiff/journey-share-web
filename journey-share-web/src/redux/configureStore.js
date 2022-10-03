@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { InitialSearch } from './forms';
 import { Search } from './search';
+import { Users } from './users';
 // To import more reducers along the way
 
 
@@ -17,6 +18,7 @@ export const ConfigureStore = () => {
         combineReducers({
             promotions: Promotions,
             treks: Treks,
+            users: Users,
             activeSocialTab: SocialTabs,
             // Quick search state (search) is linked to react-redux-form createForms()
             // 'search' state is linked to 'Search' reducer (search.js) 
