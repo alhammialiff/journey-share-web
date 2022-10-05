@@ -22,7 +22,7 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
 
                         {/* <!-- Post Profile Picture --> */}
                         <div className="col-12 col-sm-2 d-flex justify-content-center">
-                            <img src={socialPost.postHeader.profilePic} width="100" />
+                            <img className="profile-pic" src={socialPost.postHeader.profilePic} width="100" />
                         </div>
 
                         {/* <!-- Post Header --> */}
@@ -47,7 +47,7 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
                         <div className="col-12 col-sm">
                             {/* <!-- Post caption --> */}
                             <div className="row">
-                                <div id="social-post-caption" className="col-12 col-sm offset-sm-2">
+                                <div id="social-post-caption" className="col-12 col-sm">
                                     <p>{socialPost.postBody.caption}</p>
                                 </div>
                             </div>

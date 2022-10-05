@@ -32,24 +32,32 @@ export const Feed = ({ users }) => {
         var friendPosts = friendData[0].body.socialPosts;
 
         friendPosts.map(post => post.postHeader.profilePic = friendData[0].header.profilePic);
-        // friendPosts.postHeader.profilePic = friendData[0].header.profilePic;
         console.log('In Feed - friendPosts', friendPosts, "index", index);
         return friendPosts;
 
     });
 
     // Flatten array from multi-dimensional to single dimension
-    console.log("In Feed - friendSocialPost (before flatten) - ", friendSocialPosts);
+    // console.log("In Feed - friendSocialPost (before flatten) - ", friendSocialPosts);
     friendSocialPosts = friendSocialPosts.flat();
-    console.log("In Feed - friendSocialPost (after flatten) - ", friendSocialPosts);
+    // console.log("In Feed - friendSocialPost (after flatten) - ", friendSocialPosts);
 
-    // Sort array by date
-    friendSocialPosts = friendSocialPosts.sort((post1, post2) => new Date(post1.postHeader.dateTime) - new Date(post2.postHeader.dateTime));
-    console.log("sorted friendSocialPost - ", friendSocialPosts);
+    // Retrieve this user's social posts
+    var thisUserSocialPosts = users.USERS[0].body.socialPosts;
+    
+    // Retrieve all posts including this user's
+    var allSocialPosts = [...friendSocialPosts,...thisUserSocialPosts] 
+    
+    // console.log("In Feed - thisUserSocialPosts - ", thisUserSocialPosts);
+    // console.log("In Feed - allSocialPosts - ", allSocialPosts);
+
+    // Sort all posts by date
+    allSocialPosts = allSocialPosts.sort((post1, post2) => new Date(post1.postHeader.dateTime) - new Date(post2.postHeader.dateTime));
+    console.log("sorted allSocialPost - ", allSocialPosts);
 
     return (
         <>
-            <SocialPosts socialPostData={friendSocialPosts}/>
+            <SocialPosts socialPostData={allSocialPosts}/>
         </>
     );
 }

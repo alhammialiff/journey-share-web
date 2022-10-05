@@ -1,16 +1,19 @@
 import React from 'react';
 import { SocialPosts } from './SocialPostComponent';
+import { Card, CardBody } from 'reactstrap';
 
 const RenderFriendsSection = (props) => {
     var friends = props.thisUserFriends;
     var renderFriendCard = friends.map(friend => {
         return (
-            <div key={friends.indexOf(friend)} className="card mr-1">
-                <img className="img-fluid" src={friend.profilePic} width="100" alt="" />
-                <div className="card-body">
-                    <h6 className="card-text">{friend.userName}</h6>
-                </div>
-            </div>
+            <Card key={friends.indexOf(friend)} className="mr">
+                {/* <div className='card-header h-100'> */}
+                <img id="friends-section-image" className="card-img-top" width="100px" height="100px" src={friend.profilePic} alt="" />
+                {/* </div> */}
+                <CardBody id="friends-section-card-body">
+                    <p className="card-text">{friend.userName}</p>
+                </CardBody>
+            </Card>
         );
     })
 
@@ -27,7 +30,7 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
     console.log("thisUserFriends - ", thisUserFriends)
 
     return (
-        <div id="profile-section" className="container p-2">
+        <div id="profile-section" className="container p-4">
             {/* <!-- Profile --> */}
             <div className="row">
                 {/* <!-- My Profile Section --> */}
@@ -38,13 +41,13 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
                             {/* <!-- Profile Image --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <img id="profile-pic" className="img-fluid" width="300" src={thisUserInfo.profilePic} alt="" />
+                                    <img className="img-fluid profile-pic" width="150" src={thisUserInfo.profilePic} alt="" />
                                 </div>
                             </div>
                             {/* <!-- Profile Name --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <h3>{thisUserInfo.userName}</h3>
+                                    <h4>{thisUserInfo.userName}</h4>
                                 </div>
                             </div>
                             {/* <!-- Profile Info --> */}
@@ -72,14 +75,16 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
                             {/* <!-- Friends List Header --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <h4>Friends</h4>
+                                    <h5>Friends</h5>
                                 </div>
                             </div>
 
                             {/* <!-- Friends--> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center mb-3">
-                                    <RenderFriendsSection thisUserFriends={thisUserFriends} />
+                                    <div className='card-deck'>
+                                        <RenderFriendsSection thisUserFriends={thisUserFriends} />
+                                    </div>
                                 </div>
                             </div>
 
@@ -112,15 +117,26 @@ export const RenderMyProfileTab = ({ users }) => {
     var thisUserInfo = users.USERS[0].header;
     return (
         // <!-- Header -->
-        <div>
-            <header id="profile-section-box" className="jumbotron jumbotron-fluid p-2">
-                {/* <!-- Jumbotron - Profile --> */}
-                <RenderHeaderSection thisUserInfo={thisUserInfo} />
-            </header>
-            <main id="main-box">
-                <RenderBodySection users={users} />
-            </main>
+        <div id="my-profile-page" className='container'>
+            <div className='row'>
+                <div className='col-12 col-sm'>
+                    <header id="profile-section-box">
+                        {/* <!-- Jumbotron - Profile --> */}
+                        <RenderHeaderSection thisUserInfo={thisUserInfo} />
+                    </header>
+                </div>
+            </div>
+            <div className='row'>
+                <div className='col-12 col-sm'>
+                    <main id="main-box">
+                        <div className='container p-2'>
+                            <RenderBodySection users={users} />
+                        </div>
+                    </main>
+                </div>
+            </div>
         </div>
+
     );
 }
 

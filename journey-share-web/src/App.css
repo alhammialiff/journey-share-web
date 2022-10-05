@@ -1,3 +1,7 @@
+#my-profile-page{
+  max-width: 50vw;
+}
+
 .jumbotron {
   background-color: white;
   margin-top: 80px; }
@@ -109,10 +113,15 @@ footer {
     order: 0; }
   #friends-section {
     margin-top: 10px; }
+  
   #social-post {
     padding: 10px; }
   #social-post-header {
     text-align: center; } }
+
+    .profile-pic {
+      border: solid 1px gainsboro;
+      border-radius: 50%; }
 
 #main-box {
   margin-top: 0; }
@@ -123,9 +132,7 @@ footer {
     background-color: #6a806d;
     border: 1px gainsboro ridge;
     border-radius: 5px; }
-    #profile-section-box #profile-section #profile-pic {
-      border: solid 1px gainsboro;
-      border-radius: 5px; }
+    
     #profile-section-box #profile-section #user-info {
       background-color: #f9fbeb;
       border: 1px gainsboro solid;
@@ -134,13 +141,33 @@ footer {
       background-color: #f1efef;
       border: 1px gainsboro solid;
       border-radius: 5px; }
-    #profile-section-box #profile-section h3 {
-      color: white; }
     #profile-section-box #profile-section h4 {
+      color: white; }
+    #profile-section-box #profile-section h5 {
       color: black; }
     #profile-section-box #profile-section .card {
       background-color: #6a806d;
+      border: 1px gainsboro solid;
+      color: white;}
+    #profile-section-box #profile-section .card-header {
+      background-color: gainsboro;
       color: white; }
+    #friends-section-image{
+      width: 100%;
+      height: 100px;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    #friends-section-card-body{
+      padding: 10px;
+      text-align: center;
+    }
+
+    .card-text{
+      font-size: 0.9rem;
+    }
+
+    
 
 #social-post {
   background-color: #f1efef;
@@ -148,9 +175,10 @@ footer {
   border-radius: 5px; }
   #social-post #social-post-header {
     background-color: white;
-    border: 1px gainsboro ridge;
-    border-radius: 5px; }
+    border: 1px gainsboro solid;
+    border-radius: 5px; 
+    font-size: 0.9rem;}
     #social-post #social-post-header #datetime {
       font-size: 0.9rem; }
   #social-post #social-post-caption {
-    font-size: 1.1rem; }
+    font-size: 0.9rem; }
