@@ -12,7 +12,7 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
     const RenderSocialPost = socialPostData.map(socialPost => {
 
         return (
-            <div className="row">
+            <div id="social-post" className="row mb-2">
 
                 {/* This whole div block can be iterate using map based on no. of posts */}
                 <div className="col-12 col-sm">

@@ -13,7 +13,6 @@ const RenderFriendsSection = (props) => {
             </div>
         );
     })
-    console.log("friends:", friends);
 
     return (
         <>
@@ -94,18 +93,16 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
 
 export const RenderBodySection = ({ users }) => {
     var socialPostData = users.USERS[0].body.socialPosts;
-    var thisUserProfilePic = users.USERS[0].header.profilePic;
-    var thisUserName = users.USERS[0].header.userName;
-    var friends = users.USERS[0].header.friends;
 
-    console.log("In RenderBodySection - ", users)
+    // Map user profilePic under postHeader object data
+    socialPostData.map(post => post.postHeader.profilePic = users.USERS[0].header.profilePic);
+    console.log("In RenderBodySection - socialPostData", socialPostData);
+
     return (
 
-        <div id="social-post" className="container">
-            <SocialPosts socialPostData={socialPostData}
-                thisUserProfilePic={thisUserProfilePic}
-                thisUserName={thisUserName} />
-        </div>
+
+        <SocialPosts socialPostData={socialPostData} />
+
 
     );
 }
