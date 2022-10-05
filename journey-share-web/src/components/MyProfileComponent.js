@@ -1,4 +1,5 @@
 import React from 'react';
+import { SocialPosts } from './SocialPostComponent';
 
 const RenderFriendsSection = (props) => {
     var friends = props.thisUserFriends;
@@ -22,7 +23,7 @@ const RenderFriendsSection = (props) => {
 }
 
 const RenderHeaderSection = ({ thisUserInfo }) => {
-    
+
     var thisUserFriends = thisUserInfo.friends;
     console.log("thisUserFriends - ", thisUserFriends)
 
@@ -91,7 +92,7 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
     );
 }
 
-export const RenderBodySection = ({users}) => {
+export const RenderBodySection = ({ users }) => {
     var socialPostData = users.USERS[0].body.socialPosts;
     var thisUserProfilePic = users.USERS[0].header.profilePic;
     var thisUserName = users.USERS[0].header.userName;
@@ -101,53 +102,9 @@ export const RenderBodySection = ({users}) => {
     return (
 
         <div id="social-post" className="container">
-            <div className="row">
-                <div className="col-12 col-sm">
-
-                    {/* <!-- Social Post Header --> */}
-                    <div id="social-post-header" className="row m-2 p-2">
-
-                        {/* <!-- Post Profile Picture --> */}
-                        <div className="col-12 col-sm-2 d-flex justify-content-center">
-                            <img src={thisUserProfilePic} width="100" />
-                        </div>
-
-                        {/* <!-- Post Header --> */}
-                        {/* <!-- align-items-center will make both elements center and overlapping of each other */}
-                        {/* Use align-self-center --> */}
-                        <div className="col-12 col-sm align-self-center">
-                            <div className="row">
-                                <div className="col-12 col-sm"><strong>{thisUserName}</strong> with Lalo S. and 5 others</div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 col-sm">at {socialPostData[0].postHeader.location}</div>
-                            </div>
-                            <div className="row">
-                                <div id="datetime" className="col-12 col-sm">{socialPostData[0].postHeader.dateTime}</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    {/* <!-- Social Post Body --> */}
-                    <div id="social-post-body" className="row mt-2 pb-2">
-                        <div className="col-12 col-sm">
-                            {/* <!-- Post caption --> */}
-                            <div className="row">
-                                <div id="social-post-caption" className="col-12 col-sm offset-sm-2">
-                                    <p>{socialPostData[0].postBody.caption}</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12 col-sm d-flex justify-content-center">
-                                    <img src={socialPostData[0].postBody.image} class="img-fluid" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <SocialPosts socialPostData={socialPostData}
+                thisUserProfilePic={thisUserProfilePic}
+                thisUserName={thisUserName} />
         </div>
 
     );

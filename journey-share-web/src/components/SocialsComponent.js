@@ -9,12 +9,13 @@ import React from 'react';
 import { Card, CardBody, Navbar, NavLink, NavItem, Nav, CardHeader, TabPane, TabContent, Row, Col } from 'reactstrap';
 // import { NavLink } from 'react-router-dom';
 // import { toggleSocialTab } from '../redux/ActionCreators';
+import { Feed } from './FeedComponent';
 import { ConfigureStore } from '../redux/configureStore';
 import { RenderMyProfileTab } from './MyProfileComponent';
 
 const store = ConfigureStore();
 
-export const SocialFeed = ({ activeSocialTab, toggleSocialTab, users }) => {
+export const Socials = ({ activeSocialTab, toggleSocialTab, users }) => {
 
     const toggleTab = (tabNum) => {
         // Set dispatcher to set toggleTab
@@ -56,7 +57,7 @@ export const SocialFeed = ({ activeSocialTab, toggleSocialTab, users }) => {
                         <TabPane tabId="0">
                             <Row>
                                 <Col>
-                                    <p>Tab 0</p>
+                                    <Feed users={users} />
                                 </Col>
                             </Row>
                         </TabPane>
@@ -104,4 +105,4 @@ export const RenderFeedTab = () => {
 
 }
 
-export default SocialFeed;
+export default Socials;

@@ -16,7 +16,6 @@ export const RenderSearchResult = ({ search, treks }) => {
     if (search.search == undefined) {
         return (
             <div>
-                <p>null</p>
             </div>
         )
 

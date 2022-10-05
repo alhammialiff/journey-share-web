@@ -7,7 +7,7 @@ import Footer from './FooterComponent';
 import Header from './HeaderComponent';
 import JumbotronComponent from './JumbotronComponent';
 import { HomePage } from './HomeComponent';
-import { SocialFeed } from './SocialFeedComponent';
+import { Socials } from './SocialsComponent';
 import { postSearchQuery, toggleSocialTab } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -69,7 +69,8 @@ class MainComponent extends Component {
                 <Header />
                 <Switch>
                     <Route path="/home" component={() => <HomePage promos={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} />} />
-                    <Route path="/socials" component={() => <SocialFeed activeSocialTab = { this.props.activeSocialTab } toggleSocialTab = {this.props.toggleSocialTab} users = {this.props.users} />} />
+                    <Route path="/socials" component={() => <Socials activeSocialTab = { this.props.activeSocialTab } toggleSocialTab = {this.props.toggleSocialTab} users = {this.props.users} />} />
+                    <Redirect to="/home" />
                 </Switch>
 
                 <Footer />
