@@ -12,16 +12,16 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
     const RenderSocialPost = socialPostData.map(socialPost => {
 
         return (
-            <div id="social-post" className="row mb-2">
+            <div className="row mb-2">
 
                 {/* This whole div block can be iterate using map based on no. of posts */}
-                <div className="col-12 col-sm">
+                <div id="social-post" className="col-12 offset-sm-2 col-sm-8">
 
                     {/* <!-- Social Post Header --> */}
-                    <div id="social-post-header" className="row m-2 p-2">
+                    <div id="social-post-header" className="row mx-0">
 
                         {/* <!-- Post Profile Picture --> */}
-                        <div className="col-12 col-sm-2 d-flex justify-content-center">
+                        <div className="col-12 col-sm-2">
                             <img className="profile-pic" src={socialPost.postHeader.profilePic} width="100" />
                         </div>
 
@@ -47,12 +47,12 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
                         <div className="col-12 col-sm">
                             {/* <!-- Post caption --> */}
                             <div className="row">
-                                <div id="social-post-caption" className="col-12 col-sm">
+                                <div id="social-post-caption" className="col-12 col-sm mx-1">
                                     <p>{socialPost.postBody.caption}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-12 col-sm d-flex justify-content-center">
+                                <div id="social-post-media" className="col-12 col-sm d-flex justify-content-center">
                                     <img src={socialPost.postBody.image} className="img-fluid" />
                                 </div>
                             </div>

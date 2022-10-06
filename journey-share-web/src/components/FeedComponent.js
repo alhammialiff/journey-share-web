@@ -11,8 +11,6 @@ export const Feed = ({ users }) => {
 
     // 2. Consolidate all friends posts into an array
 
-
-
     // Map friends var to find friend's data
     const friendsData = friendsList.map((friend, index) => {
 
@@ -23,7 +21,7 @@ export const Feed = ({ users }) => {
 
         return findFriendsData;
     });
-    
+
     console.log("In feed - friendsData, ", friendsData);
 
     // Extract friends' social post object and append profilePic key in each social post header
@@ -38,16 +36,14 @@ export const Feed = ({ users }) => {
     });
 
     // Flatten array from multi-dimensional to single dimension
-    // console.log("In Feed - friendSocialPost (before flatten) - ", friendSocialPosts);
     friendSocialPosts = friendSocialPosts.flat();
-    // console.log("In Feed - friendSocialPost (after flatten) - ", friendSocialPosts);
 
     // Retrieve this user's social posts
     var thisUserSocialPosts = users.USERS[0].body.socialPosts;
-    
+
     // Retrieve all posts including this user's
-    var allSocialPosts = [...friendSocialPosts,...thisUserSocialPosts] 
-    
+    var allSocialPosts = [...friendSocialPosts, ...thisUserSocialPosts]
+
     // console.log("In Feed - thisUserSocialPosts - ", thisUserSocialPosts);
     // console.log("In Feed - allSocialPosts - ", allSocialPosts);
 
@@ -56,9 +52,9 @@ export const Feed = ({ users }) => {
     console.log("sorted allSocialPost - ", allSocialPosts);
 
     return (
-        <>
-            <SocialPosts socialPostData={allSocialPosts}/>
-        </>
+        <div className='container'>
+            <SocialPosts socialPostData={allSocialPosts} />
+        </div>
     );
 }
 

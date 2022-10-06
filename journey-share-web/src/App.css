@@ -114,12 +114,21 @@ footer {
   #friends-section {
     margin-top: 10px; }
   
-  #social-post {
-    padding: 10px; }
-  #social-post-header {
-    text-align: center; } }
+  #social-post { 
+    padding: 0px;
+  }
 
-    .profile-pic {
+  #social-post-header {
+    text-align: center; 
+    padding: 0px;
+  } 
+  
+}
+
+#my-profile-page{
+      max-width: 100vw;
+    }
+.profile-pic {
       border: solid 1px gainsboro;
       border-radius: 50%; }
 
@@ -134,17 +143,15 @@ footer {
     border-radius: 5px; }
     
     #profile-section-box #profile-section #user-info {
-      background-color: #f9fbeb;
-      border: 1px gainsboro solid;
-      border-radius: 5px; }
-    #profile-section-box #profile-section #friends-section {
-      background-color: #f1efef;
-      border: 1px gainsboro solid;
-      border-radius: 5px; }
+      color: white;
+      border-radius: 5px;
+      list-style-type: none;
+    }
+
     #profile-section-box #profile-section h4 {
       color: white; }
-    #profile-section-box #profile-section h5 {
-      color: black; }
+    #profile-section-box #profile-section h6 {
+      color: white; }
     #profile-section-box #profile-section .card {
       background-color: #6a806d;
       border: 1px gainsboro solid;
@@ -163,6 +170,28 @@ footer {
       text-align: center;
     }
 
+    #friends-header{
+      color: white;
+    }
+
+    #friends-header div{
+      /* border: 1px red ridge; */
+      font-size: 0.9rem;
+      border-top: white 1px solid;
+    }
+
+    #friends-stats{
+      /* border: 1px blue ridge; */
+      font-size: 1.6rem;
+      color:white;
+    }
+    
+    #friends-stats a{
+      /* border: 1px blue ridge; */
+      font-size: 1.6rem;
+      color:white;
+    }
+
     .card-text{
       font-size: 0.9rem;
     }
@@ -170,13 +199,14 @@ footer {
     
 
 #social-post {
-  background-color: #f1efef;
+  background-color: white;
   border: 1px gainsboro solid;
   border-radius: 5px; }
   #social-post #social-post-header {
-    background-color: white;
-    border: 1px gainsboro solid;
-    border-radius: 5px; 
+    background-color: #f1efef;
+    border: 1px white solid;
+    border-top-left-radius: 5px; 
+    border-top-right-radius: 5px; 
     font-size: 0.9rem;}
     #social-post #social-post-header #datetime {
       font-size: 0.9rem; }

@@ -2,6 +2,7 @@ import React from 'react';
 import { SocialPosts } from './SocialPostComponent';
 import { Card, CardBody } from 'reactstrap';
 
+// [KIV for Friends Section Component]
 const RenderFriendsSection = (props) => {
     var friends = props.thisUserFriends;
     var renderFriendCard = friends.map(friend => {
@@ -24,9 +25,33 @@ const RenderFriendsSection = (props) => {
     );
 }
 
+const RenderProfileStats = ({ users }) => {
+    console.log("In RenderProfileStats - user", users);
+    var noOfFollowers = users.header.friends.length;
+    var noOfFollowing = users.header.friends.length;
+    var noOfPosts = users.body.socialPosts.length;
+
+    const profileStats = [noOfPosts, noOfFollowers, noOfFollowing];
+    console.log("In RenderProfileStats - profileStats ", profileStats);
+
+    const renderStats = profileStats.map(stat => {
+        return (
+            <div id="friends-stats" className="col-4 col-sm d-flex justify-content-center">
+                <a href=''>{stat}</a>
+            </div>
+        )
+    })
+
+    return (
+        <>
+            {renderStats}
+        </>
+    );
+}
+
 const RenderHeaderSection = ({ thisUserInfo }) => {
 
-    var thisUserFriends = thisUserInfo.friends;
+    var thisUserFriends = thisUserInfo.header.friends;
     console.log("thisUserFriends - ", thisUserFriends)
 
     return (
@@ -41,22 +66,22 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
                             {/* <!-- Profile Image --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <img className="img-fluid profile-pic" width="150" src={thisUserInfo.profilePic} alt="" />
+                                    <img className="img-fluid profile-pic" width="150" src={thisUserInfo.header.profilePic} alt="" />
                                 </div>
                             </div>
                             {/* <!-- Profile Name --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <h4>{thisUserInfo.userName}</h4>
+                                    <h4>{thisUserInfo.header.userName}</h4>
                                 </div>
                             </div>
                             {/* <!-- Profile Info --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
                                     <ul id="user-info" className="list-group list-group-flush text-center">
-                                        <li className="list-group-item"><strong>{thisUserInfo.country}</strong></li>
-                                        <li className="list-group-item">Journey Shared: <strong>{thisUserInfo.journeyShared}</strong></li>
-                                        <li className="list-group-item">Most Recent Journey: <strong>{thisUserInfo.mostRecentJourney}</strong></li>
+                                        <li><strong>{thisUserInfo.header.country}</strong></li>
+                                        <li>Journey Shared: <strong>{thisUserInfo.header.journeyShared}</strong></li>
+                                        <li>Most Recent Journey: <strong>{thisUserInfo.header.mostRecentJourney}</strong></li>
                                     </ul>
 
                                 </div>
@@ -72,23 +97,25 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
                     <div className="row d-flex justify-content-center">
                         <div id="friends-section" className="col-11 col-sm">
 
-                            {/* <!-- Friends List Header --> */}
+                            {/* <!-- Post/Follower/Following Stat --> */}
                             <div className="row">
-                                <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <h5>Friends</h5>
-                                </div>
+                                <RenderProfileStats users={thisUserInfo} />
                             </div>
 
-                            {/* <!-- Friends--> */}
-                            <div className="row">
-                                <div className="col-12 col-sm-12 d-flex justify-content-center mb-3">
-                                    <div className='card-deck'>
-                                        <RenderFriendsSection thisUserFriends={thisUserFriends} />
-                                    </div>
+                            {/* <!-- Post/Follower/Following Header--> */}
+                            <div id="friends-header" className="row">
+                                <div className="col-4 col-sm d-flex justify-content-center">
+                                    Posts
+                                </div>
+                                <div className="col-4 col-sm d-flex justify-content-center">
+                                    Followers
+                                </div>
+                                <div className="col-4 col-sm d-flex justify-content-center">
+                                    Following
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -114,12 +141,13 @@ export const RenderBodySection = ({ users }) => {
 
 export const RenderMyProfileTab = ({ users }) => {
     console.log("In RenderMyProfileTab - users", users);
-    var thisUserInfo = users.USERS[0].header;
+    var thisUserInfo = users.USERS[0];
+    console.log("thisUserInfooo - ", thisUserInfo);
     return (
         // <!-- Header -->
         <div id="my-profile-page" className='container'>
             <div className='row'>
-                <div className='col-12 col-sm'>
+                <div className='col-12 col-sm p-0'>
                     <header id="profile-section-box">
                         {/* <!-- Jumbotron - Profile --> */}
                         <RenderHeaderSection thisUserInfo={thisUserInfo} />
@@ -127,7 +155,7 @@ export const RenderMyProfileTab = ({ users }) => {
                 </div>
             </div>
             <div className='row'>
-                <div className='col-12 col-sm'>
+                <div className='col-12 col-sm p-0'>
                     <main id="main-box">
                         <div className='container p-2'>
                             <RenderBodySection users={users} />
