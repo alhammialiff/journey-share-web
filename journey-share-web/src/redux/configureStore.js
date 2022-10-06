@@ -8,6 +8,7 @@ import logger from 'redux-logger';
 import { InitialSearch } from './forms';
 import { Search } from './search';
 import { Users } from './users';
+import { WindowSize } from './windowSize';
 // To import more reducers along the way
 
 
@@ -16,6 +17,7 @@ export const ConfigureStore = () => {
     const store = createStore(
         
         combineReducers({
+            windowSize: WindowSize,
             promotions: Promotions,
             treks: Treks,
             users: Users,

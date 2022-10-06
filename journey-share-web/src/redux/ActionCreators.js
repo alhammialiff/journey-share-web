@@ -46,3 +46,9 @@ export const addUsers = (users) => ({
     type: ActionTypes.ADD_USERS,
     payload: users
 })
+
+// [Dev in progress: To store window size in redux store]
+export const storeWindowSize = (windowSize) => ({
+    type:ActionTypes.STORE_WINDOW_SIZE,
+    payload: windowSize
+})

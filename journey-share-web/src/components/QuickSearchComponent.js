@@ -156,14 +156,14 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                                     <Row className="form-group">
                                         <Control.text
                                             model=".location"
-                                            className="form-control form-control-sm"
+                                            className="form-control"
                                             id="location"
                                             name="location"
                                             placeholder="Mountain/National Park/Forest etc." />
                                     </Row>
 
                                     <Label htmlFor="trekType" md={2}>Trek Type</Label>
-                                    <Row className="form-group">
+                                    <Row className="form-group col-12">
                                         <Control.select model=".trekType" name="trekType" id="trekType" className="dropdown btn dropdown-toggle">
                                             <option>Forest Trek</option>
                                             <option>Mountain Trek</option>
