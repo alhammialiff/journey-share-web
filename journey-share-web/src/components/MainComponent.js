@@ -108,8 +108,8 @@ class MainComponent extends Component {
             <div>
                 <Header />
                 <Switch>
-                    <Route path="/home" component={() => <HomePage promos={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} />} />
-                    <Route path="/socials" component={() => <Socials activeSocialTab={this.props.activeSocialTab} toggleSocialTab={this.props.toggleSocialTab} users={this.props.users} />} />
+                    <Route path="/home" component={() => <HomePage promos={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
+                    <Route path="/socials" component={() => <Socials activeSocialTab={this.props.activeSocialTab} toggleSocialTab={this.props.toggleSocialTab} users={this.props.users} windowSize={this.props.windowSize}/>} />
                     <Redirect to="/home" />
                 </Switch>
 

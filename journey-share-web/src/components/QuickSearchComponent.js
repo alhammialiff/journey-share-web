@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Label, Col, Row, Table } from 'reactstrap';
+import { Button, Label, Col, Row, Table, InputGroup, InputGroupText } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 import { ConfigureStore } from '../redux/configureStore';
 
@@ -107,10 +107,68 @@ const checkMatch = (inputVal) => {
     console.log("regExp - ", regExp);
     console.log("regMatch - ", regMatch);
 
-    
+
 
     return regMatch;
 
+}
+
+export const AdvancedSearchInputs = () => {
+
+    return (
+        <>
+            <div className='row mt-1'>
+                <div className='col-12 col-sm form-inline justify-content-center m-2'>
+                    <Control.select model=".trekType" name="trekType" id="trekType" className="dropdown btn dropdown-toggle mr-2">
+                        <option>Forest Trek</option>
+                        <option>Mountain Trek</option>
+                    </Control.select>
+
+                    <Control.select model=".pax" name="pax" id="pax" className="dropdown btn dropdown-toggle">
+                        <option value="0-5">0-5</option>
+                        <option value="5-10">5-10</option>
+                        <option value="10+">10-15</option>
+                    </Control.select>
+                </div>
+            </div>
+            {/* Form - 3rd Row */}
+            <div className='row'>
+                <div className="col-12 col-sm form-inline justify-content-center m-2">
+
+                    <Control.select model=".country" name="country" id="country" className="dropdown btn dropdown-toggle mr-2">
+                        <option value="placeholder">Country</option>
+                        <option value="singapore">Singapore</option>
+                        <option value="japan">Japan</option>
+                    </Control.select>
+
+
+                    <Control.select model=".region" name="region" id="region" className="dropdown btn dropdown-toggle">
+                        <option value="placeholder">Region</option>
+                        <option value="asia">Asia</option>
+                        <option value="oceania">Oceania</option>
+                        <option value="europe">Europe</option>
+                        <option value="north-america">North America</option>
+                        <option value="south-america">South America</option>
+                        <option value="africa">Africa</option>
+                    </Control.select>
+                </div>
+                {/* Form - 3rd Row */}
+            </div><div className='row'>
+                <div className="col-12 col-sm form-inline justify-content-center m-2">
+
+
+                    <Control type="date" model=".dateFrom" id="dateFrom" className="form form-control mr-sm-2" placeholder='From'>
+                    </Control>
+
+                    <Control type="date" model=".dateTo" id="dateTo" className="form form-control mt-1 mt-sm-0">
+                    </Control>
+
+                </div>
+            </div>
+
+
+        </>
+    );
 }
 
 export const QuickSearch = ({ treks, search, postSearchQuery }) => {
@@ -120,21 +178,31 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
     // Props to be passed into QuickSearch (can be done later)
     // Search Form
 
+    const [display, setDisplay] = useState(false);
+
+
     const handleSubmit = (inputVal) => {
         // [Debugs]
-        console.log("In handleSubmit - inputVal", inputVal);
-        console.log("In handleSubmit - treks", treks);
-        console.log("In handleSubmit - search", search);
-        console.log("In handleSubmit - search.location", search.location);
+        // console.log("In handleSubmit - inputVal", inputVal);
+        // console.log("In handleSubmit - treks", treks);
+        // console.log("In handleSubmit - search", search);
+        // console.log("In handleSubmit - search.location", search.location);
 
         postSearchQuery(inputVal.location, inputVal.trekType, inputVal.pax, inputVal.country, inputVal.region, inputVal.dateFrom, inputVal.dateTo);
-        // var filteredLocations = processSearch(search, treks);
-        console.log("In handleSubmit - store.getState().search", store.getState().forms)
-        // console.log("In handleSubmit - search result", filteredLocations)
 
-        // inputVal.preventDefault();
+        console.log("In handleSubmit - store.getState().search", store.getState().forms)
 
     };
+
+    const toggleAdvancedSearch = () => {
+        // var advancedSearchInputs = document.getElementsByClassName('hidden-search-inputs');
+
+        // console.log(advancedSearchInputs);
+        setDisplay(!display);
+        console.log(display);
+
+    }
+
 
     return (
         <div className="container">
@@ -149,72 +217,35 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                         <div className="col-12 col-md p-3">
                             {/* Form */}
                             <Form model="search" onSubmit={(user) => handleSubmit(user)} onChange={(inputVal) => checkMatch(inputVal)}>
-                                {/* Form - 1st Row */}
-                                <div className="form-inline justify-content-center p2">
-                                    {/* Form Input - Location */}
-                                    <Label htmlFor="location" md={2}> Search Location</Label>
-                                    <Row className="form-group">
-                                        <Control.text
-                                            model=".location"
-                                            className="form-control"
-                                            id="location"
-                                            name="location"
-                                            placeholder="Mountain/National Park/Forest etc." />
-                                    </Row>
-
-                                    <Label htmlFor="trekType" md={2}>Trek Type</Label>
-                                    <Row className="form-group col-12">
-                                        <Control.select model=".trekType" name="trekType" id="trekType" className="dropdown btn dropdown-toggle">
-                                            <option>Forest Trek</option>
-                                            <option>Mountain Trek</option>
-                                        </Control.select>
-                                    </Row>
-
-                                    <Label htmlFor="pax" md={2}>Pax</Label>
-                                    <Row className="form-group">
-                                        <Control.select model=".pax" name="pax" id="pax" className="dropdown btn dropdown-toggle">
-                                            <option value="0-5">0-5</option>
-                                            <option value="5-10">5-10</option>
-                                            <option value="10+">10-15</option>
-                                        </Control.select>
-                                    </Row>
-                                </div>
-                                {/* Form - 2nd Row */}
-                                <div className="form-inline justify-content-center p-2">
-                                    <Label htmlFor="country" md={2}>Country</Label>
-                                    <Row className="form-group">
-                                        <Control.select model=".country" name="country" id="country" className="dropdown btn dropdown-toggle">
-                                            <option value="singapore">Singapore</option>
-                                            <option value="japan">Japan</option>
-                                        </Control.select>
-                                    </Row>
-                                    <Label htmlFor="region" md={2}>Region</Label>
-                                    <Row className="form-group">
-                                        <Control.select model=".region" name="region" id="region" className="dropdown btn dropdown-toggle">
-                                            <option value="Asia">Asia</option>
-                                            <option value="Oceania">Oceania</option>
-                                        </Control.select>
-                                    </Row>
+                                <div className='row'>
+                                    {/* Form - 1st Row */}
+                                    <div className="col-12 col-sm form-inline justify-content-center">
+                                        {/* Form Input - Location */}
+                                        <InputGroup>
+                                            <InputGroupText className="prepended-icons">
+                                                <span className='fa fa-search'></span>
+                                            </InputGroupText>
+                                            <Control.text
+                                                model=".location"
+                                                className="form-control"
+                                                id="location"
+                                                name="location"
+                                                size="80"
+                                                placeholder="Mountain/National Park/Forest etc." />
+                                            <Button onClick={() => toggleAdvancedSearch()}>
+                                                ...
+                                            </Button>
+                                        </InputGroup>
+                                    </div>
                                 </div>
 
-                                {/* Form - 3rd Row */}
-                                <div className="form-inline justify-content-center p-2">
-                                    <Label htmlFor="dateFrom" md={2}>From</Label>
-                                    <Row className="form-group">
-                                        <Control type="date" model=".dateFrom" id="dateFrom" className="form form-control">
-                                        </Control>
-                                    </Row>
-                                    <Label htmlFor="country" md={2}>To</Label>
-                                    <Row className="form-group">
-                                        <Control type="date" model=".dateTo" id="dateTo" className="form form-control">
-                                        </Control>
-                                    </Row>
-                                </div>
+                                {display && <AdvancedSearchInputs />}
 
-                                <div className="form-row justify-content-center p-2">
-                                    <Button type="submit" id="find-trek-btn" className="btn btn-lg btn-success">Find Trek</Button>
+                                <div className='row justify-content-center'>
+                                    <div className="form-row p-2">
+                                        <Button type="submit" id="find-trek-btn" className="btn btn-lg btn-success">Find Trek</Button>
+                                    </div>
                                 </div>
-
                             </Form>
                         </div>
                     </div>
@@ -226,6 +257,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
                 </div>
             </div>
         </div>
+
     );
 
 }

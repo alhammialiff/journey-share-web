@@ -1,19 +1,19 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { createForms } from 'react-redux-form';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
 import { Promotions } from './promotions';
 import { Treks } from './treks';
 import { SocialTabs } from './socialTabs';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import { InitialSearch } from './forms';
 import { Search } from './search';
 import { Users } from './users';
 import { WindowSize } from './windowSize';
 // To import more reducers along the way
 
-
 export const ConfigureStore = () => {
-
+    
     const store = createStore(
         
         combineReducers({

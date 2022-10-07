@@ -15,7 +15,8 @@ import { RenderMyProfileTab } from './MyProfileComponent';
 
 const store = ConfigureStore();
 
-export const Socials = ({ activeSocialTab, toggleSocialTab, users }) => {
+export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize }) => {
+    console.log('In Social Feed - windowSize', windowSize);
 
     const toggleTab = (tabNum) => {
         // Set dispatcher to set toggleTab

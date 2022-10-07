@@ -45,6 +45,10 @@ footer {
   text-align: center; 
 }
 
+.prepended-icons{
+  background-color: white;
+}
+
 #search-section {
   background-color: #6a806d;
   border: 1px gainsboro solid;

@@ -15,7 +15,7 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
             <div className="row mb-2">
 
                 {/* This whole div block can be iterate using map based on no. of posts */}
-                <div id="social-post" className="col-12 offset-sm-2 col-sm-8">
+                <div id="social-post" className="col-12 offset-lg-2 col-lg-8">
 
                     {/* <!-- Social Post Header --> */}
                     <div id="social-post-header" className="row mx-0">
