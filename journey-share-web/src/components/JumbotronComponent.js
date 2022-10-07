@@ -10,7 +10,7 @@ export const JumbotronComponent = ({ jumbotronHeader }) => {
     const onExiting = () => {
         // [Debug]
         // console.log("onExiting - before isAnimating", animating)
-        isAnimating({animating: true});
+        isAnimating({ animating: true });
         // [Debug]
         // console.log("onExiting - after isAnimating", animating)
     };
@@ -18,39 +18,39 @@ export const JumbotronComponent = ({ jumbotronHeader }) => {
     const onExited = () => {
         // [Debug]
         // console.log("onExit - before isAnimating", animating)
-        isAnimating({animating: false});
+        isAnimating({ animating: false });
         // [Debug]
         // console.log("onExit - after isAnimating", animating)
     };
 
     const next = () => {
-        
+
         const nextIndex = activeIndex == items.length - 1 ? 0 : activeIndex + 1;
-        
-        setActiveIndex( activeIndex = nextIndex );
-        
+
+        setActiveIndex(activeIndex = nextIndex);
+
     };
 
     const previous = () => {
-        
+
         const nextIndex = activeIndex == 0 ? items.length - 1 : activeIndex - 1;
-        
-        setActiveIndex( activeIndex = nextIndex );
-        
-        
+
+        setActiveIndex(activeIndex = nextIndex);
+
+
     };
 
     const goToIndex = (newIndex) => {
-        
-        setActiveIndex( activeIndex = newIndex );
+
+        setActiveIndex(activeIndex = newIndex);
 
     };
 
-    
-    
+
+
     // [Debug]
     console.log("In JumbotronComponent - jumbotronHeader", jumbotronHeader);
-    const items = jumbotronHeader.PROMOTIONS === undefined? jumbotronHeader.WELCOME:"";
+    const items = jumbotronHeader.PROMOTIONS === undefined ? jumbotronHeader.WELCOME : jumbotronHeader.PROMOTIONS;
 
     const carouselItems = items.map((item) => {
         return (
@@ -63,9 +63,9 @@ export const JumbotronComponent = ({ jumbotronHeader }) => {
                 </picture>
                 <CarouselCaption id={item.cssId} className="carousel-caption" captionText={item.description} captionHeader={item.caption}>
                     <p>
-                        <strong>{item.caption}</strong> <br/>
-                        {item.description} <br/>
-                        {item.trekkingDate} 
+                        <strong>{item.caption}</strong> <br />
+                        {item.description} <br />
+                        {item.trekkingDate}
                     </p>
                 </CarouselCaption>
             </CarouselItem>
