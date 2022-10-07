@@ -9,6 +9,7 @@ import JumbotronComponent from './JumbotronComponent';
 import { HomePage } from './HomeComponent';
 import { Socials } from './SocialsComponent';
 import { storeWindowSize, postSearchQuery, toggleSocialTab } from '../redux/ActionCreators';
+import WelcomePage from './WelcomePageComponent';
 
 
 const mapStateToProps = state => {
@@ -36,35 +37,39 @@ const mapDispatchToProps = dispatch => ({
 
 })
 
-const WindowSizeObserver = ({storeWindowSize}) => {
-    
-    useEffect(()=>{
+const WindowSizeObserver = ({ storeWindowSize }) => {
+
+    useEffect(() => {
         console.log("useEffect - ", window.innerWidth);
-        function handleResize(){
+        function handleResize() {
             console.log(window.innerWidth);
             storeWindowSize(window.innerWidth);
         }
         window.addEventListener("resize", handleResize);
-        
+
     }, [window.innerWidth]);
 
     const checkWidth = () => {
         var vw = window.innerWidth;
         console.log('width ' + vw);
-    
+
         // Hide username from navbar
         // if (vw < 765) {
         //     $('#my-account-username').hide();
         // } else {
         //     $('#my-account-username').show();
         // }
-    
+
     }
 }
 
 class MainComponent extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            isLoggedIn: false
+        }
     }
 
     // Controls re-rendering of Main Component on child component changes
@@ -75,15 +80,15 @@ class MainComponent extends Component {
         // console.log("shouldComponentUpdate- nextProps.search.location",nextProps.search.location);
 
         // If previous search state is not equal to current search state, do not render
-        return this.props.search.location != nextProps.search.location? false : true;
+        return this.props.search.location != nextProps.search.location ? false : true;
 
     }
 
-    
 
-    componentDidMount(){
+
+    componentDidMount() {
         console.log(window.innerWidth);
-        console.log(document.readyState);   
+        console.log(document.readyState);
     }
 
 
@@ -103,18 +108,30 @@ class MainComponent extends Component {
         // console.log("Checking state.activeSocialTab - ", this.props.activeSocialTab);
         // console.log("Checking state.users - ", this.props.users);
         // console.log("Checking state.windowSize - ", this.props.windowSize);
+        console.log("Checking state.windowSize - ", this.props.promotions);
 
         return (
             <div>
-                <Header />
-                <Switch>
-                    <Route path="/home" component={() => <HomePage promos={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
-                    <Route path="/socials" component={() => <Socials activeSocialTab={this.props.activeSocialTab} toggleSocialTab={this.props.toggleSocialTab} users={this.props.users} windowSize={this.props.windowSize}/>} />
-                    <Redirect to="/home" />
-                </Switch>
-
+                {this.state.isLoggedIn ?
+                    <>
+                        <Header />
+                        <Switch>
+                            <Route path="/home" component={() => <HomePage jumbotronHeader={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
+                            <Route path="/socials" component={() => <Socials activeSocialTab={this.props.activeSocialTab} toggleSocialTab={this.props.toggleSocialTab} users={this.props.users} windowSize={this.props.windowSize} />} />
+                            <Redirect to="/home" />
+                        </Switch>
+                    </>
+                    :
+                    <>
+                        <Header />
+                        <Switch>
+                            <Route path="/signin" component={() => <WelcomePage jumbotronHeader={this.props.promotions} />} />
+                            <Redirect to="/signin" />
+                        </Switch>
+                    </>
+                }
                 <Footer />
-                <WindowSizeObserver storeWindowSize={this.props.storeWindowSize}/>
+                <WindowSizeObserver storeWindowSize={this.props.storeWindowSize} />
             </div>
 
 

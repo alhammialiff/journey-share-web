@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Jumbotron } from 'reactstrap';
 import { Carousel, CarouselCaption, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap';
 
-export const JumbotronComponent = ({ promos }) => {
+export const JumbotronComponent = ({ jumbotronHeader }) => {
 
     var [activeIndex, setActiveIndex] = useState(0);
     var [animating, isAnimating] = useState(false);
@@ -46,10 +46,11 @@ export const JumbotronComponent = ({ promos }) => {
 
     };
 
-    const items = promos.PROMOTIONS;
+    
     
     // [Debug]
-    // console.log("In JumbotronComponent - this.props.promos", items);
+    console.log("In JumbotronComponent - jumbotronHeader", jumbotronHeader);
+    const items = jumbotronHeader.PROMOTIONS;
 
     const carouselItems = items.map((item) => {
         return (

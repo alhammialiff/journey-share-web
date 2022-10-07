@@ -55,7 +55,7 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
     console.log("thisUserFriends - ", thisUserFriends)
 
     return (
-        <div id="profile-section" className="container p-4">
+        <div id="profile-section" className="container p-4 apply-shadow">
             {/* <!-- Profile --> */}
             <div className="row">
                 {/* <!-- My Profile Section --> */}

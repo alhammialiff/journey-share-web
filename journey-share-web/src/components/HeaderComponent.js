@@ -23,7 +23,7 @@ class Header extends Component {
     render() {
 
         return (
-            <Navbar dark expand="md">
+            <Navbar dark expand="md" className="apply-shadow">
                 <div className="container">
 
                     <NavbarToggler onClick={this.toggleNav} />

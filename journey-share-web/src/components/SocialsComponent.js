@@ -31,7 +31,7 @@ export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize })
             <div className='row'>
                 <div className='col-12 col-sm'>
                     {/* <Navbar navbar className="justify-content-center"> */}
-                    <Nav tabs className="justify-content-center">
+                    <Nav tabs className="justify-content-center mt-1">
                         <NavItem>
                             <NavLink className={activeSocialTab.activeTab == '0' ? 'active' : ''} onClick={() => toggleTab('0')}>
                                 <span className='fa fa-lg fa-list'></span> Feed

@@ -206,7 +206,7 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
 
     return (
         <div className="container">
-            <div className="row mt-3" id="search-section">
+            <div className="row mt-3 apply-shadow" id="search-section">
                 <div className="col-12 col-sm">
                     <div className="row border-bottom p-3">
                         <div className="col-12 d-flex justify-content-center">
