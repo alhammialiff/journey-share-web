@@ -50,7 +50,7 @@ export const JumbotronComponent = ({ jumbotronHeader }) => {
     
     // [Debug]
     console.log("In JumbotronComponent - jumbotronHeader", jumbotronHeader);
-    const items = jumbotronHeader.PROMOTIONS;
+    const items = jumbotronHeader.PROMOTIONS === undefined? jumbotronHeader.WELCOME:"";
 
     const carouselItems = items.map((item) => {
         return (

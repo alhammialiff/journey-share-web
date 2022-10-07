@@ -14,6 +14,7 @@ import WelcomePage from './WelcomePageComponent';
 
 const mapStateToProps = state => {
     return {
+        welcome: state.welcome,
         promotions: state.promotions,
         treks: state.treks.TREKS,
         search: state.search,
@@ -125,7 +126,7 @@ class MainComponent extends Component {
                     <>
                         <Header />
                         <Switch>
-                            <Route path="/signin" component={() => <WelcomePage jumbotronHeader={this.props.promotions} />} />
+                            <Route path="/signin" component={() => <WelcomePage jumbotronHeader={this.props.welcome} />} />
                             <Redirect to="/signin" />
                         </Switch>
                     </>

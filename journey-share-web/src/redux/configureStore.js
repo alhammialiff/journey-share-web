@@ -10,6 +10,7 @@ import { InitialSearch } from './forms';
 import { Search } from './search';
 import { Users } from './users';
 import { WindowSize } from './windowSize';
+import { Welcome } from './welcome';
 // To import more reducers along the way
 
 export const ConfigureStore = () => {
@@ -18,6 +19,7 @@ export const ConfigureStore = () => {
         
         combineReducers({
             windowSize: WindowSize,
+            welcome: Welcome,
             promotions: Promotions,
             treks: Treks,
             users: Users,

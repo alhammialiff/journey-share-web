@@ -9,6 +9,11 @@ export const addPromos = (promos) => ({
     payload: promos
 });
 
+export const addWelcome = (welcome) => ({
+    type: ActionTypes.ADD_WELCOME,
+    payload: welcome
+});
+
 export const addTreks = (treks) => ({
     type: ActionTypes.ADD_TREKS,
     payload: treks
