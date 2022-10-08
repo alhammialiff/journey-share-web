@@ -2,33 +2,27 @@ import React, { Component, useEffect, useState } from 'react';
 import { Navbar, NavbarBrand, Jumbotron, Nav, NavbarToggler, Collapse, NavItem, Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
-export const MyAccountNavLink = () => {
+export const MyAccountNavLink = ({windowSize}) => {
 
-    var [navText, setNavText] = useState(window.innerWidth < 768);
-
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
 
         function MyAccount() {
-            console.log("In MyAccount - window.innerWidth", window.innerWidth);
-
+            setWindowWidth(window.innerWidth);
+            console.log("innerWidth", windowWidth);
         }
         // Listen to resize event for any updates
         window.addEventListener('resize', MyAccount);
-
-        // Remove resize eventlistener on cleanup
+        
+        // Remove resize eventlistener during component unmount
         return () => window.removeEventListener('resize', MyAccount);
-
-    }, [window.innerWidth]);
-
-
-
-    console.log("Bool result: ", navText);
+        
+    },[windowWidth]);
 
     return (
         <>
-            {navText && <span>My Account</span>}
-            {!navText && <span className='fa fa-user'></span>}
+            <span>{windowWidth < 768? <span>My Account</span>:<span className='fa fa-user fa-lg'></span>}</span>
         </>
     );
 }
@@ -78,7 +72,7 @@ class Header extends Component {
                             </NavItem>
                             <NavLink id="my-account-icon" className="nav-link" to="/home" data-toggle="dropdown"
                                 data-target="#my-account-dropdown">
-                                <MyAccountNavLink />
+                                <MyAccountNavLink windowSize={this.props.windowSize} />
                             </NavLink>
                         </Nav>
                     </Collapse>

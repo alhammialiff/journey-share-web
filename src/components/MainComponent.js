@@ -50,18 +50,6 @@ const WindowSizeObserver = ({ storeWindowSize }) => {
 
     }, [window.innerWidth]);
 
-    const checkWidth = () => {
-        var vw = window.innerWidth;
-        console.log('width ' + vw);
-
-        // Hide username from navbar
-        // if (vw < 765) {
-        //     $('#my-account-username').hide();
-        // } else {
-        //     $('#my-account-username').show();
-        // }
-
-    }
 }
 
 class MainComponent extends Component {
@@ -85,14 +73,10 @@ class MainComponent extends Component {
 
     }
 
-
-
     componentDidMount() {
         console.log(window.innerWidth);
         console.log(document.readyState);
     }
-
-
 
     render() {
         //Header Component
@@ -109,6 +93,7 @@ class MainComponent extends Component {
         // console.log("Checking state.activeSocialTab - ", this.props.activeSocialTab);
         // console.log("Checking state.users - ", this.props.users);
         // console.log("Checking state.windowSize - ", this.props.windowSize);
+        
         console.log("Checking state.windowSize - ", this.props.promotions);
 
         return (
@@ -124,7 +109,7 @@ class MainComponent extends Component {
                     </>
                     :
                     <>
-                        <Header />
+                        <Header windowSize={this.props.windowSize} />
                         <Switch>
                             <Route path="/signin" component={() => <WelcomePage jumbotronHeader={this.props.welcome} />} />
                             <Redirect to="/signin" />
