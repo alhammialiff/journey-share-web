@@ -49,7 +49,7 @@ export const JumbotronComponent = ({ jumbotronHeader }) => {
 
 
     // [Debug]
-    console.log("In JumbotronComponent - jumbotronHeader", jumbotronHeader);
+    // console.log("In JumbotronComponent - jumbotronHeader", jumbotronHeader);
     const items = jumbotronHeader.PROMOTIONS === undefined ? jumbotronHeader.WELCOME : jumbotronHeader.PROMOTIONS;
 
     const carouselItems = items.map((item) => {
@@ -62,7 +62,7 @@ export const JumbotronComponent = ({ jumbotronHeader }) => {
                     <img className="img-fluid jumbotron-image" src={item.primarySrc} alt={item.altText} />
                 </picture>
                 <CarouselCaption id={item.cssId} className="carousel-caption" captionText={item.description} captionHeader={item.caption}>
-                    <p>
+                    <p className='lead'>
                         <strong>{item.caption}</strong> <br />
                         {item.description} <br />
                         {item.trekkingDate}

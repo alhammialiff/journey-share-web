@@ -18,5 +18,25 @@ export const PROMOTIONS = [
         secondarySrc: '/assets/images/rinjani-national-park-mobile.jpg',
         cssId: 'carousel-caption-2',
         altText: 'Rinjani National Park Promo'
+    },
+    {
+        id: 2,
+        caption: 'Bukit Timah Hill',
+        description: 'Indonesia | 6 pax',
+        trekkingDate: '08.12.2022 - 13.12.2022',
+        primarySrc: '/assets/images/bt-hill.jpg',
+        secondarySrc: '/assets/images/rinjani-national-park-mobile.jpg',
+        cssId: 'carousel-caption-2',
+        altText: 'Rinjani National Park Promo'
+    },
+    {
+        id: 3,
+        caption: 'Doi Inthanon',
+        description: 'Thailand | 8 pax',
+        trekkingDate: '08.12.2022 - 13.12.2022',
+        primarySrc: '/assets/images/doi-inthanon-2.jpg',
+        secondarySrc: '/assets/images/rinjani-national-park-mobile.jpg',
+        cssId: 'carousel-caption-2',
+        altText: 'Rinjani National Park Promo'
     }
 ]

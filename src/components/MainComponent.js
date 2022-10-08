@@ -69,7 +69,7 @@ class MainComponent extends Component {
         super(props);
 
         this.state = {
-            isLoggedIn: false
+            isLoggedIn: true
         }
     }
 
@@ -115,7 +115,7 @@ class MainComponent extends Component {
             <div>
                 {this.state.isLoggedIn ?
                     <>
-                        <Header />
+                        <Header windowSize={this.props.windowSize} />
                         <Switch>
                             <Route path="/home" component={() => <HomePage jumbotronHeader={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
                             <Route path="/socials" component={() => <Socials activeSocialTab={this.props.activeSocialTab} toggleSocialTab={this.props.toggleSocialTab} users={this.props.users} windowSize={this.props.windowSize} />} />
