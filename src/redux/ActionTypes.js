@@ -10,3 +10,4 @@ export const ADD_SEARCH_RESULT = 'ADD_SEARCH_RESULT';
 export const TOGGLE_SOCIAL_TAB = 'TOGGLE_SOCIAL_TAB';
 export const ADD_USERS = 'ADD_USERS';
 export const STORE_WINDOW_SIZE = 'STORE_WINDOW_SIZE';
+export const ADD_COMMENT = 'ADD_COMMENT';

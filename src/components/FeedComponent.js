@@ -22,7 +22,7 @@ export const Feed = ({ users }) => {
         return findFriendsData;
     });
 
-    console.log("In feed - friendsData, ", friendsData);
+    // console.log("In feed - friendsData, ", friendsData);
 
     // Extract friends' social post object and append profilePic key in each social post header
     var friendSocialPosts = friendsData.map((friendData, index) => {
@@ -30,7 +30,7 @@ export const Feed = ({ users }) => {
         var friendPosts = friendData[0].body.socialPosts;
 
         friendPosts.map(post => post.postHeader.profilePic = friendData[0].header.profilePic);
-        console.log('In Feed - friendPosts', friendPosts, "index", index);
+        // console.log('In Feed - friendPosts', friendPosts, "index", index);
         return friendPosts;
 
     });
@@ -49,7 +49,7 @@ export const Feed = ({ users }) => {
 
     // Sort all posts by date
     allSocialPosts = allSocialPosts.sort((post1, post2) => new Date(post1.postHeader.dateTime) - new Date(post2.postHeader.dateTime));
-    console.log("sorted allSocialPost - ", allSocialPosts);
+    // console.log("sorted allSocialPost - ", allSocialPosts);
 
     return (
         <div className='container'>

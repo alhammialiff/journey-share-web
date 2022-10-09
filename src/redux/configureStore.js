@@ -9,6 +9,7 @@ import { SocialTabs } from './socialTabs';
 import { InitialSearch } from './forms';
 import { Search } from './search';
 import { Users } from './users';
+import { Comments } from './comments';
 import { WindowSize } from './windowSize';
 import { Welcome } from './welcome';
 // To import more reducers along the way
@@ -24,6 +25,7 @@ export const ConfigureStore = () => {
             treks: Treks,
             users: Users,
             activeSocialTab: SocialTabs,
+            comments: Comments,
             // Quick search state (search) is linked to react-redux-form createForms()
             // 'search' state is linked to 'Search' reducer (search.js) 
             ...createForms({

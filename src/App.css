@@ -6,6 +6,10 @@
   box-shadow: 0px 2px 4px #a8a8a8
 }
 
+#comment-button-group{
+  color: white;
+}
+
 .jumbotron {
   background-color: white;
   margin-top: 80px; }

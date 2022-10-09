@@ -22,7 +22,7 @@ export const addTreks = (treks) => ({
 export const addSearchQuery = (search) => ({
     type: ActionTypes.ADD_SEARCH_QUERY,
     payload: search
-})
+});
 
 // Sends a dispatcher to retrieve user search query and store in redux store
 export const postSearchQuery = (location, trekType, pax, country, region, dateFrom, dateTo) => (dispatch) => {
@@ -39,7 +39,7 @@ export const postSearchQuery = (location, trekType, pax, country, region, dateFr
 
     return dispatch(addSearchQuery(newSearch));
 
-}
+};
 
 // Action to toggle Social Tab in Social Feed
 export const toggleSocialTab = (tabNum) => ({
@@ -50,10 +50,28 @@ export const toggleSocialTab = (tabNum) => ({
 export const addUsers = (users) => ({
     type: ActionTypes.ADD_USERS,
     payload: users
-})
+});
 
-// [Dev in progress: To store window size in redux store]
 export const storeWindowSize = (windowSize) => ({
-    type:ActionTypes.STORE_WINDOW_SIZE,
+    type: ActionTypes.STORE_WINDOW_SIZE,
     payload: windowSize
-})
+});
+
+export const addComment = (comment) => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comment
+});
+
+// Post Comment in social post comment section
+export const postComment = (author, profilePic, commentDate, reactions, text) => (dispatch) => {
+
+    const newComment = {
+        author: author,
+        profilePic: profilePic,
+        commentDate: commentDate,
+        reactions: reactions,
+        text: text
+    }
+
+    return dispatch(addComment(newComment));
+}

@@ -9,8 +9,8 @@ export const HomePage = ({ jumbotronHeader, treks, search, postSearchQuery }) =>
     // Jumbotron
     // Search Query
     // Search Result
-    console.log("In HomePage - promos ", jumbotronHeader);
-    console.log("In HomePage - treks ", treks);
+    // console.log("In HomePage - promos ", jumbotronHeader);
+    // console.log("In HomePage - treks ", treks);
     
 
     return (

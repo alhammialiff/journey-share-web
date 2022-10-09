@@ -1,13 +1,15 @@
 import React from 'react';
+import { Button, ButtonGroup, InputGroup, InputGroupText } from 'reactstrap';
+import { Control, Form, Errors } from 'react-redux-form';
 
 
 export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }) => {
-    
+
     // [Debug]
     // console.log("Date ",socialPostData.map((socialPost) => socialPost.postHeader.dateTime));
     // console.log("Date Object: ",socialPostData.map((socialPost) => new Date(socialPost.postHeader.dateTime)));
-    
-    console.log("Sort social post: ", socialPostData.sort((post1,post2) => new Date(post2.postHeader.dateTime) - new Date(post1.postHeader.dateTime)));
+
+    console.log("Sort social post: ", socialPostData.sort((post1, post2) => new Date(post2.postHeader.dateTime) - new Date(post1.postHeader.dateTime)));
 
     const RenderSocialPost = socialPostData.map(socialPost => {
 
@@ -56,6 +58,34 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
                                     <img src={socialPost.postBody.image} className="img-fluid" />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className='row mt-2 mb-2'>
+                        <div className='col-12 col-md'>
+                            <Form id='comment-section' model='comment'>
+                                <div id='comment-control' className='row'>
+                                        <ButtonGroup className='col-12 col-md-12 btn-group-sm' role='group'>
+                                            <Button type='button' className='col btn-light'> Like </Button>
+                                            <Button type='button' className='col btn-light'> Love </Button>
+                                            <Button type='button' className='col btn-light'> Laugh </Button>
+                                            <Button type='button' className='col btn-light'> Celebrate </Button>
+                                            <Button type='button' className='col btn-light'> Support </Button>
+                                            <Button type='button' className='col btn-light'> Share </Button>
+                                        </ButtonGroup>
+                                </div>
+                                <div className='row'>
+                                    <div id='comment-textbox' className='col-12 col-md'>
+                                        <InputGroup>
+                                            <Control.text
+                                                model=".location"
+                                                className="form-control"
+                                                id="location"
+                                                name="location"
+                                                placeholder="Comments..." />
+                                        </InputGroup>
+                                    </div>
+                                </div>
+                            </Form>
                         </div>
                     </div>
 

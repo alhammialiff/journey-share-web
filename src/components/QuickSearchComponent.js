@@ -203,7 +203,6 @@ export const QuickSearch = ({ treks, search, postSearchQuery }) => {
 
     }
 
-
     return (
         <div className="container">
             <div className="row mt-3 apply-shadow" id="search-section">
