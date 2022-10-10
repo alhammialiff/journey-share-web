@@ -1,6 +1,7 @@
 export const USERS = [{
     header: {
-        userName: 'John Doe',
+        userName: 'johndoe93',
+        profileName: 'John Doe',
         profilePic: '/assets/images/jesse-pinkman.png',
         country: 'Japan',
         journeyShared: 4,
@@ -115,7 +116,8 @@ export const USERS = [{
     }
 }, {
     header: {
-        userName: 'Kim Wexler',
+        userName: 'kim_wexler85',
+        profileName: 'Kim Wexler',
         profilePic: '/assets/images/kim-wexler.jpg',
         country: 'Japan',
         journeyShared: 4,
@@ -186,7 +188,8 @@ export const USERS = [{
     }
 }, {
     header: {
-        userName: 'Lalo Salamanca',
+        userName: 'lalo95',
+        profileName: 'Lalo Salamanca',
         profilePic: '/assets/images/lalo-salamanca.jpg',
         country: 'Japan',
         journeyShared: 4,
@@ -252,7 +255,8 @@ export const USERS = [{
     }
 }, {
     header: {
-        userName: 'Saul Goodman',
+        userName: 'itsall_goodman',
+        profileName: 'Saul Goodman',
         profilePic: '/assets/images/saul-goodman.jfif',
         country: 'Japan',
         journeyShared: 4,

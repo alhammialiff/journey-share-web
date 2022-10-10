@@ -29,7 +29,8 @@ export const ConfigureStore = () => {
             // Quick search state (search) is linked to react-redux-form createForms()
             // 'search' state is linked to 'Search' reducer (search.js) 
             ...createForms({
-                search: Search
+                search: Search,
+                comment: Comments
             })
         }),
         // Redux enhancers

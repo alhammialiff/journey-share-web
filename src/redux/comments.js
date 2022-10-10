@@ -9,7 +9,8 @@ const COMMENTS = USERS.map((user)=>{
 export const Comments = (state = {COMMENTS}, action) => {
     switch (action.type) {
         case 'ADD_COMMENT':
-            return { comments: action.payload };
+            console.log("In ADD_COMMENT", action.payload)
+            return { ...state, comments: action.payload };
         default:
             return state;
     }

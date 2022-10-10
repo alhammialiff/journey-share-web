@@ -12,7 +12,7 @@ const RenderFriendsSection = (props) => {
                 <img id="friends-section-image" className="card-img-top" width="100px" height="100px" src={friend.profilePic} alt="" />
                 {/* </div> */}
                 <CardBody id="friends-section-card-body">
-                    <p className="card-text">{friend.userName}</p>
+                    <p className="card-text">{friend.profileName}</p>
                 </CardBody>
             </Card>
         );
@@ -72,7 +72,7 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
                             {/* <!-- Profile Name --> */}
                             <div className="row">
                                 <div className="col-12 col-sm-12 d-flex justify-content-center">
-                                    <h4>{thisUserInfo.header.userName}</h4>
+                                    <h4>{thisUserInfo.header.profileName}</h4>
                                 </div>
                             </div>
                             {/* <!-- Profile Info --> */}
@@ -126,16 +126,24 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
 export const RenderBodySection = ({ users }) => {
     var socialPostData = users.USERS[0].body.socialPosts;
 
+    console.log("In RenderBodySection - socialPostData", socialPostData);
+
     // Map user profilePic under postHeader object data
-    socialPostData.map(post => post.postHeader.profilePic = users.USERS[0].header.profilePic);
+    // socialPostData.map(post => post.postHeader.profilePic = users.USERS[0].header.profilePic);
+    socialPostData.map(post => {
+        if(post.postHeader.profilePic === undefined){
+            console.log("friendPost.map - adding profilePic", post)
+            return post.postHeader.profilePic = users.USERS[0].header.profilePic;
+        }else{
+            return post.postHeader.profilePic;
+        }
+
+        // console.log("In friendPost.map() - ",post);
+    });
     console.log("In RenderBodySection - socialPostData", socialPostData);
 
     return (
-
-
         <SocialPosts socialPostData={socialPostData} />
-
-
     );
 }
 

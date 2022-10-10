@@ -15,7 +15,7 @@ import { RenderMyProfileTab } from './MyProfileComponent';
 
 const store = ConfigureStore();
 
-export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize }) => {
+export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize, postComment, thisUser }) => {
     console.log('In Social Feed - windowSize', windowSize);
 
     const toggleTab = (tabNum) => {
@@ -58,7 +58,7 @@ export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize })
                         <TabPane tabId="0">
                             <Row>
                                 <Col>
-                                    <Feed users={users} />
+                                    <Feed users={users} postComment={postComment} thisUser={thisUser} />
                                 </Col>
                             </Row>
                         </TabPane>
@@ -66,7 +66,7 @@ export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize })
                         <TabPane tabId="1">
                             <Row>
                                 <Col>
-                                    <RenderMyProfileTab users={users} />
+                                    <RenderMyProfileTab users={users} postComment={postComment}/>
                                 </Col>
                             </Row>
                         </TabPane>

@@ -47,6 +47,12 @@ export const toggleSocialTab = (tabNum) => ({
     payload: tabNum
 });
 
+// Temporary action to replicate authenticated user (i.e John Doe)
+export const getThisUser = (userName) => ({
+    type: ActionTypes.GET_THIS_USER,
+    payload: userName
+});
+
 export const addUsers = (users) => ({
     type: ActionTypes.ADD_USERS,
     payload: users

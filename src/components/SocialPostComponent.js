@@ -3,15 +3,32 @@ import { Button, ButtonGroup, InputGroup, InputGroupText } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 
 
-export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }) => {
+export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
 
-    // [Debug]
-    // console.log("Date ",socialPostData.map((socialPost) => socialPost.postHeader.dateTime));
-    // console.log("Date Object: ",socialPostData.map((socialPost) => new Date(socialPost.postHeader.dateTime)));
+    // Create a copy of socialPosts because socialPostData is read-only (will throw error)
+    var socialPosts = [...socialPostData];
+    console.log("socialPosts", socialPosts);
+    socialPosts.sort((post1, post2) => new Date(post2.postHeader.dateTime) - new Date(post1.postHeader.dateTime))
 
-    console.log("Sort social post: ", socialPostData.sort((post1, post2) => new Date(post2.postHeader.dateTime) - new Date(post1.postHeader.dateTime)));
+    const handleSubmitComment = (values) => {
+        console.log("In handleSubmitComment - values,", values);
+        console.log("In handleSubmitComment - thisUser,", thisUser[0].header.profileName);
+        const author = thisUser[0].header.profileName;
+        const authorProfilePic = thisUser[0].header.profilePic;
+        const dateTime = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+        const dummyReaction = {
+            like: 0,
+            love: 1,
+            laugh: 0,
+            celebrate: 0,
+            support: 0
+        }
 
-    const RenderSocialPost = socialPostData.map(socialPost => {
+        postComment(author, authorProfilePic, dateTime, dummyReaction, values.comment);
+
+    }
+
+    const RenderSocialPost = socialPosts.map(socialPost => {
 
         return (
             <div className="row">
@@ -62,26 +79,27 @@ export const SocialPosts = ({ socialPostData, thisUserProfilePic, thisUserName }
                     </div>
                     <div className='row mt-2 mb-2'>
                         <div className='col-12 col-md'>
-                            <Form id='comment-section' model='comment'>
+                            <Form id='comment-section' model='comment' onSubmit={(values) => handleSubmitComment(values)}>
                                 <div id='comment-control' className='row'>
-                                        <ButtonGroup className='col-12 col-md-12 btn-group-sm' role='group'>
-                                            <Button type='button' className='col btn-light'> Like </Button>
-                                            <Button type='button' className='col btn-light'> Love </Button>
-                                            <Button type='button' className='col btn-light'> Laugh </Button>
-                                            <Button type='button' className='col btn-light'> Celebrate </Button>
-                                            <Button type='button' className='col btn-light'> Support </Button>
-                                            <Button type='button' className='col btn-light'> Share </Button>
-                                        </ButtonGroup>
+                                    <ButtonGroup className='col-12 col-md-12 btn-group-sm' role='group'>
+                                        <Button type='button' className='col btn-light'> Like </Button>
+                                        <Button type='button' className='col btn-light'> Love </Button>
+                                        <Button type='button' className='col btn-light'> Laugh </Button>
+                                        <Button type='button' className='col btn-light'> Celebrate </Button>
+                                        <Button type='button' className='col btn-light'> Support </Button>
+                                        <Button type='button' className='col btn-light'> Share </Button>
+                                    </ButtonGroup>
                                 </div>
                                 <div className='row'>
                                     <div id='comment-textbox' className='col-12 col-md'>
                                         <InputGroup>
                                             <Control.text
-                                                model=".location"
-                                                className="form-control"
-                                                id="location"
-                                                name="location"
+                                                model=".comment"
+                                                className="form-control col-10"
+                                                id="comment"
+                                                name="comment"
                                                 placeholder="Comments..." />
+                                            <Button type='submit' className='col-2 btn-sm btn-light'> Post </Button>
                                         </InputGroup>
                                     </div>
                                 </div>

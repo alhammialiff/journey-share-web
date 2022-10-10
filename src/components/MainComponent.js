@@ -8,9 +8,11 @@ import Header from './HeaderComponent';
 import JumbotronComponent from './JumbotronComponent';
 import { HomePage } from './HomeComponent';
 import { Socials } from './SocialsComponent';
-import { storeWindowSize, postSearchQuery, toggleSocialTab, postComment } from '../redux/ActionCreators';
+import { storeWindowSize, postSearchQuery, toggleSocialTab, postComment, getThisUser } from '../redux/ActionCreators';
 import WelcomePage from './WelcomePageComponent';
 
+// Temporary fix to replicate authenticated user (i.e John Doe)
+const dummyUserName = {userName: 'johndoe93'};
 
 const mapStateToProps = state => {
     return {
@@ -37,7 +39,9 @@ const mapDispatchToProps = dispatch => ({
     // Store window size
     storeWindowSize: (windowSize) => dispatch(storeWindowSize(windowSize)),
 
-    postComment: (author, profilePic, commentDate, reactions, text) => dispatch(postComment(author, profilePic, commentDate, reactions, text))
+    postComment: (author, profilePic, commentDate, reactions, text) => dispatch(postComment(author, profilePic, commentDate, reactions, text)),
+
+    getThisUser: (dummyUserName) => dispatch(getThisUser(dummyUserName))
 
 })
 
@@ -79,6 +83,10 @@ class MainComponent extends Component {
     componentDidMount() {
         console.log(window.innerWidth);
         console.log(document.readyState);
+        // console.log(dummyUserName);
+        this.props.getThisUser(dummyUserName);
+        console.log("thisUser",this.props.users);
+
     }
 
     render() {
@@ -99,6 +107,7 @@ class MainComponent extends Component {
         console.log("Checking state.comments - ", this.props.comments);
 
         console.log("Checking state.windowSize - ", this.props.promotions);
+        console.log("Checking state.users - ", this.props.users);
 
         return (
             <div>
@@ -106,9 +115,21 @@ class MainComponent extends Component {
                 {this.state.isLoggedIn ?
                     <>
                         <Switch>
-                            <Route path="/home" component={() => <HomePage jumbotronHeader={this.props.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
-                            <Route path="/socials" component={() => <Socials activeSocialTab={this.props.activeSocialTab} toggleSocialTab={this.props.toggleSocialTab} users={this.props.users} windowSize={this.props.windowSize} />} />
-                            <Route path="/signin" component={() => <WelcomePage jumbotronHeader={this.props.welcome} />} />
+                            <Route path="/home" component={() => 
+                                <HomePage jumbotronHeader={this.props.promotions} 
+                                    treks={this.props.treks} 
+                                    search={this.props.search} 
+                                    postSearchQuery={this.props.postSearchQuery} 
+                                    windowSize={this.props.windowSize} />} />
+                            <Route path="/socials" component={() => 
+                                <Socials activeSocialTab={this.props.activeSocialTab} 
+                                    toggleSocialTab={this.props.toggleSocialTab} 
+                                    users={this.props.users} 
+                                    windowSize={this.props.windowSize}
+                                    postComment={this.props.postComment} 
+                                    thisUser={this.props.users.thisUser} />} />
+                            <Route path="/signin" component={() => 
+                                <WelcomePage jumbotronHeader={this.props.welcome} />} />
                             <Redirect to="/home" />
                         </Switch>
                     </>
