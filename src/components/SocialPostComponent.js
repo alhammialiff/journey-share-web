@@ -12,7 +12,7 @@ export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
 
     const handleSubmitComment = (values) => {
         console.log("In handleSubmitComment - values,", values);
-        console.log("In handleSubmitComment - thisUser,", thisUser[0].header.profileName);
+        console.log("In handleSubmitComment - thisUser,", thisUser);
         const author = thisUser[0].header.profileName;
         const authorProfilePic = thisUser[0].header.profilePic;
         const dateTime = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" });

@@ -1,12 +1,25 @@
 import * as ActionTypes from './ActionTypes';
 import { PROMOTIONS } from '../shared/promotions';
 
-// Treks reducer
-export const Promotions = (state = { PROMOTIONS }, action) => {
+
+
+// Promotions reducer
+export const Promotions = (state = { 
+    isLoading: false,
+    errMess: null,
+    promotions: []
+ }, action) => {
+    
     switch (action.type) {
         case ActionTypes.ADD_PROMOS:
             console.log("In Promotions reducers - ADD_PROMOS - action.payload ", action.payload);
-            return { ...state, promos: state.promos.concat(action.payload) };
+            return { ...state, isLoading: false, errMess: null, promotions: action.payload};
+        case ActionTypes.PROMOS_LOADING:
+            console.log("In Promotions reducers - PROMOS_LOADING - action.payload ", action.payload);
+            return { ...state, isLoading: true, errMess: null, promotions: []};
+        case ActionTypes.PROMOS_FAILED:
+            console.log("In Promotions reducers - PROMOS_FAILED - action.payload ", action.payload);
+            return { ...state, isLoading: false, errMess: action.payload, promotions: []};
         default:
             return state;
     }
