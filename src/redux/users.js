@@ -42,6 +42,8 @@ export const Users = (state = { USERS }, action) => {
             return { ...state, thisUser: thisUserData };       
         case ActionTypes.ADD_USERS:
             return { ...state, users: action.payload };
+        case ActionTypes.APPEND_PROFILE_PIC:
+            return { ...state, }
         default:
             return state;
     }

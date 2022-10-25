@@ -10,10 +10,8 @@ import { Card, CardBody, Navbar, NavLink, NavItem, Nav, CardHeader, TabPane, Tab
 // import { NavLink } from 'react-router-dom';
 // import { toggleSocialTab } from '../redux/ActionCreators';
 import { Feed } from './FeedComponent';
-import { ConfigureStore } from '../redux/configureStore';
 import { RenderMyProfileTab } from './MyProfileComponent';
 
-const store = ConfigureStore();
 
 export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize, postComment, thisUser }) => {
     console.log('In Social Feed - windowSize', windowSize);

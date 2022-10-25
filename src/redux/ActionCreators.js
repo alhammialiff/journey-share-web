@@ -89,6 +89,11 @@ export const addUsers = (users) => ({
     payload: users
 });
 
+export const appendProfilePic = (profilePic) => ({
+    type: ActionTypes.APPEND_PROFILE_PIC,
+    payload: profilePic
+})
+
 export const storeWindowSize = (windowSize) => ({
     type: ActionTypes.STORE_WINDOW_SIZE,
     payload: windowSize

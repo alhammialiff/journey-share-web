@@ -34,6 +34,7 @@ export const Feed = ({ users, postComment, thisUser }) => {
             // If profilePic does not exist under postHeader, add it
             if(post.postHeader.profilePic === undefined){
                 console.log("friendPost.map - adding profilePic", post)
+                // [STOP HERE] Need to add new key value pair by letting the reducer do it instead of here
                 return post.postHeader.profilePic = friendData[0].header.profilePic;
             }else{
                 // Else, return an existing profilePic

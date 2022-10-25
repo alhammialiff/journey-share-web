@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Label, Col, Row, Table, InputGroup, InputGroupText } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
-import { ConfigureStore } from '../redux/configureStore';
-
 import { SearchResult } from './SearchResultComponent';
+import store from './../redux/configureStore';
 
-// Declare store state var 
-var store = ConfigureStore();
 
 // Render search result based on processSearch
 export const RenderSearchResult = ({ search, treks }) => {
@@ -65,10 +62,6 @@ export const RenderSearchResult = ({ search, treks }) => {
 }
 
 const processSearch = ({ search }) => {
-    // Filter by location
-    const treks = store.getState().treks.TREKS;
-
-    console.log("store.getStore.treks -- ", treks)
 
     if (search == undefined) {
         console.log("If processSearch - search.search", search);
@@ -98,7 +91,7 @@ const processSearch = ({ search }) => {
 // [TO-DO] RegMatch on input change for auto-completion feature
 const checkMatch = (inputVal) => {
     // console.log("Changed: ", inputVal);
-    // console.log("trek-",treks);
+    console.log("trek-",treks);
     const treks = store.getState().treks.TREKS;
     var regStr = inputVal.location + '.*';
     const regExp = new RegExp(regStr, 'gi');

@@ -7,7 +7,7 @@ import { PROMOTIONS } from '../shared/promotions';
 export const Promotions = (state = { 
     isLoading: false,
     errMess: null,
-    promotions: []
+    promotions: PROMOTIONS
  }, action) => {
     
     switch (action.type) {
@@ -21,6 +21,7 @@ export const Promotions = (state = {
             console.log("In Promotions reducers - PROMOS_FAILED - action.payload ", action.payload);
             return { ...state, isLoading: false, errMess: action.payload, promotions: []};
         default:
+            console.log("In Promotions reducers - default ");
             return state;
     }
 }

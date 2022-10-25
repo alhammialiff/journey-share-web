@@ -4,7 +4,7 @@ import { JumbotronComponent } from './JumbotronComponent';
 import { QuickSearch } from './QuickSearchComponent';
 import { SearchResult } from './SearchResultComponent';
 
-export const HomePage = ({ jumbotronHeader, treks, search, postSearchQuery }) => {
+export const HomePage = ({ isLoggedIn, treks, search, postSearchQuery }) => {
     // What I need here
     // Jumbotron
     // Search Query
@@ -15,7 +15,7 @@ export const HomePage = ({ jumbotronHeader, treks, search, postSearchQuery }) =>
 
     return (
         <>
-            <JumbotronComponent jumbotronHeader={jumbotronHeader} />
+            <JumbotronComponent isLoggedIn={isLoggedIn} />
             <QuickSearch treks={treks} search={search} postSearchQuery = {postSearchQuery} />
             {/* <SearchResult /> */}
         </>

@@ -127,7 +127,7 @@ class MainComponent extends Component {
                     <>
                         <Switch>
                             <Route path="/home" component={() =>
-                                <HomePage jumbotronHeader={this.props.promotions.promotions}
+                                <HomePage isLoggedIn={this.state.isLoggedIn}
                                     treks={this.props.treks}
                                     search={this.props.search}
                                     postSearchQuery={this.props.postSearchQuery}
@@ -140,15 +140,15 @@ class MainComponent extends Component {
                                     postComment={this.props.postComment}
                                     thisUser={this.props.users.thisUser} />} />
                             <Route path="/signin" component={() =>
-                                <WelcomePage jumbotronHeader={this.props.welcome} />} />
+                                <WelcomePage isLoggedIn={this.state.isLoggedIn} />} />
                             <Redirect to="/home" />
                         </Switch>
                     </>
                     :
                     <>
                         <Switch>
-                            <Route path="/signin" component={() => <WelcomePage jumbotronHeader={this.props.welcome} />} />
-                            <Route path="/home" component={() => <HomePage jumbotronHeader={this.props.promotions.promotions} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
+                            <Route path="/signin" component={() => <WelcomePage isLoggedIn={this.state.isLoggedIn} />} />
+                            <Route path="/home" component={() => <HomePage isLoggedIn={this.state.isLoggedIn} treks={this.props.treks} search={this.props.search} postSearchQuery={this.props.postSearchQuery} windowSize={this.props.windowSize} />} />
                             <Redirect to="/signin" />
                         </Switch>
                     </>

@@ -14,3 +14,4 @@ export const GET_THIS_USER = 'GET_THIS_USER';
 export const ADD_USERS = 'ADD_USERS';
 export const STORE_WINDOW_SIZE = 'STORE_WINDOW_SIZE';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const APPEND_PROFILE_PIC = 'APPEND_PROFILE_PIC';
