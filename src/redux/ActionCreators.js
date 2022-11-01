@@ -116,4 +116,4 @@ export const postComment = (author, profilePic, commentDate, reactions, text) =>
     }
 
     return dispatch(addComment(newComment));
-}
+};

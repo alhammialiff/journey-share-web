@@ -1,30 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Button, ButtonGroup, InputGroup, InputGroupText } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
+import { appendProfilePic } from '../redux/ActionCreators';
+import { createComments } from '../shared/comments';
 
+const mapDispatchToProps = {
+    appendProfilePic
+};
 
-export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
+export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser, dispatch }) => {
 
     // Create a copy of socialPosts because socialPostData is read-only (will throw error)
     var socialPosts = [...socialPostData];
     console.log("socialPosts", socialPosts);
     socialPosts.sort((post1, post2) => new Date(post2.postHeader.dateTime) - new Date(post1.postHeader.dateTime))
 
-    const handleSubmitComment = (values) => {
-        console.log("In handleSubmitComment - values,", values);
-        console.log("In handleSubmitComment - thisUser,", thisUser);
-        const author = thisUser[0].header.profileName;
-        const authorProfilePic = thisUser[0].header.profilePic;
-        const dateTime = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
-        const dummyReaction = {
-            like: 0,
-            love: 1,
-            laugh: 0,
-            celebrate: 0,
-            support: 0
-        }
+    // const handleSubmitComment = (values) => {
+    //     console.log("In handleSubmitComment - values,", values);
+    //     console.log("In handleSubmitComment - thisUser,", thisUser);
+    //     const authorName = thisUser[0].header.profileName;
+    //     const authorProfilePic = thisUser[0].header.profilePic;
 
-        postComment(author, authorProfilePic, dateTime, dummyReaction, values.comment);
+    //     // this.props.appendProfilePic('/assets/images/lalo-salamanca.jpg');
+
+    //     // const authorProfilePic = thisUser[0].header.profilePic;
+    //     // const authorProfilePic = '/assets/images/lalo-salamanca.jpg';
+    //     const dateTime = new Date().toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+    //     const dummyReaction = {
+    //         like: 0,
+    //         love: 1,
+    //         laugh: 0,
+    //         celebrate: 0,
+    //         support: 0
+    //     }
+
+    //     postComment(authorName, authorProfilePic, dateTime, dummyReaction, values.comment);
+
+    // }
+
+    const handleSubmitComment = (values) => {
 
     }
 
@@ -41,7 +56,7 @@ export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
 
                         {/* <!-- Post Profile Picture --> */}
                         <div className="col-12 col-sm-2">
-                            <img className="profile-pic" src={socialPost.postHeader.profilePic} width="100" />
+                            <img className="profile-pic" src={socialPost.profilePic} width="100" />
                         </div>
 
                         {/* <!-- Post Header --> */}
@@ -90,7 +105,7 @@ export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
                                         <Button type='button' className='col btn-light'> Share </Button>
                                     </ButtonGroup>
                                 </div>
-                                <div className='row'>
+                                {/* <div className='row'>
                                     <div id='comment-textbox' className='col-12 col-md'>
                                         <InputGroup>
                                             <Control.text
@@ -102,8 +117,11 @@ export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
                                             <Button type='submit' className='col-2 btn-sm btn-light'> Post </Button>
                                         </InputGroup>
                                     </div>
-                                </div>
+                                </div> */}
                             </Form>
+
+                            {/* Comment Component */}
+                            <Comments parentId={socialPost.postId} />
                         </div>
                     </div>
 
@@ -121,4 +139,39 @@ export const SocialPosts = ({ socialPostData, postComment, thisUser }) => {
     );
 }
 
-export default SocialPosts;
+
+export const Comments = ({ parentId }) => {
+    const [text, setText] = useState("");
+    console.log("text", text);
+
+    const addComment = (text) => {
+        createComments(text)
+    }
+
+    const onSubmit = () => {
+        console.log(text, parentId);
+        addComment(text, parentId);
+    }
+
+
+    return (
+        <form onSubmit={onSubmit}>
+            <div className='row'>
+                <div id='comment-textbox' className='col-12 col-md'>
+                    <InputGroup>
+                        <textarea
+                            className="form-control col-10"
+                            id="comment"
+                            value={text}
+                            name="comment"
+                            placeholder="Comments..."
+                            onChange={(e) => setText(e.target.value)} />
+                        <Button type='submit' className='col-2 btn-sm btn-light'> Post </Button>
+                    </InputGroup>
+                </div>
+            </div>
+        </form>
+    )
+}
+
+export default connect(mapDispatchToProps)(SocialPosts);

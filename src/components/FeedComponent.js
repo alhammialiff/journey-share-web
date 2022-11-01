@@ -4,12 +4,8 @@ import { Card, CardBody } from 'reactstrap';
 
 export const Feed = ({ users, postComment, thisUser }) => {
 
-    // 1. Check friends
+    // Check user's friends
     const friendsList = users.USERS[0].header.friends;
-    // console.log("In Feed - Check friends ", friendsList);
-    // console.log("In Feed - Check user header key ", Object.keys(users.USERS[0].header["profileName"]));
-
-    // 2. Consolidate all friends posts into an array
 
     // Map friends var to find friend's data
     const friendsData = friendsList.map((friend, index) => {
@@ -22,33 +18,21 @@ export const Feed = ({ users, postComment, thisUser }) => {
         return findFriendsData;
     });
 
-
-    // Extract friends' social post object and append profilePic key in each social post header
+    // Extract friends social post from friendsData (array) above
     var friendSocialPosts = friendsData.map((friendData, index) => {
+
         var friendPosts = friendData[0].body.socialPosts;
-        var friendProfilePic = friendData[0].header.profilePic;
 
-        // friendPosts.map(post => post.postHeader.profilePic = friendData[0].header.profilePic);
-        friendPosts.map(post => {
-
-            // If profilePic does not exist under postHeader, add it
-            if(post.postHeader.profilePic === undefined){
-                console.log("friendPost.map - adding profilePic", post)
-                // [STOP HERE] Need to add new key value pair by letting the reducer do it instead of here
-                return post.postHeader.profilePic = friendData[0].header.profilePic;
-            }else{
-                // Else, return an existing profilePic
-                return post.postHeader.profilePic;
-            }
-
-        });
-        
         return friendPosts;
 
     });
 
+    console.log("friendSocialPosts", friendSocialPosts);
+
     // Flatten array from multi-dimensional to single dimension
     friendSocialPosts = friendSocialPosts.flat();
+
+    console.log("friendSocialPosts", friendSocialPosts);
 
     // Retrieve this user's social posts
     var thisUserSocialPosts = users.USERS[0].body.socialPosts;
@@ -57,17 +41,38 @@ export const Feed = ({ users, postComment, thisUser }) => {
     var allSocialPosts = [...friendSocialPosts, ...thisUserSocialPosts]
 
     // console.log("In Feed - thisUserSocialPosts - ", thisUserSocialPosts);
-    // console.log("In Feed - allSocialPosts - ", allSocialPosts);
+    console.log("In Feed - allSocialPosts - ", allSocialPosts);
 
     // Sort all posts by date
     allSocialPosts = allSocialPosts.sort((post1, post2) => new Date(post1.postHeader.dateTime) - new Date(post2.postHeader.dateTime));
     // console.log("sorted allSocialPost - ", allSocialPosts);
+
+    // Map socialPosts with profilePic
+    allSocialPosts = allSocialPosts.map((post, idx) => {
+
+        // Filter user from USER that has the same profileName as post author
+        var result = users.USERS.filter(item => item.header.profileName == post.postHeader.author);
+
+        console.log("result", result);
+        console.log("post", post);
+
+        // Create new object and concat user's post data with filtered user's profilePic above
+        // (This is to avoid mutating redux states on component level) 
+        var appendedPost = {...post, profilePic: result[0].header.profilePic}
+
+        return appendedPost;
+
+    })
+
+    console.log("In Feed - allSocialPosts - ", allSocialPosts);
 
     return (
         <div className='container'>
             <SocialPosts socialPostData={allSocialPosts} postComment={postComment} thisUser={thisUser} />
         </div>
     );
+
+    
 }
 
 export default Feed;

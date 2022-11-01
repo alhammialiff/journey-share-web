@@ -27,13 +27,17 @@ const RenderFriendsSection = (props) => {
 
 const RenderProfileStats = ({ users }) => {
     console.log("In RenderProfileStats - user", users);
+
+    // Get followers/following/posts numbers via length
     var noOfFollowers = users.header.friends.length;
     var noOfFollowing = users.header.friends.length;
     var noOfPosts = users.body.socialPosts.length;
 
+    // Store each stat length in array 
     const profileStats = [noOfPosts, noOfFollowers, noOfFollowing];
     console.log("In RenderProfileStats - profileStats ", profileStats);
 
+    // Map stat array into JSX div
     const renderStats = profileStats.map(stat => {
         return (
             <div id="friends-stats" className="col-4 col-sm d-flex justify-content-center">
@@ -124,22 +128,17 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
 }
 
 export const RenderBodySection = ({ users }) => {
+    // Get user's posts (array)
     var socialPostData = users.USERS[0].body.socialPosts;
 
     console.log("In RenderBodySection - socialPostData", socialPostData);
 
-    // Map user profilePic under postHeader object data
-    // socialPostData.map(post => post.postHeader.profilePic = users.USERS[0].header.profilePic);
-    socialPostData.map(post => {
-        if(post.postHeader.profilePic === undefined){
-            console.log("friendPost.map - adding profilePic", post)
-            return post.postHeader.profilePic = users.USERS[0].header.profilePic;
-        }else{
-            return post.postHeader.profilePic;
-        }
+    // Create new object and append each user post with profilePic
+    // (This is a workaround to avoid mutating redux states on component level) 
+    socialPostData = socialPostData.map((post)=> {
+        return {...post, profilePic: users.USERS[0].header.profilePic}
+    })
 
-        // console.log("In friendPost.map() - ",post);
-    });
     console.log("In RenderBodySection - socialPostData", socialPostData);
 
     return (
@@ -148,6 +147,7 @@ export const RenderBodySection = ({ users }) => {
 }
 
 export const RenderMyProfileTab = ({ users }) => {
+
     console.log("In RenderMyProfileTab - users", users);
     var thisUserInfo = users.USERS[0];
     console.log("thisUserInfooo - ", thisUserInfo);

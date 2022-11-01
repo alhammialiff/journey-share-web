@@ -12,6 +12,7 @@ export const SocialTabs = (state = {InitialTab}, action) => {
             console.log("In SocialTabs Reducer - TOGGLE_SOCIAL_TAB - ", action.payload);
             return {
                 ...state, activeTab: action.payload
+                // ...state, ...action.payload
                 };
         default:
             return state;

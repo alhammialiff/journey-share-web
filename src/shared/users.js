@@ -1,6 +1,7 @@
 export const USERS = [{
     header: {
         userName: 'johndoe93',
+        userId: 0,
         profileName: 'John Doe',
         profilePic: '/assets/images/jesse-pinkman.png',
         country: 'Japan',
@@ -25,7 +26,7 @@ export const USERS = [{
     },
     body: {
         socialPosts: [{
-            id: 0,
+            postId: 0,
             postHeader: {
                 author: "John Doe",
                 taggedFriends: ["Lalo S.", "Kim W.", "Saul G."],
@@ -42,34 +43,9 @@ export const USERS = [{
                     celebrate: 0,
                     support: 0
                 },
-                comments: [{
-                    author:'Test author 1',
-                    profilePic: '/assets/images/kim-wexler.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 1,
-                        laugh: 0,
-                        celebrate: 0,
-                        support: 0
-                    },
-                    text: "Let's have this planned, you can be our guide :p"
-                },{
-                    author:'Test author 2',
-                    profilePic: '/assets/images/lalo-salamanca.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 0,
-                        laugh: 0,
-                        celebrate: 1,
-                        support: 0
-                    },
-                    text: "Majestic..."
-                } ]
             }
         }, {
-            id: 1,
+            postId: 1,
             postHeader: {
                 author: "John Doe",
                 taggedFriends: [],
@@ -86,37 +62,14 @@ export const USERS = [{
                     celebrate: 0,
                     support: 0
                 },
-                comments: [{
-                    author:'Test author 1',
-                    profilePic: '/assets/images/kim-wexler.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 1,
-                        laugh: 0,
-                        celebrate: 0,
-                        support: 0
-                    },
-                    text: "Let's have this planned, you can be our guide :p"
-                },{
-                    author:'Test author 2',
-                    profilePic: '/assets/images/lalo-salamanca.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 0,
-                        laugh: 0,
-                        celebrate: 1,
-                        support: 0
-                    },
-                    text: "Majestic..."
-                } ]
+                
             }
         }]
     }
 }, {
     header: {
         userName: 'kim_wexler85',
+        userId: 1,
         profileName: 'Kim Wexler',
         profilePic: '/assets/images/kim-wexler.jpg',
         country: 'Japan',
@@ -141,7 +94,7 @@ export const USERS = [{
     },
     body: {
         socialPosts: [{
-            id: 0,
+            postId: 2,
             postHeader: {
                 author: "Kim Wexler",
                 taggedFriends: [],
@@ -158,37 +111,14 @@ export const USERS = [{
                     celebrate: 0,
                     support: 0
                 },
-                comments: [{
-                    author:'Test author 1',
-                    profilePic: '/assets/images/kim-wexler.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 1,
-                        laugh: 0,
-                        celebrate: 0,
-                        support: 0
-                    },
-                    text: "Let's have this planned, you can be our guide :p"
-                },{
-                    author:'Test author 2',
-                    profilePic: '/assets/images/lalo-salamanca.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 0,
-                        laugh: 0,
-                        celebrate: 1,
-                        support: 0
-                    },
-                    text: "Majestic..."
-                } ]
+                
             }
         }]
     }
 }, {
     header: {
         userName: 'lalo95',
+        userId: 2,
         profileName: 'Lalo Salamanca',
         profilePic: '/assets/images/lalo-salamanca.jpg',
         country: 'Japan',
@@ -208,7 +138,7 @@ export const USERS = [{
     },
     body: {
         socialPosts: [{
-            id: 0,
+            postId: 3,
             postHeader: {
                 author: "Lalo Salamanca",
                 taggedFriends: ["Lalo S.", "Kim W.", "Saul G."],
@@ -225,37 +155,14 @@ export const USERS = [{
                     celebrate: 0,
                     support: 0
                 },
-                comments: [{
-                    author:'Test author 1',
-                    profilePic: '/assets/images/kim-wexler.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 1,
-                        laugh: 0,
-                        celebrate: 0,
-                        support: 0
-                    },
-                    text: "Let's have this planned, you can be our guide :p"
-                },{
-                    author:'Test author 2',
-                    profilePic: '/assets/images/lalo-salamanca.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 0,
-                        laugh: 0,
-                        celebrate: 1,
-                        support: 0
-                    },
-                    text: "Majestic..."
-                } ]
+                
             }
         }]
     }
 }, {
     header: {
         userName: 'itsall_goodman',
+        userId: 3,
         profileName: 'Saul Goodman',
         profilePic: '/assets/images/saul-goodman.jfif',
         country: 'Japan',
@@ -280,7 +187,7 @@ export const USERS = [{
     },
     body: {
         socialPosts: [{
-            id: 0,
+            postId: 4,
             postHeader: {
                 author: "Saul Goodman",
                 taggedFriends: ["Lalo S.", "Kim W.", "Saul G."],
@@ -297,34 +204,10 @@ export const USERS = [{
                     celebrate: 0,
                     support: 0
                 },
-                comments: [{
-                    author:'Test author 1',
-                    profilePic: '/assets/images/kim-wexler.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 1,
-                        laugh: 0,
-                        celebrate: 0,
-                        support: 0
-                    },
-                    text: "Let's have this planned, you can be our guide :p"
-                },{
-                    author:'Test author 2',
-                    profilePic: '/assets/images/lalo-salamanca.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 0,
-                        laugh: 0,
-                        celebrate: 1,
-                        support: 0
-                    },
-                    text: "Majestic..."
-                } ]
+                
             }
         }, {
-            id: 1,
+            postId: 5,
             postHeader: {
                 author: "Saul Goodman",
                 taggedFriends: [],
@@ -341,31 +224,7 @@ export const USERS = [{
                     celebrate: 0,
                     support: 0
                 },
-                comments: [{
-                    author:'Test author 1',
-                    profilePic: '/assets/images/kim-wexler.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 1,
-                        laugh: 0,
-                        celebrate: 0,
-                        support: 0
-                    },
-                    text: "Let's have this planned, you can be our guide :p"
-                },{
-                    author:'Test author 2',
-                    profilePic: '/assets/images/lalo-salamanca.jpg',
-                    commentDate: '2022-06-07 19:31:59',
-                    reactions: {
-                        like: 0,
-                        love: 0,
-                        laugh: 0,
-                        celebrate: 1,
-                        support: 0
-                    },
-                    text: "Majestic..."
-                } ]
+                
             }
         }]
     }

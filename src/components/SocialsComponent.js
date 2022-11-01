@@ -18,7 +18,7 @@ export const Socials = ({ activeSocialTab, toggleSocialTab, users, windowSize, p
 
     const toggleTab = (tabNum) => {
         // Set dispatcher to set toggleTab
-        console.log('In Social Feed - activeSocialTab', activeSocialTab.activeTab);
+        console.log('In Social Feed - activeSocialTab', activeSocialTab);
         console.log('In Social Feed - tabPane', tabNum);
         toggleSocialTab(tabNum);
     }

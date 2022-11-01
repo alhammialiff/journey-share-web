@@ -62,12 +62,12 @@ const WindowSizeObserver = ({ storeWindowSize }) => {
 
 }
 
-const FetchDataRoutine = ({fetchPromos, getThisUser}) => {
-    useEffect(()=>{
-        fetchPromos();
-        getThisUser(dummyUserName);
-    },[]);
-}
+// const FetchDataRoutine = ({fetchPromos, getThisUser}) => {
+//     useEffect(()=>{
+//         fetchPromos();
+//         getThisUser(dummyUserName);
+//     },[]);
+// }
 
 class MainComponent extends Component {
     constructor(props) {
@@ -121,7 +121,7 @@ class MainComponent extends Component {
 
         return (
             <div>
-                <FetchDataRoutine fetchPromos = {this.props.fetchPromos} getThisUser ={this.props.getThisUser} />
+                {/* <FetchDataRoutine fetchPromos = {this.props.fetchPromos} getThisUser ={this.props.getThisUser} /> */}
                 <Header windowSize={this.props.windowSize} isLoggedIn={this.state.isLoggedIn} />
                 {this.state.isLoggedIn ?
                     <>
