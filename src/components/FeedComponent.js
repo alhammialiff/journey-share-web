@@ -57,7 +57,7 @@ export const Feed = ({ users, postComment, thisUser }) => {
         console.log("post", post);
 
         // Create new object and concat user's post data with filtered user's profilePic above
-        // (This is to avoid mutating redux states on component level) 
+        // (This is a workaround to avoid mutating redux states on component level) 
         var appendedPost = {...post, profilePic: result[0].header.profilePic}
 
         return appendedPost;

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Button, ButtonGroup, InputGroup, InputGroupText } from 'reactstrap';
 import { Control, Form, Errors } from 'react-redux-form';
 import { appendProfilePic } from '../redux/ActionCreators';
 import { createComments } from '../shared/comments';
+import { getComments } from '../shared/comments';
 
 const mapDispatchToProps = {
     appendProfilePic
@@ -46,7 +47,7 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
     const RenderSocialPost = socialPosts.map(socialPost => {
 
         return (
-            <div className="row">
+            <div key={socialPost.postId} className="row">
 
                 {/* This whole div block can be iterate using map based on no. of posts */}
                 <div id="social-post" className="col-12 offset-lg-2 col-lg-8 apply-shadow mt-2">
@@ -121,7 +122,7 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
                             </Form>
 
                             {/* Comment Component */}
-                            <Comments parentId={socialPost.postId} />
+                            <CommentSection parentId={socialPost.postId} thisUser={thisUser} />
                         </div>
                     </div>
 
@@ -139,38 +140,81 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
     );
 }
 
-
-export const Comments = ({ parentId }) => {
+export const CommentSection = ({ parentId, thisUser }) => {
     const [text, setText] = useState("");
-    console.log("text", text);
+    const [backendComments, setBackendComments] = useState([]);
+    console.log("backendComments", backendComments);
 
-    const addComment = (text) => {
-        createComments(text)
+    useEffect(() => {
+        getComments().then((data) => {
+            setBackendComments(data);
+        });
+    }, []);
+
+    const getBackendComments = async () => {
+        console.log("backendComments - ", backendComments);
+        return backendComments;
     }
 
-    const onSubmit = () => {
+    const updateBackendComments = async (comment) => {
+        setBackendComments([...backendComments, comment]);
+        return backendComments;
+    }
+
+    const addComment = (text, parentId) => {
+        console.log(thisUser);
+        const author = thisUser.header.profileName;
+
+        createComments(author, text, parentId)
+            .then((comment) => {
+                updateBackendComments(comment);
+            })
+            .then(() => getBackendComments());
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
         console.log(text, parentId);
         addComment(text, parentId);
     }
 
+    // Map comment.parentId with postid
+    var displayComment = backendComments
+                            .filter((comment) => parentId == comment.parentId )
+                            .map((filteredComment) => {
+                                return(
+                                    <div className='row mt-0 pb-2'>
+                                        <p>{filteredComment.author}</p>
+                                        <p>{filteredComment.commentDate}</p>
+                                        <p>{filteredComment.text}</p>
+                                    </div>
+                                );
+                            });
+
+    console.log("displayComment, ",displayComment);
 
     return (
-        <form onSubmit={onSubmit}>
-            <div className='row'>
-                <div id='comment-textbox' className='col-12 col-md'>
-                    <InputGroup>
-                        <textarea
-                            className="form-control col-10"
-                            id="comment"
-                            value={text}
-                            name="comment"
-                            placeholder="Comments..."
-                            onChange={(e) => setText(e.target.value)} />
-                        <Button type='submit' className='col-2 btn-sm btn-light'> Post </Button>
-                    </InputGroup>
+        <>
+            <form onSubmit={(e) => onSubmit(e)}>
+                <div className='row'>
+                    <div id='comment-textbox' className='col-12 col-md'>
+                        <InputGroup>
+                            <textarea
+                                className="form-control col-10"
+                                id="comment"
+                                value={text}
+                                name="comment"
+                                placeholder="Comments..."
+                                onChange={(e) => setText(e.target.value)} />
+                            <Button type='submit' className='col-2 btn-sm btn-light'> Post </Button>
+                        </InputGroup>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+            {displayComment.length > 0 && displayComment}
+            
+        </>
+
     )
 }
 

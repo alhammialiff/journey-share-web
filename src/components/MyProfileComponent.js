@@ -43,8 +43,8 @@ const RenderProfileStats = ({ users }) => {
             <div id="friends-stats" className="col-4 col-sm d-flex justify-content-center">
                 <a href=''>{stat}</a>
             </div>
-        )
-    })
+        );
+    });
 
     return (
         <>
@@ -56,7 +56,7 @@ const RenderProfileStats = ({ users }) => {
 const RenderHeaderSection = ({ thisUserInfo }) => {
 
     var thisUserFriends = thisUserInfo.header.friends;
-    console.log("thisUserFriends - ", thisUserFriends)
+    console.log("thisUserFriends - ", thisUserFriends);
 
     return (
         <div id="profile-section" className="container p-4 apply-shadow">
@@ -135,14 +135,14 @@ export const RenderBodySection = ({ users }) => {
 
     // Create new object and append each user post with profilePic
     // (This is a workaround to avoid mutating redux states on component level) 
-    socialPostData = socialPostData.map((post)=> {
-        return {...post, profilePic: users.USERS[0].header.profilePic}
+    socialPostData = socialPostData.map((post) => {
+        return { ...post, profilePic: users.USERS[0].header.profilePic }
     })
 
     console.log("In RenderBodySection - socialPostData", socialPostData);
 
     return (
-        <SocialPosts socialPostData={socialPostData} />
+        <SocialPosts socialPostData={socialPostData} thisUser={users.USERS[0]} />
     );
 }
 
