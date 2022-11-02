@@ -15,6 +15,7 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
     // Create a copy of socialPosts because socialPostData is read-only (will throw error)
     var socialPosts = [...socialPostData];
     console.log("socialPosts", socialPosts);
+    console.log("thisUser", thisUser);
     socialPosts.sort((post1, post2) => new Date(post2.postHeader.dateTime) - new Date(post1.postHeader.dateTime))
 
     // const handleSubmitComment = (values) => {
@@ -143,16 +144,26 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
 export const CommentSection = ({ parentId, thisUser }) => {
     const [text, setText] = useState("");
     const [backendComments, setBackendComments] = useState([]);
+    var filteredComments = [];
     console.log("backendComments", backendComments);
 
+    // Mount data from getComments
     useEffect(() => {
         getComments().then((data) => {
             setBackendComments(data);
         });
     }, []);
 
+    useEffect(() => {
+        console.log("Activated");
+        console.log(backendComments);
+        filteredComments = backendComments.filter((comment) => parentId == comment.parentId);
+        console.log(filteredComments);
+    }, [backendComments]);
+
     const getBackendComments = async () => {
-        console.log("backendComments - ", backendComments);
+
+        console.log("backendComments -- ", backendComments);
         return backendComments;
     }
 
@@ -166,9 +177,7 @@ export const CommentSection = ({ parentId, thisUser }) => {
         const author = thisUser.header.profileName;
 
         createComments(author, text, parentId)
-            .then((comment) => {
-                updateBackendComments(comment);
-            })
+            .then((comment) => updateBackendComments(comment))
             .then(() => getBackendComments());
     }
 
@@ -178,20 +187,25 @@ export const CommentSection = ({ parentId, thisUser }) => {
         addComment(text, parentId);
     }
 
-    // Map comment.parentId with postid
-    var displayComment = backendComments
-                            .filter((comment) => parentId == comment.parentId )
-                            .map((filteredComment) => {
-                                return(
-                                    <div className='row mt-0 pb-2'>
-                                        <p>{filteredComment.author}</p>
-                                        <p>{filteredComment.commentDate}</p>
-                                        <p>{filteredComment.text}</p>
-                                    </div>
-                                );
-                            });
+    // Filter comments with same ID as post and display onto view
+    var displayComments = backendComments
+        .filter((comment) => {
+            console.log("parentId:", parentId);
+            console.log("comment.parentId:", comment.parentId);
+            return parentId == comment.parentId? comment: "";
+        })
+        .map((filteredComment) => {
+            return (
+                <div className='row mt-0 pb-2'>
+                    <p>{filteredComment.author}</p>
+                    <p>{filteredComment.commentDate}</p>
+                    <p>{filteredComment.text}</p>
+                </div>
+            );
+        });
 
-    console.log("displayComment, ",displayComment);
+
+    console.log("displayComments, ", displayComments);
 
     return (
         <>
@@ -211,8 +225,8 @@ export const CommentSection = ({ parentId, thisUser }) => {
                     </div>
                 </div>
             </form>
-            {displayComment.length > 0 && displayComment}
-            
+            {displayComments.length > 0 && (displayComments)}
+
         </>
 
     )

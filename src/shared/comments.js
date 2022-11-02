@@ -204,7 +204,7 @@ export const createComments = async (thisUser, text, parentId = null) => {
         author: thisUser,
         rootComment: true,
         commentId: commentIdGen,
-        parentId: 0,
+        parentId: parentId,
         replyId: replyIdGen,
         profilePic: '/assets/images/kim-wexler.jpg',
         commentDate: '2022-06-07 19:31:59',
