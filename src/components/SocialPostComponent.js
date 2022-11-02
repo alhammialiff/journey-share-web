@@ -10,7 +10,7 @@ const mapDispatchToProps = {
     appendProfilePic
 };
 
-export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser, dispatch }) => {
+export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser, dispatch, backendComments, setBackendComments }) => {
 
     // Create a copy of socialPosts because socialPostData is read-only (will throw error)
     var socialPosts = [...socialPostData];
@@ -123,7 +123,7 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
                             </Form>
 
                             {/* Comment Component */}
-                            <CommentSection parentId={socialPost.postId} thisUser={thisUser} />
+                            <CommentSection parentId={socialPost.postId} thisUser={thisUser} backendComments={backendComments} setBackendComments={setBackendComments} />
                         </div>
                     </div>
 
@@ -141,35 +141,58 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
     );
 }
 
-export const CommentSection = ({ parentId, thisUser }) => {
+export const CommentSection = ({ parentId, thisUser, backendComments, setBackendComments }) => {
     const [text, setText] = useState("");
-    const [backendComments, setBackendComments] = useState([]);
+    // const [backendComments, setBackendComments] = useState([]);
     var filteredComments = [];
-    console.log("backendComments", backendComments);
+    var displayComments;
+    console.log("In Comments - backendComments", backendComments);
 
     // Mount data from getComments
-    useEffect(() => {
-        getComments().then((data) => {
-            setBackendComments(data);
-        });
-    }, []);
+    // useEffect(() => {
+    //     console.log("Initial backendComment:", backendComments);
+    //     if (backendComments == "" || backendComments == undefined ) {
+    //         getComments().then((data) => {
+    //             setBackendComments(data);
+    //         });
+    //     } else {
+    //         const data = window.localStorage.getItem('BACKEND_COMMENTS');
+    //         setBackendComments(JSON.parse(data));
+    //     }
 
-    useEffect(() => {
-        console.log("Activated");
-        console.log(backendComments);
-        filteredComments = backendComments.filter((comment) => parentId == comment.parentId);
-        console.log(filteredComments);
-    }, [backendComments]);
+
+    // }, []);
+    if (backendComments != undefined) {
+
+        useEffect(() => {
+            console.log("Activated");
+            console.log(backendComments);
+
+            // Store backendComments in local storage for persistence
+            window.localStorage.setItem('BACKEND_COMMENTS', JSON.stringify(backendComments));
+
+            // 
+            filteredComments = backendComments.filter((comment) => parentId == comment.parentId);
+            console.log(filteredComments);
+        }, [backendComments]);
+
+    }
 
     const getBackendComments = async () => {
+        if (backendComments != undefined) {
+            console.log("backendComments -- ", backendComments);
+            return backendComments;
 
-        console.log("backendComments -- ", backendComments);
-        return backendComments;
+        }
     }
 
     const updateBackendComments = async (comment) => {
-        setBackendComments([...backendComments, comment]);
-        return backendComments;
+        if (backendComments != undefined) {
+            let data = [...backendComments, comment];
+            setBackendComments(data);
+            window.localStorage.setItem('BACKEND_COMMENTS', JSON.stringify(data));
+            return backendComments;
+        }
     }
 
     const addComment = (text, parentId) => {
@@ -188,24 +211,29 @@ export const CommentSection = ({ parentId, thisUser }) => {
     }
 
     // Filter comments with same ID as post and display onto view
-    var displayComments = backendComments
-        .filter((comment) => {
-            console.log("parentId:", parentId);
-            console.log("comment.parentId:", comment.parentId);
-            return parentId == comment.parentId? comment: "";
-        })
-        .map((filteredComment) => {
-            return (
-                <div className='row mt-0 pb-2'>
-                    <p>{filteredComment.author}</p>
-                    <p>{filteredComment.commentDate}</p>
-                    <p>{filteredComment.text}</p>
-                </div>
-            );
-        });
+
+    if (backendComments != undefined) {
+
+        displayComments = backendComments
+            .filter((comment) => {
+                console.log("parentId:", parentId);
+                console.log("comment.parentId:", comment.parentId);
+                return parentId == comment.parentId ? comment : "";
+            })
+            .map((filteredComment) => {
+                return (
+                    <div className='row mt-0 pb-2'>
+                        <p>{filteredComment.author}</p>
+                        <p>{filteredComment.commentDate}</p>
+                        <p>{filteredComment.text}</p>
+                    </div>
+                );
+            });
 
 
-    console.log("displayComments, ", displayComments);
+        console.log("displayComments, ", displayComments);
+
+    }
 
     return (
         <>
@@ -225,7 +253,7 @@ export const CommentSection = ({ parentId, thisUser }) => {
                     </div>
                 </div>
             </form>
-            {displayComments.length > 0 && (displayComments)}
+            {displayComments != undefined && (displayComments)}
 
         </>
 

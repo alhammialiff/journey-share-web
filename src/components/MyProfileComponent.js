@@ -127,7 +127,7 @@ const RenderHeaderSection = ({ thisUserInfo }) => {
     );
 }
 
-export const RenderBodySection = ({ users }) => {
+export const RenderBodySection = ({ users, backendComments, setBackendComments  }) => {
     // Get user's posts (array)
     var socialPostData = users.USERS[0].body.socialPosts;
 
@@ -142,11 +142,11 @@ export const RenderBodySection = ({ users }) => {
     console.log("In RenderBodySection - socialPostData", socialPostData);
 
     return (
-        <SocialPosts socialPostData={socialPostData} thisUser={users.USERS[0]} />
+        <SocialPosts socialPostData={socialPostData} thisUser={users.USERS[0]}  backendComments={backendComments} setBackendComments={setBackendComments}/>
     );
 }
 
-export const RenderMyProfileTab = ({ users }) => {
+export const RenderMyProfileTab = ({ users, backendComments, setBackendComments }) => {
 
     console.log("In RenderMyProfileTab - users", users);
     var thisUserInfo = users.USERS[0];
@@ -166,7 +166,7 @@ export const RenderMyProfileTab = ({ users }) => {
                 <div className='col-12 col-sm p-0'>
                     <main id="main-box">
                         <div className='container p-2'>
-                            <RenderBodySection users={users} />
+                            <RenderBodySection users={users} backendComments={backendComments} setBackendComments={setBackendComments}/>
                         </div>
                     </main>
                 </div>

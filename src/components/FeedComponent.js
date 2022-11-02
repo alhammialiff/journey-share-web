@@ -2,7 +2,7 @@ import React from 'react';
 import { SocialPosts } from './SocialPostComponent';
 import { Card, CardBody } from 'reactstrap';
 
-export const Feed = ({ users, postComment, thisUser }) => {
+export const Feed = ({ users, postComment, thisUser, backendComments, setBackendComments }) => {
 
     // Check user's friends
     const friendsList = users.USERS[0].header.friends;
@@ -68,7 +68,7 @@ export const Feed = ({ users, postComment, thisUser }) => {
 
     return (
         <div className='container'>
-            <SocialPosts socialPostData={allSocialPosts} postComment={postComment} thisUser={thisUser} />
+            <SocialPosts socialPostData={allSocialPosts} postComment={postComment} thisUser={thisUser} backendComments={backendComments} setBackendComments={setBackendComments}/>
         </div>
     );
 
