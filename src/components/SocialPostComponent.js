@@ -125,6 +125,8 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
                             {/* Comment Component */}
                             <CommentSection parentId={socialPost.postId} thisUser={thisUser} backendComments={backendComments} setBackendComments={setBackendComments} />
                         </div>
+
+
                     </div>
 
                 </div>
@@ -143,12 +145,11 @@ export const SocialPosts = ({ socialPostData, profilePic, postComment, thisUser,
 
 export const CommentSection = ({ parentId, thisUser, backendComments, setBackendComments }) => {
     const [text, setText] = useState("");
-    // const [backendComments, setBackendComments] = useState([]);
     var filteredComments = [];
     var displayComments;
     console.log("In Comments - backendComments", backendComments);
 
-    // Mount data from getComments
+    // (Replaced with mounting data directly into useState(here))
     // useEffect(() => {
     //     console.log("Initial backendComment:", backendComments);
     //     if (backendComments == "" || backendComments == undefined ) {
@@ -159,9 +160,8 @@ export const CommentSection = ({ parentId, thisUser, backendComments, setBackend
     //         const data = window.localStorage.getItem('BACKEND_COMMENTS');
     //         setBackendComments(JSON.parse(data));
     //     }
-
-
     // }, []);
+
     if (backendComments != undefined) {
 
         useEffect(() => {
@@ -199,7 +199,7 @@ export const CommentSection = ({ parentId, thisUser, backendComments, setBackend
         console.log(thisUser);
         const author = thisUser.header.profileName;
 
-        createComments(author, text, parentId)
+        createComments(author, text, parentId, thisUser.header.profilePic)
             .then((comment) => updateBackendComments(comment))
             .then(() => getBackendComments());
     }
@@ -222,10 +222,22 @@ export const CommentSection = ({ parentId, thisUser, backendComments, setBackend
             })
             .map((filteredComment) => {
                 return (
-                    <div className='row mt-0 pb-2'>
-                        <p>{filteredComment.author}</p>
-                        <p>{filteredComment.commentDate}</p>
-                        <p>{filteredComment.text}</p>
+                    <div key={filteredComment.commentId} id="social-post-comment" className='row mx-0 mb-1 p-1'>
+                        <div className="col-4 col-sm-2">
+                            <img className="profile-pic" src={filteredComment.profilePic} width="80" />
+                        </div>
+                        <div className="col col-sm">
+                            <div className='row'>
+                                <div className='col col-sm'>
+                                    <strong>{filteredComment.author}</strong>  {filteredComment.commentDate}
+                                </div>
+                            </div>
+                            <div className='row'>
+                                <div className='col-12 col-sm'>
+                                    {filteredComment.text}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 );
             });
@@ -239,7 +251,7 @@ export const CommentSection = ({ parentId, thisUser, backendComments, setBackend
         <>
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className='row'>
-                    <div id='comment-textbox' className='col-12 col-md'>
+                    <div id='comment-textbox' className='col-12 col-md mb-2'>
                         <InputGroup>
                             <textarea
                                 className="form-control col-10"

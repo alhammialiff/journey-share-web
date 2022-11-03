@@ -198,7 +198,7 @@ var commentIdGen = Math.floor(Math.random() * 100000);
 var replyIdGen = Math.floor(Math.random() * 100000);
 
 
-export const createComments = async (thisUser, text, parentId = null) => {
+export const createComments = async (thisUser, text, parentId = null, profilePic) => {
 
     var comment = {
         author: thisUser,
@@ -206,7 +206,7 @@ export const createComments = async (thisUser, text, parentId = null) => {
         commentId: commentIdGen,
         parentId: parentId,
         replyId: replyIdGen,
-        profilePic: '/assets/images/kim-wexler.jpg',
+        profilePic: profilePic,
         commentDate: '2022-06-07 19:31:59',
         reactions: {
             like: 0,
